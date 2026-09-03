@@ -1,0 +1,166 @@
+[
+  {
+    "date": "2026-02-26",
+    "script_file": "",
+    "model_file": "",
+    "focus": "code for gla_p1",
+    "shorts": [],
+    "accuracy": 0,
+    "changes": ["Data Collection", "Data Augmentation", "Data Distribution bar-Graph"],
+    "problem": "Class imbalance problem",
+    "solution": "Targeted augmentation"
+  },
+  {
+    "date": "2026-02-27",
+    "script_file": "gla_p1_in1.ipynb",
+    "model_file": "",
+    "focus": "code for gla_p1",
+    "shorts": [],
+    "accuracy": 0,
+    "changes": ["Targeted Augmentation", "ROI Image Extract", "Create Clean Dataset"],
+    "problem": "Missing ROI Samples",
+    "solution": "Invalid Sample drop"
+  },
+  {
+    "date": "2026-03-08",
+    "script_file": "gla_p1_in2.ipynb",
+    "model_file": "gla_p1_62.pth",
+    "focus": "code for gla_p1",
+    "shorts": ["gla_p1_62_acc.png", "gla_p1_62_loss.png"],
+    "accuracy": 62,
+    "changes": ["Define ResNet-50 Architecture", "Deploy ResNet-50", "Freeze all early layers", "Train on 20 Epochs"],
+    "problem": "Underfiiting problem due to freeze layers and small dataset",
+    "solution": "Apply l2 regulizer"
+  },
+  {
+    "date": "2026-03-10",
+    "script_file": "gla_p1_in3.ipynb",
+    "model_file": "gla_p1_66.pth",
+    "focus": "code for gla_p1",
+    "shorts": ["gla_p1_66_acc.png", "gla_p1_66_loss.png", "gla_p1_10_03_1.png", "gla_p1_10_03_2.png", "gla_p1_10_03_3.png"],
+    "accuracy": 66,
+    "changes": ["Give the temp Names of project", "add l2 regularization", "Un-freeze layer 4", "Train on 30 Epochs", "Model Training Graph"],
+    "problem": "Overfiiting problem due to un-freeze layer 4(remember image instead of pattern find)",
+    "solution": "Change the Dropout, learning rate, Add Early stopping"
+  },
+  {
+    "date": "2026-03-11",
+    "script_file": "gla_p1_in4.ipynb",
+    "model_file": "gla_p1_73.pth",
+    "focus": "code for gla_p1",
+    "shorts": ["gla_p1_73_acc.png", "gla_p1_73_loss.png", "gla_p1_11_03_1.png"],
+    "accuracy": 73,
+    "changes": ["Add Early stopping", "Change Dropout", "Add learning scheduler", "Train on 20 Epochs (5 epochs)"],
+    "problem": "Overfiiting problem still present due to less data samples and unbalance class, due to less number of Validation sample the val_acc may not represent the true model performance.",
+    "solution": "collect another dataset from Kaggle and merge, use ROI as feature with full image as dual-stream architecture, Instead of training all of layer4, unfreeze only the last block"
+  },
+  {
+    "date": "2026-03-12",
+    "script_file": "data_sapphire_in1.ipynb",
+    "model_file": "",
+    "focus": "data for gla_p1",
+    "shorts": [],
+    "accuracy": 0,
+    "changes": ["Download new dataset from kaggle", "Unpack and visule analysis"],
+    "problem": "data leakage problem if merge with val folder and train folder directly, ARIMA folder not have clear lables, different fundus camera effect",
+    "solution": "re-build and re-distribute current dataset with new dataset, apply normalization in PyTorch transform pipeline, drop normal images"
+  },
+  {
+    "date": "2026-03-17",
+    "script_file": "data_sapphire_in2.ipynb",
+    "model_file": "",
+    "focus": "data for gla_p1",
+    "shorts": ["d_v2_diss.png"],
+    "accuracy": 0,
+    "changes": ["Collect all data sample from dataset 1 and all glaucoma from dataset 2", "First 237 sample of normal from dataset 2", "1:1 sample in train folder"],
+    "problem": "",
+    "solution": ""
+  },
+  {
+    "date": "2026-03-18",
+    "script_file": "gla_p1_in5.ipynb",
+    "model_file": "gla_p1_75.pth",
+    "focus": "code for gla_p1",
+    "shorts": ["gla_p1_75_acc.png", "gla_p1_75_loss.png", "gla_p1_75_con.png"],
+    "accuracy": 75,
+    "changes": ["use data_sapphire file code with gla_p1", "use dataset_v2 to train the model", "Train on 20 Epochs (9 epochs)", "add confussion matrix graph"],
+    "problem": "Overfiiting problem still present due resnet 50 remember full images and foucesd on backgrounds, localized feature consider not possible automaticly, feature diverse not present (data diverse present)",
+    "solution": "use ROI images also as input (two input), freeze layer 1 and 2 also of resnet 50, upgrade weight balance, not blindly add new dataset due to fundus sensitivity"
+  },
+  {
+    "date": "2026-03-25",
+    "script_file": "data_sapphire_in3.ipynb",
+    "model_file": "",
+    "focus": "data for gla_p1",
+    "shorts": [],
+    "accuracy": 0,
+    "changes": ["Try to build a self cropping system for fundus image to ROI image", "Sample output display"],
+    "problem": "Some samples are perfectly cropped, some are not but close to the actual cup region",
+    "solution": "never build automatic ROI system use the madical or self cropped (precis) samples."
+  },
+  {
+    "date": "2026-03-26",
+    "script_file": "data_sapphire_in4.ipynb",
+    "model_file": "",
+    "focus": "data for gla_p1",
+    "shorts": [],
+    "accuracy": 0,
+    "changes": ["Collect ROI samples from dataset 1", "Setup ROI samples in dataset_v2", "Display the data distribution of ROI folder"],
+    "problem": "Some samples are missing due to dataset 2 not contain ROI, ROI distribution is same as dataset 1",
+    "solution": "tune the double input model for missing ROI samples."
+  },
+  {
+    "date": "2026-03-31",
+    "script_file": "gla_p1_in6.ipynb",
+    "model_file": "gla_p1_68.pth",
+    "focus": "code for gla_p1",
+    "shorts": [],
+    "accuracy": 68,
+    "changes": ["Create 2 input model for accept full image and ROI image", "Update dataset spliter code for ROI folder", "Update the data loader code", "Make Dual ResNet50 model for accept full image and ROI at same time", "Freeze all early layers except last block", "Train on 20 Epochs (7 epochs)"],
+    "problem": "Overfiiting problem still present due to resnet 50 remember full images and less amount of ROI sample for localized feature focused",
+    "solution": "Missing ROI handling using original image musk, calculate the weighted loss for ROI and use to make flexiabl DualResNet-50 model, Update the final layer structre, Make model more stabilize to use more epochs"
+  },
+  {
+    "date": "2026-04-29",
+    "script_file": "gla_p1_in7.ipynb",
+    "model_file": "gla_p1_70.pth",
+    "focus": "code for gla_p1",
+    "shorts": ["gla_p1_70_acc.png", "gla_p1_70_loss.png", "gla_p1_70_con.png", "gla_p1_29_04_1.png"],
+    "accuracy": 70,
+    "changes": ["Use weighted ROI with Full image as musk", "Update dataset loader", "Update DualResNet-50 for accept weigthed ROI", "Modify the Dropout and learning rate and forward function", "Increase patience for stable mode", "Train on 20 Epochs (13 epochs)"],
+    "problem": "Overfiiting problem still present due to less amount of ROI sample for localized feature focused",
+    "solution": "Increse the dropout, for experiment purpose drop all training samples which don't have ROI (d2 dataset), Update the weight decay"
+  },
+  {
+    "date": "2026-05-01",
+    "script_file": "gla_p1_in8.ipynb",
+    "model_file": "gla_p1_44.pth",
+    "focus": "code for gla_p1",
+    "shorts": ["gla_p1_44_acc.png", "gla_p1_44_loss.png", "gla_p1_44_con.png"],
+    "accuracy": 44,
+    "changes": ["Drop all training samples which don't have ROI (d2 dataset)", "Change the drop out into 5", "Train on 20 Epochs (13 epochs)"],
+    "problem": "Huge data drop which lead class imbalance, Generalization becomes weak",
+    "solution": "Drop the idea permanently, Focused on solving overfitting problem which is need more data samples with proper ROI for traning"
+  },
+  {
+    "date": "2026-05-04",
+    "script_file": "gla_xai_in1.ipynb",
+    "model_file": "",
+    "focus": "code for gla_xai",
+    "shorts": ["gla_p1_xai_03_05_1.png"],
+    "changes": ["Create a simple Grad Camp using gla_p1_75.pth weight file", "Use some raw images to test the grad camp", "Apply argmax thresold (0.7) for prediction"],
+    "problem": "Just highlighted heatmap apply over original image due to simple grad camp, No clear explanation generate for understand, No fixed decision boundary",
+    "solution": "Apply complex grad camp and segmantation or landmark sensing for generating explanation statment, Need to stable thresold point, Integrated Gradients may increase clearity"
+  },
+  {
+    "date": "2026-06-24",
+    "script_file": "gla_p1_in9.ipynb",
+    "model_file": "gla_p1_72.pth",
+    "focus": "code for gla_p1",
+    "shorts": ["gla_p1_72_acc.png", "gla_p1_72_loss.png", "gla_p1_72_con.png"],
+    "accuracy": 72,
+    "changes": ["Apply ROI segmentation to auto create missing ROI samples", "Use Dual ResNet-50 on dataset_v2", "Use 0.7 dropout for pattern extract", "Change learning rate to lr=0.0001", "Train on 20 Epochs (13 epochs)"],
+    "problem": "Auto ROI segementation just applied in dataset 2 that why to much samples are still missing ROI, Very less amount of data for Dual ResNet-50 thats why overfit appear",
+    "solution": "Apply the ROI on extra images to solve missing ROI problem, Use/Create Red Free Fundus image for more smaple space without to much variation"
+  }
+]
