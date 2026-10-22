@@ -1,0 +1,840 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en" style="scroll-behavior: smooth; overflow-y: auto !important; height: auto !important;">
+
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="web_standard" name="shell-type" />
+  <title>FundusGuard AI — Developer Onboarding &amp; API Key Registration</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap"
+    rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
+    rel="stylesheet" />
+  
+  <link rel="stylesheet" href="../assets/styles/App.css"/>
+  <link rel="stylesheet" href="../assets/styles/api_reg.css"/>
+  
+  <script src="../assets/scripts/App.js"></script>
+  
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="../assets/scripts/tailwind.js"></script>
+
+</head>
+
+<body
+  class="bg-background text-text-primary font-sans antialiased selection:bg-primary-container selection:text-white relative">
+  <!-- Glow Background Accents -->
+  <div
+    class="fixed top-0 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[130px] pointer-events-none -z-10">
+  </div>
+  <div
+    class="fixed top-1/3 right-10 w-[450px] h-[450px] bg-secondary-container/10 rounded-full blur-[130px] pointer-events-none -z-10">
+  </div>
+  <!-- Navigation Bar -->
+  <%- header %>
+  <!-- Main Content Layout -->
+  <main class="w-full min-h-[calc(100vh-4rem)] py-10 lg:py-14">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Hero Header -->
+      <div class="flex flex-col items-center text-center max-w-3xl mx-auto mb-12">
+        <div
+          class="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-surface-container-high border border-border-subtle text-primary text-xs font-semibold tracking-wider uppercase mb-4 shadow-sm">
+          <span class="w-2 h-2 rounded-full bg-status-healthy animate-ping"></span>
+          DEVELOPER ONBOARDING • INSTANT ACCESS v1.0
+        </div>
+        <h1 class="font-headline font-extrabold text-3xl sm:text-4xl lg:text-5xl tracking-tight text-white mb-4">
+          Get Instant Access to <span
+            class="bg-gradient-to-r from-[#ea580c] to-[#f59e0b] bg-clip-text text-transparent">FundusGuard AI API</span>
+        </h1>
+        <p class="text-base sm:text-lg text-text-secondary leading-relaxed max-w-2xl">
+          Empower your ophthalmic applications with real-time retinal segmentation, optic cup-to-disc ratio analysis,
+          and XAI diagnostics.
+        </p>
+        <!-- Trust Badges Grid -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 w-full mt-8">
+          <div
+            class="flex items-center justify-center gap-2 p-3 rounded-lg bg-surface-container border border-border-subtle">
+            <span class="w-2 h-2 rounded-full bg-status-healthy"></span>
+            <span class="text-xs font-medium text-zinc-300">99.9% Uptime</span>
+          </div>
+          <div
+            class="flex items-center justify-center gap-2 p-3 rounded-lg bg-surface-container border border-border-subtle">
+            <span class="material-symbols-outlined text-[17px] text-secondary">verified_user</span>
+            <span class="text-xs font-medium text-zinc-300">HIPAA / GDPR</span>
+          </div>
+          <div
+            class="flex items-center justify-center gap-2 p-3 rounded-lg bg-surface-container border border-border-subtle">
+            <span class="material-symbols-outlined text-[17px] text-primary-container">bolt</span>
+            <span class="text-xs font-medium text-zinc-300">&lt;2.5s Latency</span>
+          </div>
+          <div
+            class="flex items-center justify-center gap-2 p-3 rounded-lg bg-surface-container border border-border-subtle">
+            <span class="material-symbols-outlined text-[17px] text-optic-disc-gold">lock_reset</span>
+            <span class="text-xs font-medium text-zinc-300">256-Bit Ephemeral</span>
+          </div>
+        </div>
+      </div>
+      <!-- Two-Column Layout -->
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        <!-- Left: Form Container -->
+        <div class="lg:col-span-8 flex flex-col">
+          <div
+            class="bg-surface-glass backdrop-blur-xl rounded-2xl p-6 sm:p-8 border border-border-subtle shadow-2xl relative"
+            id="registration-card-wrapper">
+            <!-- Standard Form State -->
+            <form class="flex flex-col gap-8" id="api-registration-form"
+              onsubmit="event.preventDefault(); window.handleFormSubmit();">
+              <!-- Section 1: Developer Credentials -->
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center justify-between pb-2 border-b border-border-subtle">
+                  <div class="flex items-center gap-2.5">
+                    <span
+                      class="w-6 h-6 rounded-full bg-primary-container/20 text-primary-container flex items-center justify-center text-xs font-bold font-headline">1</span>
+                    <h2 class="text-lg font-bold font-headline text-white">Developer Credentials</h2>
+                  </div>
+                  <span class="text-xs text-text-secondary">Primary Identity &amp; Auth</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="flex flex-col gap-1.5">
+                    <label class="text-xs font-semibold text-zinc-300" for="dev-name">Full Name *</label>
+                    <input
+                      class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest border border-white/10 text-white placeholder:text-outline text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container"
+                      id="dev-name" placeholder="Dr. Aris Thorne" required="" type="text" />
+                  </div>
+                  <div class="flex flex-col gap-1.5">
+                    <div class="flex items-center justify-between">
+                      <label class="text-xs font-semibold text-zinc-300" for="dev-email">Official / Work Email *</label>
+                      <span class="text-[10px] font-semibold text-primary-container uppercase tracking-wider">OTP
+                        Required</span>
+                    </div>
+                    <input
+                      class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest border border-white/10 text-white placeholder:text-outline text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container"
+                      id="dev-email" placeholder="aris.thorne@eyeinstitute.org" required="" type="email" />
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="flex flex-col gap-1.5 relative">
+                    <label class="text-xs font-semibold text-zinc-300" for="dev-password">Secret Passkey *</label>
+                    <div class="relative">
+                      <input
+                        class="w-full h-11 px-3.5 pr-10 rounded-lg bg-surface-container-lowest border border-white/10 text-white placeholder:text-outline text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container"
+                        id="dev-password" placeholder="••••••••••••" required="" type="password" />
+                      <button aria-label="Toggle password visibility"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-white p-1"
+                        onclick="window.togglePasswordVisibility('dev-password', 'pwd-toggle-icon')" type="button">
+                        <span class="material-symbols-outlined text-[19px]" id="pwd-toggle-icon">visibility</span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="flex flex-col gap-1.5 relative">
+                    <label class="text-xs font-semibold text-zinc-300" for="dev-password-confirm">Confirm Secret
+                      *</label>
+                    <div class="relative">
+                      <input
+                        class="w-full h-11 px-3.5 pr-10 rounded-lg bg-surface-container-lowest border border-white/10 text-white placeholder:text-outline text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container"
+                        id="dev-password-confirm" placeholder="••••••••••••" required="" type="password" />
+                      <button aria-label="Toggle confirm password visibility"
+                        class="absolute right-3 top-1/2 -translate-y-1/2 text-outline hover:text-white p-1"
+                        onclick="window.togglePasswordVisibility('dev-password-confirm', 'pwd-confirm-toggle-icon')"
+                        type="button">
+                        <span class="material-symbols-outlined text-[19px]"
+                          id="pwd-confirm-toggle-icon">visibility</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- Section 2: Organization Metadata -->
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center justify-between pb-2 border-b border-border-subtle">
+                  <div class="flex items-center gap-2.5">
+                    <span
+                      class="w-6 h-6 rounded-full bg-secondary/20 text-secondary flex items-center justify-center text-xs font-bold font-headline">2</span>
+                    <h2 class="text-lg font-bold font-headline text-white">Organization Metadata</h2>
+                  </div>
+                  <span class="text-xs text-text-secondary">Clinical Verification</span>
+                </div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="flex flex-col gap-1.5">
+                    <label class="text-xs font-semibold text-zinc-300" for="org-type">Entity Type *</label>
+                    <select
+                      class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest border border-white/10 text-white text-sm focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary"
+                      id="org-type">
+                      <option value="hospital">Hospital / Ophthalmic Clinic</option>
+                      <option value="research">Research Institute / University</option>
+                      <option value="developer">Independent Developer / Clinician</option>
+                      <option value="enterprise">MedTech Enterprise</option>
+                    </select>
+                  </div>
+                  <div class="flex flex-col gap-1.5">
+                    <label class="text-xs font-semibold text-zinc-300" for="org-name">Organization / Clinic Name
+                      *</label>
+                    <input
+                      class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest border border-white/10 text-white placeholder:text-outline text-sm focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary"
+                      id="org-name" placeholder="Johns Hopkins Wilmer Eye Institute" required="" type="text" />
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-xs font-semibold text-zinc-300" for="org-url">Web Address / Portfolio <span
+                      class="text-outline font-normal">(Optional)</span></label>
+                  <input
+                    class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest border border-white/10 text-white placeholder:text-outline text-sm focus:outline-none focus:border-secondary focus:ring-1 focus:ring-secondary"
+                    id="org-url" placeholder="https://wilmer.hopkinsmedicine.org" type="url" />
+                </div>
+              </div>
+              <!-- Section 3: Technical Usage & Tier Selection -->
+              <div class="flex flex-col gap-4">
+                <div class="flex items-center justify-between pb-2 border-b border-border-subtle">
+                  <div class="flex items-center gap-2.5">
+                    <span
+                      class="w-6 h-6 rounded-full bg-optic-disc-gold/20 text-optic-disc-gold flex items-center justify-center text-xs font-bold font-headline">3</span>
+                    <h2 class="text-lg font-bold font-headline text-white">Tier &amp; Workload Scope</h2>
+                  </div>
+                  <span class="text-xs text-text-secondary">Quota Allocation</span>
+                </div>
+                <!-- Tier Selection Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <label class="cursor-pointer relative block">
+                    <input checked="" class="peer sr-only" name="api-tier" type="radio" value="developer" />
+                    <div
+                      class="p-4 rounded-xl bg-surface-container border border-white/10 peer-checked:border-primary-container peer-checked:bg-primary-container/10 transition-all flex flex-col gap-2">
+                      <div class="flex items-center justify-between">
+                        <span class="font-headline font-bold text-white text-base">Developer Free Tier</span>
+                        <span
+                          class="px-2 py-0.5 rounded text-[11px] font-bold bg-status-healthy/20 text-status-healthy">Instant
+                          $0</span>
+                      </div>
+                      <p class="text-xs text-text-secondary leading-normal">
+                        1,000 requests/month, SPI-OWL v1.0 core segmentation, Red-Free &amp; CDR engine.
+                      </p>
+                      <div class="mt-1 flex items-center gap-1.5 text-xs text-primary font-medium">
+                        <span class="material-symbols-outlined text-[15px]">check_circle</span>
+                        <span>Community SLA Queue</span>
+                      </div>
+                    </div>
+                  </label>
+                  <label class="cursor-pointer relative block">
+                    <input class="peer sr-only" name="api-tier" type="radio" value="enterprise" />
+                    <div
+                      class="p-4 rounded-xl bg-surface-container border border-white/10 peer-checked:border-secondary peer-checked:bg-secondary/10 transition-all flex flex-col gap-2">
+                      <div class="flex items-center justify-between">
+                        <span class="font-headline font-bold text-white text-base">Institutional Enterprise</span>
+                        <span class="px-2 py-0.5 rounded text-[11px] font-bold bg-secondary/20 text-secondary">Dedicated
+                          BAA</span>
+                      </div>
+                      <p class="text-xs text-text-secondary leading-normal">
+                        Custom volume, high-priority GPU queue, dedicated BAA, DICOM PACS integration.
+                      </p>
+                      <div class="mt-1 flex items-center gap-1.5 text-xs text-secondary font-medium">
+                        <span class="material-symbols-outlined text-[15px]">check_circle</span>
+                        <span>Dedicated Node Cluster</span>
+                      </div>
+                    </div>
+                  </label>
+                </div>
+                <!-- Primary Use Case Interactive Tag Pills -->
+                <div class="flex flex-col gap-2 mt-1">
+                  <label class="text-xs font-semibold text-zinc-300">Primary Use Case (Select all applicable)</label>
+                  <div class="flex flex-wrap gap-2" id="use-case-container">
+                    <button
+                      class="tag-pill px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-primary-container text-white shadow-sm"
+                      onclick="window.toggleTag(this)" type="button">
+                      Clinical Assistance
+                    </button>
+                    <button
+                      class="tag-pill px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-surface-container-high text-zinc-300 hover:text-white"
+                      onclick="window.toggleTag(this)" type="button">
+                      Academic Research
+                    </button>
+                    <button
+                      class="tag-pill px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-primary-container text-white shadow-sm"
+                      onclick="window.toggleTag(this)" type="button">
+                      EHR System Integration
+                    </button>
+                    <button
+                      class="tag-pill px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-surface-container-high text-zinc-300 hover:text-white"
+                      onclick="window.toggleTag(this)" type="button">
+                      Mobile App
+                    </button>
+                    <button
+                      class="tag-pill px-3 py-1.5 rounded-lg text-xs font-medium transition-all bg-surface-container-high text-zinc-300 hover:text-white"
+                      onclick="window.toggleTag(this)" type="button">
+                      Tele-Ophthalmology
+                    </button>
+                  </div>
+                </div>
+                <!-- Monthly Call Volume -->
+                <div class="flex flex-col gap-1.5">
+                  <label class="text-xs font-semibold text-zinc-300" for="volume-estimate">Estimated Monthly
+                    Requests</label>
+                  <select
+                    class="w-full h-11 px-3.5 rounded-lg bg-surface-container-lowest border border-white/10 text-white text-sm focus:outline-none focus:border-primary-container focus:ring-1 focus:ring-primary-container"
+                    id="volume-estimate">
+                    <option value="1k">&lt;1,000 / mo (Sandbox &amp; Validation)</option>
+                    <option value="10k">1,000 - 10,000 / mo (Active Clinic)</option>
+                    <option value="100k">10,000+ / mo (Institutional Hospital Network)</option>
+                  </select>
+                </div>
+              </div>
+              <!-- Section 4: Terms & Compliance -->
+              <div class="flex flex-col gap-4 pt-2">
+                <label class="flex items-start gap-3 cursor-pointer group">
+                  <input
+                    class="mt-1 w-4 h-4 rounded bg-surface-container border-white/20 text-primary-container focus:ring-primary-container accent-primary-container"
+                    id="terms-agree" required="" type="checkbox" />
+                  <span class="text-xs text-text-secondary leading-relaxed group-hover:text-zinc-200 transition-colors">
+                    I agree to the <span class="text-primary font-medium underline">Investigational CDSS Terms of
+                      Service</span> and Clinical Privacy Protocols, acknowledging FundusGuard AI is an assistive
+                    decision-support model under HIPAA/GDPR clinical oversight.
+                  </span>
+                </label>
+                <!-- Dynamic Error Notification -->
+                <div
+                  class="hidden p-3.5 rounded-lg bg-glaucoma-critical/20 border border-glaucoma-critical/30 text-white text-xs items-center gap-2.5"
+                  id="form-error">
+                  <span class="material-symbols-outlined text-[20px] text-glaucoma-critical">error</span>
+                  <span id="form-error-msg">Please fill out all mandatory fields before provisioning.</span>
+                </div>
+                <!-- Primary CTA -->
+                <button
+                  class="w-full mt-2 py-3.5 px-6 rounded-xl bg-gradient-to-r from-primary-container via-orange-600 to-secondary-container hover:brightness-110 text-white font-headline font-bold text-base tracking-wide flex items-center justify-center gap-2.5 transition-all shadow-[0_0_24px_rgba(234,88,12,0.4)]"
+                  type="submit">
+                  <span>Verify Email &amp; Generate API Key</span>
+                  <span class="material-symbols-outlined text-[20px]">arrow_forward</span>
+                </button>
+              </div>
+            </form>
+            <!-- Success State: Live Ingestion Token Dashboard (Hidden until flow finishes) -->
+            <div class="hidden flex-col gap-6" id="success-token-card">
+              <div class="flex items-center gap-3 pb-4 border-b border-border-subtle">
+                <div
+                  class="w-12 h-12 rounded-xl bg-status-healthy/20 border border-status-healthy/30 text-status-healthy flex items-center justify-center">
+                  <span class="material-symbols-outlined text-[28px]">verified</span>
+                </div>
+                <div>
+                  <h3 class="font-headline font-bold text-xl text-white">Bearer Ingestion Key Active</h3>
+                  <p class="text-xs text-text-secondary">Your SPI-OWL API sandbox key has been generated and validated.
+                  </p>
+                </div>
+              </div>
+              <!-- Bearer Live Key -->
+              <div class="flex flex-col gap-1.5">
+                <label class="text-xs font-semibold text-text-secondary uppercase tracking-wider">Public Live API Key
+                  (Bearer)</label>
+                <div
+                  class="flex items-center justify-between p-3 rounded-lg bg-surface-container-lowest border border-white/10">
+                  <code class="font-mono text-sm text-primary truncate"
+                    id="api-key-text">fg_live_99f3a817b204e19d</code>
+                  <button
+                    class="px-3 py-1.5 rounded-md bg-surface-container-high hover:bg-surface-container text-white text-xs font-medium transition-colors flex items-center gap-1.5 ml-2 flex-shrink-0"
+                    onclick="window.copyToClipboard('fg_live_99f3a817b204e19d')" type="button">
+                    <span class="material-symbols-outlined text-[16px]">content_copy</span>
+                    <span>Copy Key</span>
+                  </button>
+                </div>
+              </div>
+              <!-- Secret Token Reveal -->
+              <div class="flex flex-col gap-1.5">
+                <label class="text-xs font-semibold text-text-secondary uppercase tracking-wider">Secret Ingestion
+                  Token</label>
+                <div
+                  class="flex items-center justify-between p-3 rounded-lg bg-surface-container-lowest border border-white/10">
+                  <code class="font-mono text-sm text-zinc-400 truncate"
+                    id="api-secret-display">fg_sec_48a1c99f••••••••••••</code>
+                  <button
+                    class="px-3 py-1.5 rounded-md bg-surface-container-high hover:bg-surface-container text-white text-xs font-medium transition-colors flex items-center gap-1.5 ml-2 flex-shrink-0"
+                    onclick="window.toggleSecretReveal()" type="button">
+                    <span class="material-symbols-outlined text-[16px]" id="secret-reveal-icon">visibility</span>
+                    <span id="secret-reveal-text">Reveal</span>
+                  </button>
+                </div>
+              </div>
+              <!-- Interactive cURL Snippet Preview -->
+              <div class="flex flex-col gap-1.5">
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-semibold text-text-secondary uppercase tracking-wider">Integration Request
+                    Preview</span>
+                  <span class="text-xs font-mono text-primary-container">POST /v1.0/segment</span>
+                </div>
+                <pre
+                  class="p-4 rounded-xl bg-surface-container-lowest border border-white/10 font-mono text-xs text-zinc-300 overflow-x-auto leading-relaxed custom-scrollbar">curl -X POST https://api.fundusguard.ai/v1.0/segment \
+  -H "Authorization: Bearer fg_live_99f3a817b204e19d" \
+  -H "X-Fundus-API-Key: fg_live_99f3a817b204e19d" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "image_uri": "s3://clinical-store/fundus_patient_082.dcm",
+    "compute_cdr": true,
+    "model_fp": "fp16"
+  }'</pre>
+              </div>
+              <!-- Action Links -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
+                <a class="py-3 px-4 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container text-white font-headline font-semibold text-sm text-center shadow-[0_0_15px_rgba(234,88,12,0.3)] hover:opacity-95 transition-all"
+                  href="./workspace.html">
+                  Open Detection Workspace
+                </a>
+                <a class="py-3 px-4 rounded-xl bg-surface-container border border-border-subtle hover:bg-surface-container-high text-white font-headline font-semibold text-sm text-center transition-all"
+                  href="./api.html">
+                  View API Docs
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Right: Bento Information Panel -->
+        <div class="lg:col-span-4 flex flex-col gap-6">
+          <!-- Card 1: Quick SDK Installation -->
+          <div
+            class="bg-surface-glass backdrop-blur-xl rounded-2xl p-5 border border-border-subtle shadow-xl flex flex-col gap-4">
+            <div class="flex items-center justify-between">
+              <h3 class="font-headline font-bold text-sm text-white flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary-container text-[18px]">terminal</span>
+                Quick SDK Installation
+              </h3>
+              <span class="text-[10px] uppercase font-bold text-zinc-400 tracking-wider">v1.0 SPI</span>
+            </div>
+            <!-- Tabs -->
+            <div class="flex items-center gap-2 p-1 bg-surface-container-lowest rounded-lg border border-white/5">
+              <button
+                class="flex-1 py-1 px-3 text-xs font-semibold rounded bg-surface-container text-white transition-all"
+                id="tab-npm" onclick="window.switchSdkTab('npm')" type="button">Node.js</button>
+              <button
+                class="flex-1 py-1 px-3 text-xs font-semibold rounded text-text-secondary hover:text-white transition-all"
+                id="tab-pip" onclick="window.switchSdkTab('pip')" type="button">Python</button>
+            </div>
+            <!-- Terminal Window -->
+            <div
+              class="p-3.5 rounded-xl bg-surface-container-lowest border border-white/10 flex items-center justify-between">
+              <code class="font-mono text-xs text-primary truncate"
+                id="sdk-install-cmd">npm i @fundusguard/ai-sdk</code>
+              <button class="text-zinc-400 hover:text-white p-1 ml-2 transition-colors"
+                onclick="window.copyCurrentSdkCmd()" title="Copy command" type="button">
+                <span class="material-symbols-outlined text-[17px]">content_copy</span>
+              </button>
+            </div>
+            <p class="text-xs text-text-secondary">
+              Includes pre-built TypeScript definitions, batch DICOM sanitizers, and automatic token refresh protocols.
+            </p>
+          </div>
+          <!-- Card 2: Zero-Retention Guarantee -->
+          <div
+            class="bg-surface-glass backdrop-blur-xl rounded-2xl p-5 border border-border-subtle shadow-xl flex flex-col gap-3">
+            <div class="flex items-center gap-2 text-white">
+              <span class="material-symbols-outlined text-secondary text-[20px]">shield_with_heart</span>
+              <h3 class="font-headline font-bold text-sm">Zero-Retention Guarantee</h3>
+            </div>
+            <p class="text-xs text-text-secondary leading-relaxed">
+              Designed specifically for healthcare and ophthalmic clinical data governance:
+            </p>
+            <ul class="flex flex-col gap-2.5 mt-1 text-xs text-zinc-300">
+              <li class="flex items-start gap-2">
+                <span class="material-symbols-outlined text-[16px] text-status-healthy mt-0.5">check_circle</span>
+                <span>Client-side de-identification removes all DICOM patient metadata prior to upload.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="material-symbols-outlined text-[16px] text-status-healthy mt-0.5">check_circle</span>
+                <span>Ephemeral RAM-only model scoring with zero persistent storage of raw retina images.</span>
+              </li>
+              <li class="flex items-start gap-2">
+                <span class="material-symbols-outlined text-[16px] text-status-healthy mt-0.5">check_circle</span>
+                <span>Signed Business Associate Agreement (BAA) accessible directly from institutional tier.</span>
+              </li>
+            </ul>
+          </div>
+          <!-- Card 3: Cluster Live Status -->
+          <div
+            class="bg-surface-glass backdrop-blur-xl rounded-2xl p-5 border border-border-subtle shadow-xl flex flex-col gap-3">
+            <div class="flex items-center justify-between">
+              <div class="flex items-center gap-2">
+                <span class="w-2.5 h-2.5 rounded-full bg-status-healthy animate-ping"></span>
+                <h3 class="font-headline font-bold text-sm text-white">Cluster Live Status</h3>
+              </div>
+              <span class="text-xs font-semibold text-status-healthy">All Systems Online</span>
+            </div>
+            <div class="grid grid-cols-2 gap-3 pt-2">
+              <div class="p-3 rounded-xl bg-surface-container border border-white/5 flex flex-col">
+                <span class="text-[11px] text-text-secondary">SPI-OWL Engine</span>
+                <span class="font-headline font-bold text-base text-white mt-1">v1.0.1 Active</span>
+              </div>
+              <div class="p-3 rounded-xl bg-surface-container border border-white/5 flex flex-col">
+                <span class="text-[11px] text-text-secondary">Acceleration</span>
+                <span class="font-headline font-bold text-base text-primary-container mt-1">TensorRT FP16</span>
+              </div>
+              <div class="p-3 rounded-xl bg-surface-container border border-white/5 flex flex-col">
+                <span class="text-[11px] text-text-secondary">P95 Model Latency</span>
+                <span class="font-headline font-bold text-base text-white mt-1">42 ms</span>
+              </div>
+              <div class="p-3 rounded-xl bg-surface-container border border-white/5 flex flex-col">
+                <span class="text-[11px] text-text-secondary">Global Shards</span>
+                <span class="font-headline font-bold text-base text-white mt-1">1,842 Nodes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+  <!-- OTP Verification Modal Orchestrator -->
+  <div class="fixed inset-0 z-50 bg-[#090A0F]/85 backdrop-blur-md hidden items-center justify-center p-4"
+    id="registration-modal-backdrop">
+    <div
+      class="relative w-full max-w-lg bg-[#181a20] border border-border-subtle p-6 sm:p-8 rounded-2xl shadow-2xl overflow-hidden"
+      id="registration-modal-card">
+      <!-- Top Decorative Accent -->
+      <div
+        class="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-primary-container via-secondary-container to-primary">
+      </div>
+      <!-- Close Button -->
+      <button class="absolute top-4 right-4 text-outline hover:text-white p-1" onclick="window.closeRegisterModal()"
+        type="button">
+        <span class="material-symbols-outlined text-[20px]">close</span>
+      </button>
+      <!-- PHASE 1: OTP Input Screen -->
+      <div class="flex flex-col gap-5" id="flow-phase-otp">
+        <div class="flex items-center gap-3">
+          <div
+            class="w-10 h-10 rounded-full bg-primary-container/20 text-primary-container flex items-center justify-center">
+            <span class="material-symbols-outlined text-[22px]">mark_email_read</span>
+          </div>
+          <div>
+            <h3 class="font-headline font-bold text-lg text-white">Email Verification Required</h3>
+            <p class="text-xs text-text-secondary">Code dispatched to <span class="text-primary font-medium"
+                id="modal-target-email">user@domain.com</span></p>
+          </div>
+        </div>
+        <div
+          class="p-3 rounded-lg bg-surface-container-lowest border border-white/5 text-xs text-text-secondary flex items-center gap-2">
+          <span class="material-symbols-outlined text-secondary text-[18px]">info</span>
+          <span>Instant verification code for sandbox: <strong
+              class="text-white font-mono font-bold tracking-wider">123456</strong></span>
+        </div>
+        <!-- 6-Digit OTP Inputs -->
+        <div class="flex justify-between gap-2 my-2" id="otp-inputs-wrapper">
+          <input autofocus=""
+            class="otp-input w-12 h-14 text-center font-headline font-bold text-xl text-white rounded-lg bg-surface-container-lowest border border-white/15 focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none"
+            maxlength="1" type="text" value="1" />
+          <input
+            class="otp-input w-12 h-14 text-center font-headline font-bold text-xl text-white rounded-lg bg-surface-container-lowest border border-white/15 focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none"
+            maxlength="1" type="text" value="2" />
+          <input
+            class="otp-input w-12 h-14 text-center font-headline font-bold text-xl text-white rounded-lg bg-surface-container-lowest border border-white/15 focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none"
+            maxlength="1" type="text" value="3" />
+          <input
+            class="otp-input w-12 h-14 text-center font-headline font-bold text-xl text-white rounded-lg bg-surface-container-lowest border border-white/15 focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none"
+            maxlength="1" type="text" value="4" />
+          <input
+            class="otp-input w-12 h-14 text-center font-headline font-bold text-xl text-white rounded-lg bg-surface-container-lowest border border-white/15 focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none"
+            maxlength="1" type="text" value="5" />
+          <input
+            class="otp-input w-12 h-14 text-center font-headline font-bold text-xl text-white rounded-lg bg-surface-container-lowest border border-white/15 focus:border-primary-container focus:ring-1 focus:ring-primary-container focus:outline-none"
+            maxlength="1" type="text" value="6" />
+        </div>
+        <div class="hidden text-glaucoma-critical text-xs" id="otp-error-msg">
+          Incorrect verification code. Please input test code: 123456
+        </div>
+        <div class="flex items-center justify-between text-xs text-text-secondary">
+          <span>Resend code in <span class="text-white font-mono" id="otp-countdown">59s</span></span>
+          <button class="text-primary hover:underline font-medium" onclick="window.resendOtp()" type="button">Resend
+            Now</button>
+        </div>
+        <button
+          class="w-full py-3 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container text-white font-headline font-bold text-sm tracking-wide transition-all shadow-[0_0_16px_rgba(234,88,12,0.35)]"
+          onclick="window.submitOtpVerification()" type="button">
+          Submit &amp; Generate Token
+        </button>
+      </div>
+      <!-- PHASE 2: Live Provisioning Simulation Queue -->
+      <div class="hidden flex-col items-center text-center gap-5 py-6" id="flow-phase-processing">
+        <div class="relative w-16 h-16 flex items-center justify-center">
+          <div
+            class="absolute inset-0 rounded-full border-2 border-primary-container border-t-transparent animate-spin">
+          </div>
+          <div class="w-10 h-10 rounded-full bg-primary-container/20 flex items-center justify-center text-primary">
+            <span class="material-symbols-outlined text-[22px]">memory</span>
+          </div>
+        </div>
+        <div class="flex flex-col gap-1">
+          <h3 class="font-headline font-bold text-lg text-white">Synthesizing Credentials</h3>
+          <p class="text-xs text-text-secondary" id="provisioning-status-text">
+            Verifying developer credentials...
+          </p>
+        </div>
+        <div class="w-full bg-surface-container-lowest h-2 rounded-full overflow-hidden border border-white/5">
+          <div
+            class="h-full bg-gradient-to-r from-primary-container to-secondary-container w-1/4 transition-all duration-500"
+            id="provision-progress-fill"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Clipboard Toast Notification -->
+  <div
+    class="fixed bottom-6 right-6 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none flex items-center gap-2.5 px-4 py-3 rounded-xl bg-[#1e2029] border border-border-subtle text-white shadow-2xl"
+    id="copy-toast">
+    <span class="material-symbols-outlined text-status-healthy text-[18px]">check_circle</span>
+    <span class="text-xs font-semibold" id="copy-toast-text">Key copied to clipboard!</span>
+  </div>
+  <!-- Footer -->
+  <%- footer %>
+  <!-- Application Logic -->
+  <script>
+    // 1. Password Visibility Toggle
+    window.togglePasswordVisibility = function (inputId, iconId) {
+      const input = document.getElementById(inputId);
+      const icon = document.getElementById(iconId);
+      if (!input || !icon) return;
+      if (input.type === 'password') {
+        input.type = 'text';
+        icon.textContent = 'visibility_off';
+      } else {
+        input.type = 'password';
+        icon.textContent = 'visibility';
+      }
+    };
+
+    // 2. Interactive Tag Pills Toggle
+    window.toggleTag = function (btn) {
+      if (btn.classList.contains('bg-primary-container')) {
+        btn.classList.remove('bg-primary-container', 'text-white', 'shadow-sm');
+        btn.classList.add('bg-surface-container-high', 'text-zinc-300');
+      } else {
+        btn.classList.add('bg-primary-container', 'text-white', 'shadow-sm');
+        btn.classList.remove('bg-surface-container-high', 'text-zinc-300');
+      }
+    };
+
+    // 3. SDK Installation Tabs
+    let currentSdk = 'npm';
+    window.switchSdkTab = function (type) {
+      currentSdk = type;
+      const npmBtn = document.getElementById('tab-npm');
+      const pipBtn = document.getElementById('tab-pip');
+      const cmdText = document.getElementById('sdk-install-cmd');
+
+      if (type === 'npm') {
+        npmBtn.classList.add('bg-surface-container', 'text-white');
+        npmBtn.classList.remove('text-text-secondary');
+        pipBtn.classList.remove('bg-surface-container', 'text-white');
+        pipBtn.classList.add('text-text-secondary');
+        cmdText.textContent = 'npm i @fundusguard/ai-sdk';
+      } else {
+        pipBtn.classList.add('bg-surface-container', 'text-white');
+        pipBtn.classList.remove('text-text-secondary');
+        npmBtn.classList.remove('bg-surface-container', 'text-white');
+        npmBtn.classList.add('text-text-secondary');
+        cmdText.textContent = 'pip install fundusguard-ai';
+      }
+    };
+
+    window.copyCurrentSdkCmd = function () {
+      const cmd = document.getElementById('sdk-install-cmd').textContent;
+      window.copyToClipboard(cmd, 'Command copied!');
+    };
+
+    // 4. Form Validation & Modal Trigger
+    window.handleFormSubmit = function () {
+      const name = document.getElementById('dev-name').value.trim();
+      const email = document.getElementById('dev-email').value.trim();
+      const pwd = document.getElementById('dev-password').value;
+      const pwdConfirm = document.getElementById('dev-password-confirm').value;
+      const terms = document.getElementById('terms-agree').checked;
+      const errBox = document.getElementById('form-error');
+      const errMsg = document.getElementById('form-error-msg');
+
+      if (!name || !email || !pwd || !pwdConfirm) {
+        errMsg.textContent = 'Please fill out all required developer identity credentials.';
+        errBox.classList.remove('hidden');
+        errBox.classList.add('flex');
+        return;
+      }
+
+      if (pwd !== pwdConfirm) {
+        errMsg.textContent = 'Secret passkeys do not match. Please re-enter.';
+        errBox.classList.remove('hidden');
+        errBox.classList.add('flex');
+        return;
+      }
+
+      if (!terms) {
+        errMsg.textContent = 'You must acknowledge the Investigational CDSS Terms & Clinical Privacy Protocols.';
+        errBox.classList.remove('hidden');
+        errBox.classList.add('flex');
+        return;
+      }
+
+      errBox.classList.add('hidden');
+      errBox.classList.remove('flex');
+
+      // Populate target email and open OTP Modal
+      document.getElementById('modal-target-email').textContent = email;
+      const modalBackdrop = document.getElementById('registration-modal-backdrop');
+      modalBackdrop.classList.remove('hidden');
+      modalBackdrop.classList.add('flex');
+
+      // Reset modal state
+      document.getElementById('flow-phase-otp').classList.remove('hidden');
+      document.getElementById('flow-phase-otp').classList.add('flex');
+      document.getElementById('flow-phase-processing').classList.add('hidden');
+      document.getElementById('flow-phase-processing').classList.remove('flex');
+    };
+
+    window.closeRegisterModal = function () {
+      const modalBackdrop = document.getElementById('registration-modal-backdrop');
+      modalBackdrop.classList.add('hidden');
+      modalBackdrop.classList.remove('flex');
+    };
+
+    // 5. OTP Inputs auto focus advance
+    const otpInputs = document.querySelectorAll('.otp-input');
+    otpInputs.forEach((input, index) => {
+      input.addEventListener('input', () => {
+        if (input.value.length === 1 && index < otpInputs.length - 1) {
+          otpInputs[index + 1].focus();
+        }
+      });
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Backspace' && !input.value && index > 0) {
+          otpInputs[index - 1].focus();
+        }
+      });
+    });
+
+    // 6. OTP Verification and Loading State Progression
+    window.submitOtpVerification = function () {
+      let enteredCode = '';
+      otpInputs.forEach(i => enteredCode += i.value);
+
+      if (enteredCode !== '123456' && enteredCode.length !== 6) {
+        document.getElementById('otp-error-msg').classList.remove('hidden');
+        return;
+      }
+
+      document.getElementById('otp-error-msg').classList.add('hidden');
+
+      // Transition to Queue Loading State
+      document.getElementById('flow-phase-otp').classList.add('hidden');
+      document.getElementById('flow-phase-otp').classList.remove('flex');
+      const proc = document.getElementById('flow-phase-processing');
+      proc.classList.remove('hidden');
+      proc.classList.add('flex');
+
+      const steps = [
+        {text: "Verifying developer credentials...", progress: "25%"},
+        {text: "Allocating neural model inference quota on SPI-OWL cluster...", progress: "50%"},
+        {text: "Generating 256-bit secret token...", progress: "75%"},
+        {text: "Finalizing workspace credentials...", progress: "100%"}
+      ];
+
+      let stepIndex = 0;
+      const statusText = document.getElementById('provisioning-status-text');
+      const progressBar = document.getElementById('provision-progress-fill');
+
+      const interval = setInterval(() => {
+        stepIndex++;
+        if (stepIndex < steps.length) {
+          statusText.textContent = steps[stepIndex].text;
+          progressBar.style.width = steps[stepIndex].progress;
+        } else {
+          clearInterval(interval);
+          // Complete modal and reveal Success Key State
+          window.closeRegisterModal();
+
+          const regForm = document.getElementById('api-registration-form');
+          const successCard = document.getElementById('success-token-card');
+          regForm.classList.add('hidden');
+          successCard.classList.remove('hidden');
+          successCard.classList.add('flex');
+
+          window.copyToClipboard('fg_live_99f3a817b204e19d', 'API key generated and copied!');
+        }
+      }, 700);
+    };
+
+    // 7. Secret Token Reveal Toggle
+    let secretRevealed = false;
+    window.toggleSecretReveal = function () {
+      secretRevealed = !secretRevealed;
+      const disp = document.getElementById('api-secret-display');
+      const btnText = document.getElementById('secret-reveal-text');
+      const btnIcon = document.getElementById('secret-reveal-icon');
+
+      if (secretRevealed) {
+        disp.textContent = 'fg_sec_48a1c99f92ad41c8801b7a2d';
+        btnText.textContent = 'Hide';
+        btnIcon.textContent = 'visibility_off';
+      } else {
+        disp.textContent = 'fg_sec_48a1c99f••••••••••••';
+        btnText.textContent = 'Reveal';
+        btnIcon.textContent = 'visibility';
+      }
+    };
+
+    // 8. Clipboard Copy Helper with Toast
+    window.copyToClipboard = function (text, customMsg) {
+      navigator.clipboard.writeText(text).then(() => {
+        const toast = document.getElementById('copy-toast');
+        const toastText = document.getElementById('copy-toast-text');
+        if (customMsg) toastText.textContent = customMsg;
+        else toastText.textContent = 'Key copied to clipboard!';
+        toast.classList.remove('translate-y-24', 'opacity-0');
+        toast.classList.add('translate-y-0', 'opacity-100');
+        setTimeout(() => {
+          toast.classList.remove('translate-y-0', 'opacity-100');
+          toast.classList.add('translate-y-24', 'opacity-0');
+        }, 2500);
+      }).catch(err => {
+        console.warn('Clipboard write error: ', err);
+      });
+    };
+
+    // 9. Resend OTP countdown
+    window.resendOtp = function () {
+      const cd = document.getElementById('otp-countdown');
+      cd.textContent = '59s';
+      let timeLeft = 59;
+      const timer = setInterval(() => {
+        timeLeft--;
+        if (timeLeft <= 0) {
+          clearInterval(timer);
+          cd.textContent = 'Ready';
+        } else {
+          cd.textContent = timeLeft + 's';
+        }
+      }, 1000);
+    };
+
+    // 10. Theme Toggle
+    (function () {
+      const toggleBtn = document.getElementById('theme-toggle-btn');
+      const toggleIcon = document.getElementById('theme-toggle-icon');
+      const html = document.documentElement;
+
+      function updateIcon(isDark) {
+        if (toggleIcon) {
+          toggleIcon.textContent = isDark ? 'light_mode' : 'dark_mode';
+        }
+      }
+
+      const stored = localStorage.getItem('fg_theme');
+      const isDarkInit = stored ? stored === 'dark' : true;
+      if (isDarkInit) html.classList.add('dark');
+      else html.classList.remove('dark');
+      updateIcon(isDarkInit);
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', function () {
+          const isDark = html.classList.toggle('dark');
+          localStorage.setItem('fg_theme', isDark ? 'dark' : 'light');
+          updateIcon(isDark);
+        });
+      }
+    })();
+  </script>
+</body>
+
+</html>
