@@ -32,7 +32,7 @@ require('dotenv').config();
 
 const app = express();
 let server = http.createServer(app);
-const PORT = process.env.PORT || 4040;
+const PORT = process.env.PORT || 5000;
 const AppName = "FundusGuardAI";
 
 app.set('view engine', 'ejs');
@@ -109,6 +109,7 @@ app.use((req, res, next) => {
                 "https://kidkrishkode.github.io",
                 "https://code.jquery.com",
                 "https://cdn.jsdelivr.net",
+                "https://cdn.tailwindcss.com",
                 (req, res) => `'nonce-${res.locals.nonce}'`
             ],
             "script-src-attr": ["'unsafe-inline'"],
@@ -128,14 +129,14 @@ app.use((req, res, next) => {
                 "https://fonts.gstatic.com",
                 "data:"
             ],
-            "img-src": ["'self'", "data:", "https://avatars.githubusercontent.com", "https://ai-dictionary.github.io", "https://vercel.com", "https://raw.githubusercontent.com", "https://kidkrishkode.github.io"],
+            "img-src": ["'self'", "data:", "https://avatars.githubusercontent.com", "https://ai-dictionary.github.io", "https://vercel.com", "https://raw.githubusercontent.com", "https://kidkrishkode.github.io", "https://lh3.googleusercontent.com"],
             "connect-src": [
                 "'self'",
                 "https://maxcdn.bootstrapcdn.com",
                 "wss://ws-us3.pusher.com",
                 "https://ws-us3.pusher.com",
                 "https://chsapi.vercel.app",
-                "http://127.0.0.1:4040",
+                "http://127.0.0.1:5000",
                 "http://127.0.0.1:8081",
             ],
             "frame-ancestors": frameSources
@@ -232,8 +233,11 @@ app.get('/', async (req, res) => {
     const nonce = res.locals.nonce;
     const isHosted = hex.isHosted(req);
     const token = req.cookies.auth_token;
+
+    const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
+    const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
     
-    res.status(200).sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.status(200).render('index', {nonce, isHosted, header, footer});
 });
 
 app.get('/js/main.js', (req, res) => {
@@ -244,8 +248,66 @@ app.get('/varchar', (req, res) => {
     res.status(200).json(varchar);
 });
 
+app.get('/home', (req, res) => {
+    res.status(200).redirect('/');
+});
+
+app.get('/index', (req, res) => {
+    res.status(200).redirect('/');
+});
+
+app.get('/about', async (req, res) => {
+    const nonce = res.locals.nonce;
+    const isHosted = hex.isHosted(req);
+
+    const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
+    const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
+
+    res.status(200).render('about', {nonce, isHosted, header, footer});
+});
+
+app.get('/contact', async (req, res) => {
+    const nonce = res.locals.nonce;
+    const isHosted = hex.isHosted(req);
+
+    const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
+    const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
+
+    res.status(200).render('contact', {nonce, isHosted, header, footer});
+});
+
+app.get('/workspace', async (req, res) => {
+    const nonce = res.locals.nonce;
+    const isHosted = hex.isHosted(req);
+
+    const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
+    const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
+
+    res.status(200).render('workspace', {nonce, isHosted, header, footer});
+});
+
+app.get('/api_plugin', async (req, res) => {
+    const nonce = res.locals.nonce;
+    const isHosted = hex.isHosted(req);
+
+    const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
+    const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
+
+    res.status(200).render('api_plugin', {nonce, isHosted, header, footer});
+});
+
+app.get('/api_reg', async (req, res) => {
+    const nonce = res.locals.nonce;
+    const isHosted = hex.isHosted(req);
+
+    const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
+    const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
+
+    res.status(200).render('api_reg', {nonce, isHosted, header, footer});
+});
+
 app.get('/ping', (req, res) => {
-    console.log('Ping route called at', new Date().toISOString(),'by', req.headers.origin);
+    console.log('Ping route called at', new Date().toISOString(),'by', (!hex.isHosted(req) && ! req.headers.origin)?'Local Network ::1':req.headers.origin);
     res.status(200).send('OK');
 });
 
