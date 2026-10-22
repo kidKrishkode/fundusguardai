@@ -3,7 +3,9 @@
     --code-li-color: #fff;
     --loader-back: #fffffff6;
     --loader-font: #320064;
+    --rblue: orangered;
 }
+
 body{
     margin: 0px;
     padding: 0%;
@@ -116,6 +118,11 @@ html::-webkit-scrollbar {
     50%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,100% 100%,100% 100%)}
     75%  {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 100%)}
     100% {clip-path:polygon(50% 50%,0 0,100% 0,100% 100%,0 100%,0 0)}
+}
+nav a, a:hover, a:active {
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
 }
 .popup{
     /* position: absolute;
