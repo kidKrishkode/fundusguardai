@@ -202,7 +202,7 @@ module.exports = {
         : null;
     },
     renderHBS: (fs, handlebars, viewName, data = {}, syntax={compile:true, ejs:''}) => {
-        const filePath = viewName.startsWith("https")?viewName:`views/components/${viewName}.hbs`;
+        const filePath = viewName.startsWith("https")?viewName:`components/${viewName}.hbs`;
         const templateSrc = fs.readFileSync(filePath, 'utf8');
         if(!syntax.compile){
             return syntax.ejs.render(templateSrc, data);
