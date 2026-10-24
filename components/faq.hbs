@@ -1,0 +1,140 @@
+<section class="w-full bg-surface-container-low px-margin md:px-margin-desktop py-16 shadow-inner">
+    <div class="max-w-4xl mx-auto flex flex-col gap-space-lg">
+        <div class="flex flex-col items-center text-center gap-space-xs">
+            <span class="font-label-sm text-label-sm text-optic-disc-gold uppercase tracking-widest">Scientific
+                Clarifications</span>
+            <h2 class="font-headline-lg text-headline-lg text-text-primary">Clinical &amp; Technical FAQ</h2>
+            <p class="font-body-md text-body-md text-text-secondary max-w-xl">
+                Key protocols regarding offline edge deployment, regulatory positioning, camera interoperability, and
+                anatomical generalization.
+            </p>
+        </div>
+        <!-- Accordion Container -->
+        <div class="flex flex-col gap-space-sm" id="faqAccordion">
+            <!-- Accordion Item 1 -->
+            <div class="rounded-xl bg-surface-container overflow-hidden shadow-sm transition-all duration-200">
+                <button aria-expanded="false"
+                    class="faq-toggle w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-bright/40 transition-colors"
+                    type="button">
+                    <span class="font-title-md text-title-md text-text-primary flex items-center gap-2.5">
+                        <span class="material-symbols-outlined text-optic-disc-gold text-[20px]">lan</span>
+                        Can FundusGuard AI operate within an air-gapped hospital network without cloud connectivity?
+                    </span>
+                    <span
+                        class="material-symbols-outlined text-[20px] text-text-secondary faq-icon transition-transform duration-200">expand_more</span>
+                </button>
+                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-space-md">
+                    <div
+                        class="pb-space-md font-body-sm text-body-sm text-text-secondary leading-relaxed border-t border-surface-bright/40 pt-space-sm">
+                        Yes. While a cloud-assisted REST API is accessible for testing, the core SPI-OWL neural pipeline
+                        is
+                        compiled to ONNX runtime format and Docker containers specifically engineered for local edge
+                        workstation deployment. When running on local hardware (standard CPU or workstation GPU), fundus
+                        photographs never leave your clinic’s firewall, ensuring absolute patient data confinement and
+                        zero
+                        external transmission.
+                    </div>
+                </div>
+            </div>
+            <!-- Accordion Item 2 -->
+            <div class="rounded-xl bg-surface-container overflow-hidden shadow-sm transition-all duration-200">
+                <button aria-expanded="false"
+                    class="faq-toggle w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-bright/40 transition-colors"
+                    type="button">
+                    <span class="font-title-md text-title-md text-text-primary flex items-center gap-2.5">
+                        <span class="material-symbols-outlined text-optic-disc-gold text-[20px]">photo_camera</span>
+                        What fundus camera models and image specifications are supported?
+                    </span>
+                    <span
+                        class="material-symbols-outlined text-[20px] text-text-secondary faq-icon transition-transform duration-200">expand_more</span>
+                </button>
+                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-space-md">
+                    <div
+                        class="pb-space-md font-body-sm text-body-sm text-text-secondary leading-relaxed border-t border-surface-bright/40 pt-space-sm">
+                        The preprocessing module accepts standard color fundus photography (CFP) centered on the optic
+                        nerve
+                        head (ONH) or macula. File ingestion includes native DICOM (.dcm), uncompressed 16-bit TIFF,
+                        PNG,
+                        and standard JPEG. Calibrations have been verified across Topcon (TRC series), Zeiss (Visucam,
+                        Clarus), Canon (CR-2 AF), Centervue (DRSplus), and smartphone-based indirect adapters with
+                        appropriate optical focal centering.
+                    </div>
+                </div>
+            </div>
+            <!-- Accordion Item 3 -->
+            <div class="rounded-xl bg-surface-container overflow-hidden shadow-sm transition-all duration-200">
+                <button aria-expanded="false"
+                    class="faq-toggle w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-bright/40 transition-colors"
+                    type="button">
+                    <span class="font-title-md text-title-md text-text-primary flex items-center gap-2.5">
+                        <span
+                            class="material-symbols-outlined text-optic-disc-gold text-[20px]">health_and_safety</span>
+                        Is FundusGuard AI an FDA / CE-IVD approved diagnostic medical device?
+                    </span>
+                    <span
+                        class="material-symbols-outlined text-[20px] text-text-secondary faq-icon transition-transform duration-200">expand_more</span>
+                </button>
+                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-space-md">
+                    <div
+                        class="pb-space-md font-body-sm text-body-sm text-text-secondary leading-relaxed border-t border-surface-bright/40 pt-space-sm">
+                        No. FundusGuard AI and the SPI-OWL engine are currently classified as Investigational
+                        Decision-Support Prototypes designed solely for clinical research, retrospective validation
+                        studies,
+                        and academic triage workflows. It does not replace comprehensive slit-lamp biomicroscopy,
+                        Humphrey
+                        visual field perimetry, or licensed physician clinical judgment. Autonomous prescription or
+                        unsupervised primary diagnosis is strictly disallowed.
+                    </div>
+                </div>
+            </div>
+            <!-- Accordion Item 4 -->
+            <div class="rounded-xl bg-surface-container overflow-hidden shadow-sm transition-all duration-200">
+                <button aria-expanded="false"
+                    class="faq-toggle w-full p-space-md text-left flex items-center justify-between gap-space-sm hover:bg-surface-bright/40 transition-colors"
+                    type="button">
+                    <span class="font-title-md text-title-md text-text-primary flex items-center gap-2.5">
+                        <span class="material-symbols-outlined text-optic-disc-gold text-[20px]">public</span>
+                        How does the research team account for ethnic &amp; anatomical variations in cup morphology?
+                    </span>
+                    <span
+                        class="material-symbols-outlined text-[20px] text-text-secondary faq-icon transition-transform duration-200">expand_more</span>
+                </button>
+                <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-space-md">
+                    <div
+                        class="pb-space-md font-body-sm text-body-sm text-text-secondary leading-relaxed border-t border-surface-bright/40 pt-space-sm">
+                        Normal physiological cupping varies widely across ethnic cohorts (e.g., higher average disc
+                        diameters and physiological CDRs in African-descent cohorts vs. Caucasian and East Asian
+                        populations). To prevent over-referral bias, our validation datasets incorporate multi-source
+                        public
+                        and institutional databases (including RIM-ONE, REFUGE, ORIGA, and local South Asian clinical
+                        records), specifically adjusting neuroretinal rim boundary confidence weights for myopic tilt
+                        and
+                        peripapillary atrophy (PPA).
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Consultation Scheduling Ribbon -->
+        <div
+            class="p-space-lg rounded-xl bg-gradient-to-r from-surface-container to-surface-container-high flex flex-col md:flex-row items-center justify-between gap-space-md shadow-md">
+            <div class="flex items-center gap-space-sm">
+                <div
+                    class="w-12 h-12 rounded-xl bg-primary-container/20 flex items-center justify-center text-primary-container shrink-0">
+                    <span class="material-symbols-outlined text-[28px]">video_camera_front</span>
+                </div>
+                <div class="flex flex-col">
+                    <h3 class="font-title-md text-title-md text-text-primary">Need a Structured Technical Video
+                        Consultation?</h3>
+                    <p class="font-body-sm text-body-sm text-text-secondary">We schedule 30-minute academic walkthroughs
+                        with university departments and clinical trial sponsors.</p>
+                </div>
+            </div>
+            <a class="shrink-0 px-5 py-2.5 rounded-lg bg-surface-container-highest hover:bg-surface-bright text-on-surface font-label-md text-label-md transition-colors flex items-center gap-2"
+                href="mailto:clinical@fundusguard.ai?subject=Request%20for%20Clinical%20Walkthrough">
+                <span>Arrange Video Briefing</span>
+                <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+            </a>
+        </div>
+    </div>
+</section>
+<script src="../assets/scripts/faq.js" nonce="<%= nonce %>"></script>
