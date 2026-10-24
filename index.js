@@ -236,8 +236,9 @@ app.get('/', async (req, res) => {
 
     const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
     const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
+    const faq = hex.renderHBS(fs, handlebars, 'faq', {isHosted, nonce});
     
-    res.status(200).render('index', {nonce, isHosted, header, footer});
+    res.status(200).render('index', {nonce, isHosted, header, footer, faq});
 });
 
 app.get('/js/main.js', (req, res) => {
@@ -283,7 +284,7 @@ app.get('/workspace', async (req, res) => {
     const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
     const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
 
-    res.status(200).render('workspace', {nonce, isHosted, header, footer});
+    res.status(200).render('workspace1', {nonce, isHosted, header, footer});
 });
 
 app.get('/api_plugin', async (req, res) => {
