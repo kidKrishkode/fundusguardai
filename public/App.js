@@ -96,7 +96,7 @@ class System{
                         </h4>
                         <p>${data?.message}</p>
                         <hr>
-                        <p class="mb-0">If you see this message rapidly or unexpected way then please <a href="mailto:info.aidictionary24x7@gmail.com?subject=Unexpected%20Dialog%20popup%20coming%20in%20SAIT">contact us</a>.</p>
+                        <p class="mb-0">If you see this message rapidly or unexpected way then please <a href="mailto:krishnendumitra24@gmail.com?subject=Unexpected%20Dialog%20popup%20coming%20in%20FundusGuardAi">contact us</a>.</p>
                     </div>
                 </section>`;
             document.body.insertAdjacentHTML("beforeend", alertHTML);
@@ -261,7 +261,16 @@ function route(link) {
     window.location.href = link;
 }
 
-
+let menu = 0;
+function toggle_menu(){
+    if(menu==0){
+        document.getElementById('mobile-drawer').style.display = "block";
+        menu++;
+    }else{
+        document.getElementById('mobile-drawer').style.display = "none";
+        menu--;
+    }
+}
 
 function invalid(){
     alert("This feature is not present on this version or you are not permitted to access this resource from this site, Please wait until the new version release or contact us for permission");
