@@ -19,16 +19,20 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
     rel="stylesheet" />
 
-   <link rel="stylesheet" href="../assets/styles/App.css"/>
-  <link rel="stylesheet" href="../assets/styles/about.css"/>
   <link rel="stylesheet" href="../public/App.css"/>
-
-  
-  <script src="../assets/scripts/App.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="../assets/scripts/tailwind.js"></script>
-
-  <!-- <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script> -->
+  
+  <% if (isHosted) { %>
+    <link rel="stylesheet" href="https://kidkrishkode.github.io/fundusguardai/assets/styles/App.css"/>
+    <link rel="stylesheet" href="https://kidkrishkode.github.io/fundusguardai/assets/styles/about.css"/>
+    <script src="https://kidkrishkode.github.io/fundusguardai/assets/scripts/App.js"></script>
+    <script src="https://kidkrishkode.github.io/fundusguardai/assets/scripts/tailwind.js"></script>
+  <% } else { %>
+    <link rel="stylesheet" href="../assets/styles/App.css" />
+    <link rel="stylesheet" href="../assets/styles/index.css" />
+    <script src="../assets/scripts/App.js"></script>
+    <script src="../assets/scripts/tailwind.js"></script>
+  <% } %>
   
 </head>
 
@@ -40,34 +44,6 @@
     <div class="flex flex-col w-full text-on-surface">
       <div class="hidden" id="theme-manager-styles"></div>
       
-      <!-- Sticky Sub-Nav / Telemetry Breadcrumb Bar -->
-      <aside aria-label="System status"
-        class="w-full bg-surface-container-lowest px-margin md:px-margin-desktop py-2.5 flex flex-wrap items-center justify-between gap-3 text-label-sm font-label-sm">
-        <div class="flex items-center gap-2">
-          <span class="flex h-2 w-2 relative">
-            <span
-              class="animate-ping absolute inline-flex h-full w-full rounded-full bg-status-healthy opacity-75"></span>
-            <span class="relative inline-flex rounded-full h-2 w-2 bg-status-healthy"></span>
-          </span>
-          <span class="text-on-surface-variant font-medium">Research Monograph:</span>
-          <span class="text-optic-disc-gold font-semibold tracking-wide">SPI-OWL Architecture v1.0</span>
-          <span class="text-text-secondary">/</span>
-          <span class="text-on-surface">Peer-Reviewed Scientific Whitepaper</span>
-        </div>
-        <div class="flex items-center gap-4">
-          <div class="hidden md:flex items-center gap-2 text-text-secondary">
-            <span class="material-symbols-outlined text-[16px] text-optic-disc-gold">biotech</span>
-            <span>Validation Status: <strong>Multi-Center Cohort Complete</strong></span>
-          </div>
-          <!-- Theme Switcher Pill -->
-          <button
-            class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-high hover:bg-surface-bright text-text-secondary hover:text-text-primary transition-all text-label-sm font-label-sm cursor-pointer"
-            id="app-theme-toggle-btn" title="Toggle Light / Dark Adaptive Optics Mode" type="button">
-            <span class="material-symbols-outlined text-[14px]" id="theme-icon">dark_mode</span>
-            <span id="theme-label-txt">Dark Optics</span>
-          </button>
-        </div>
-      </aside>
       <!-- Hero Section with Ophthalmic Ambient Gradient -->
       <section class="relative w-full overflow-hidden bg-surface-container-lowest py-space-xl md:py-24">
         <!-- Photoluminescent Radial Mesh -->
@@ -77,12 +53,7 @@
         <div class="pointer-events-none absolute -bottom-32 -left-20 h-80 w-80 rounded-full bg-primary/10 blur-3xl">
         </div>
         <div class="relative w-full max-w-7xl mx-auto px-margin md:px-margin-desktop flex flex-col gap-space-lg">
-          <!-- Breadcrumb Bar -->
-          <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-label-md font-label-md text-text-secondary">
-            <a class="hover:text-optic-disc-gold transition-colors" href="./index.html">Home</a>
-            <span class="material-symbols-outlined text-[14px]">chevron_right</span>
-            <span class="text-optic-disc-gold font-semibold">About &amp; Clinical Architecture</span>
-          </nav>
+          
           <!-- Grid: Hero Text + Holographic Interactive Preview -->
           <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div class="lg:col-span-7 flex flex-col gap-space-md">
@@ -134,7 +105,7 @@
                   <span class="material-symbols-outlined text-[18px]">memory</span>
                 </a>
                 <a class="px-5 py-3 rounded-xl bg-surface-container hover:bg-surface-bright text-text-primary font-title-md text-title-md transition-all flex items-center gap-2 shadow-sm"
-                  href="./workspace.html">
+                  onclick="route('/workspace');">
                   <span class="material-symbols-outlined text-[18px] text-optic-disc-gold">biotech</span>
                   <span>Launch Live Workspace</span>
                 </a>
@@ -148,11 +119,14 @@
             <!-- Hero Graphic: Holographic Diagnostic Lab Backdrop -->
             <div class="lg:col-span-5 relative">
               <div class="relative rounded-2xl overflow-hidden shadow-2xl bg-surface-container-high group">
-                <img alt="Futuristic AI Ophthalmology Workspace and Holographic Biomicroscopy Room"
+                <% if (isHosted) { %>
+                  <img alt="Futuristic AI Ophthalmology Workspace and Holographic Biomicroscopy Room"
                   class="w-full h-80 sm:h-96 object-cover object-center transform group-hover:scale-105 transition-transform duration-700 brightness-90 contrast-110"
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1V10pqnWFbVXHz8QPLsbTNX5OBHA8qZQtBT0-TRzBMsV5R6wZCwfSLlDtCsdHGzxcHLFDvNjEJzfMgJYIvN4zX9QSDbH2QtICDTLITFdQChVLFhI8C64h4CxtAiRne8csn6jeB2yk7H7L8bML8a0zsjPz3lVPVtYyDiXss5g7iAtBLlADRc5j9lZNQPSGv_7xZS-HWmQMJuU4zf0rXtbyo_4wQKCvqjZqa1cMjFd_g5l-XI_Vg_DyhbLlw" />
-                <div
-                  class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent">
+                  src="https://kidkrishkode.github.io/fundusguardai/assets/images/hospital_pack.jpg" />
+                <% } else { %>
+                    <img src="../assets/images/hospital_pack.jpg" class="w-full h-80 sm:h-96 object-cover object-center transform group-hover:scale-105 transition-transform duration-700 brightness-90 contrast-110" alt="FundusGuardAi"/>
+                <% } %>
+                <div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-surface-container-lowest/40 to-transparent">
                 </div>
                 <!-- Floating Overlay Card -->
                 <div
@@ -326,15 +300,15 @@
               <div class="pt-6 mt-6 flex flex-wrap items-center justify-between gap-4">
                 <div class="flex items-center gap-3">
                   <a class="p-2 rounded-xl bg-surface-container hover:bg-surface-bright text-text-secondary hover:text-optic-disc-gold transition-colors"
-                    href="#" title="GitHub Source Repository">
+                    href="https://github.com/kisKrishkode/" title="GitHub Source Repository">
                     <span class="material-symbols-outlined text-[20px]">code</span>
                   </a>
                   <a class="p-2 rounded-xl bg-surface-container hover:bg-surface-bright text-text-secondary hover:text-optic-disc-gold transition-colors"
-                    href="#" title="HuggingFace Models">
+                    href="https://www.kaggle.com/labledata/datasets" title="Kaggle Models">
                     <span class="material-symbols-outlined text-[20px]">smart_toy</span>
                   </a>
                   <a class="p-2 rounded-xl bg-surface-container hover:bg-surface-bright text-text-secondary hover:text-optic-disc-gold transition-colors"
-                    href="#" title="Developer Portfolio">
+                    href="https://kidkrishkode.vercel.app/" title="Developer Portfolio">
                     <span class="material-symbols-outlined text-[20px]">person</span>
                   </a>
                 </div>
@@ -437,8 +411,12 @@
             <div class="flex flex-col gap-2">
               <div class="flex items-center gap-2">
                 <!-- Brand Icon Asset -->
-                <img alt="SPI-OWL Architectural Mascot Icon" class="h-9 w-9 object-contain"
-                  src="https://lh3.googleusercontent.com/aida/AEtjO1WWVanekC7ZLOY7hiFcFw7pQENa6c_EtWPEqfhekjByxpXifOfH9-QUYotVFWGUtkHn8YZnxTQUVDozvbK7r8jZ2-kphLfiStQMZhSHFt5lueBZ52FFDMiKdx2YH8MqOByXRcJXhUA9HINH-EmpiuzCdKEDMagqqGsu0Pw1nTxqKUtEvFDdPj-w9ByYPxLVWviaIID-7nJVeLMgZGv7rZ3cXSuU79rzaoYcvYXePMRiil2oHzSn3MgXfkI" />
+                  <% if (isHosted) { %>
+                    <img alt="SPI-OWL Architectural Mascot Icon" class="h-9 w-9 object-contain"
+                    src="https://kidkrishkode.github.io/fundusguardai/public/logo1500.png" />
+                  <% } else { %>
+                      <img src="../public/logo1500.png" class="h-9 w-9 object-contain" alt="FundusGuardAi"/>
+                  <% } %>
                 <span
                   class="font-label-sm text-label-sm text-optic-disc-gold tracking-widest uppercase font-semibold">Engine
                   Blueprint</span>
@@ -466,9 +444,13 @@
                 class="relative rounded-2xl overflow-hidden bg-surface-container-lowest shadow-2xl p-4 flex flex-col items-center justify-center">
                 <!-- Fundus image asset -->
                 <div class="relative w-full max-w-[340px] aspect-square rounded-full overflow-hidden shadow-2xl">
+                  <% if (isHosted) { %>
                   <img alt="High Resolution Color Retinal Fundus Scan with Optic Disc &amp; Vascular Arcade"
                     class="w-full h-full object-cover"
-                    src="https://lh3.googleusercontent.com/aida/AEtjO1XvwdLNUO7MJKljgTW00XL27HtnyULw9UvfpP2ND8dR3sDRo-caGXnSE-Nyi6qhmKJeqbBxPBx5wqKADlgGV4xcOTZONiXa2G70ahynGoUlQN_q5TdyzH00yTyO_bwur0r3rjsnqHbvEwSqMFjTHrKO3zFKy4vBLvC11i3D-GtC169a-vIMyOVUYVDPiEkhmBlFYmdO6nIwn43RFArO903fD7k_3zQ2Gbfllt_PU5SfZhTXsoIrIsuqAcM" />
+                    src="https://kidkrishkode.github.io/fundusguardai/assets/images/fundus.jpg" />
+                  <% } else { %>
+                      <img src="../assets/images/fundus.jpg" class="w-full h-80 sm:h-96 object-cover object-center transform group-hover:scale-105 transition-transform duration-700 brightness-90 contrast-110" alt="FundusGuardAi"/>
+                  <% } %>
                   <!-- Animated SVG Bounding Masks over Cup & Disc -->
                   <svg class="absolute inset-0 w-full h-full pointer-events-none" viewbox="0 0 400 400">
                     <!-- Optic Disc Ellipse (Gold) -->
@@ -789,7 +771,7 @@
                   local clinical cohorts?
                 </p>
                 <a class="mt-2 w-full py-2.5 px-4 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container text-on-primary font-label-md text-label-md font-bold text-center shadow hover:shadow-orange-500/20 transition-all flex items-center justify-center gap-2"
-                  href="./contact.html">
+                  onclick="route('/contact');">
                   <span>Request Research Partnership</span>
                   <span class="material-symbols-outlined text-[16px]">send</span>
                 </a>
@@ -818,17 +800,17 @@
             </div>
             <div class="flex flex-wrap items-center justify-center gap-4 pt-2">
               <a class="px-6 py-3.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container text-on-primary font-title-md text-title-md font-bold shadow-xl hover:shadow-orange-500/30 transition-all flex items-center gap-2"
-                href="./workspace.html">
+                onclick="route('/workspace');">
                 <span>Launch Live Detection Workspace</span>
                 <span class="material-symbols-outlined text-[18px]">biotech</span>
               </a>
               <a class="px-6 py-3.5 rounded-xl bg-surface-container hover:bg-surface-bright text-text-primary font-title-md text-title-md transition-all flex items-center gap-2"
-                href="./api.html">
+                onclick="route('/api_plugin');">
                 <span class="material-symbols-outlined text-[18px] text-optic-disc-gold">api</span>
                 <span>API Docs &amp; PyTorch Checkpoints</span>
               </a>
               <a class="px-5 py-3.5 rounded-xl bg-transparent hover:bg-surface-container text-text-secondary hover:text-text-primary font-label-md text-label-md transition-colors flex items-center gap-1.5"
-                href="./download.html">
+                onclick="route('/app');">
                 <span class="material-symbols-outlined text-[18px]">mobile_friendly</span>
                 <span>Download Mobile App</span>
               </a>

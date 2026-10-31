@@ -22,14 +22,19 @@
     href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap"
     rel="stylesheet" />
   
-  <link rel="stylesheet" href="../assets/styles/App.css"/>
-  <link rel="stylesheet" href="../assets/styles/contact.css"/>
   <link rel="stylesheet" href="../public/App.css"/>
-  
-  <script src="../assets/scripts/App.js"></script>
-  
   <script src="https://cdn.tailwindcss.com"></script>
-  <script src="../assets/scripts/tailwind.js"></script>
+  <% if (isHosted) { %>
+    <link rel="stylesheet" href="https://kidkrishkode.github.io/fundusguardai/assets/styles/App.css"/>
+    <link rel="stylesheet" href="https://kidkrishkode.github.io/fundusguardai/assets/styles/contact.css"/>
+    <script src="https://kidkrishkode.github.io/fundusguardai/assets/scripts/App.js"></script>
+    <script src="https://kidkrishkode.github.io/fundusguardai/assets/scripts/tailwind.js"></script>
+  <% } else { %>
+    <link rel="stylesheet" href="../assets/styles/App.css" />
+    <link rel="stylesheet" href="../assets/styles/index.css" />
+    <script src="../assets/scripts/App.js"></script>
+    <script src="../assets/scripts/tailwind.js"></script>
+  <% } %>
   
 </head>
 
