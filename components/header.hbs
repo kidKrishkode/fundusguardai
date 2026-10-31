@@ -4,7 +4,7 @@
         <div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm" data-path="home" onclick="#">
 
                 {{#if isHosted}}
-                    <img alt="FundusGuard SPI-OWL Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1VSyKMAnqEMpF0Qp41pxQyfibMZGuYuGC1-neijErVixhMMNGHc2k0uFP92XIiRexAa8BUUjNRCESXBLRJJi5nY6are5QYEHBMbmfNTUwxuwrIUTD7kuresYzGGaJyg-VBfY7wHb-jWRk8aFvmpRtRjV9Kilw_qdr0PCeaihzpstYvX1FZRupMlonh0xUGvbMdvTUz93Ux9KA-RJkAG4laCIhipAmKxJFDLsyB3AROzKeeGBNQ8g5NggGQ" />
+                    <img alt="FundusGuard SPI-OWL Logo" class="h-8 w-auto object-contain" src="https://kidkrishkode.github.io/fundusguardai/public/favicon.ico" />
                 {{else}}
                     <img src="../public/favicon.ico" class="h-8 w-auto object-contain" alt="FundusGuard SPI-OWL Logo" />
                 {{/if}}
@@ -43,14 +43,14 @@
                 <div class="relative group">
                     {{#if isHosted}}
                         <img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-border-amber-glow"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuC9zi90r8QK0ze7ooA9xiA1I33VFwwk42Q68WHYGPljBAgAxyUe-orHwwUIINc14GmDxQhHsZF1lLpdcINBvJEZHWaw9Bj_3FmXP_xnIcrd88w6hlYDYbcG8LkPCnx8N83PHkmoHMejZppORT51thoP4jgMCjb5MCQY3nvthjGlskgcdODRh_8aR05Ud5tEPSlFBuP6oZ3zvRbVDVs-a3QSRkazLn-eOhUC2O5yk9In2TQBu1YA9D61" />
+                        src="https://kidkrishkode.github.io/fundusguardai/assets/images/dp.jpg" />
                     {{else}}
                         <img src="../assets/images/dp.jpg" class="w-8 h-8 rounded-full object-cover ring-1 ring-border-amber-glow" alt="User Dp" />
                     {{/if}}
                     <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-status-healthy ring-2 ring-surface"></span>
                 </div><button aria-label="Toggle mobile menu"
                     class="xl:hidden p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                    id="mobile-nav-toggle"><span class="material-symbols-outlined">menu</span></button>
+                    id="mobile-nav-toggle" onclick="toggle_menu();"><span class="material-symbols-outlined">menu</span></button>
             </div>
         </div>
     </div>
