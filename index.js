@@ -307,6 +307,20 @@ app.get('/api_reg', async (req, res) => {
     res.status(200).render('api_reg', {nonce, isHosted, header, footer});
 });
 
+app.get('/app', async (req, res) => {
+    const nonce = res.locals.nonce;
+    const isHosted = hex.isHosted(req);
+
+    const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
+    const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
+
+    res.status(200).render('app', {nonce, isHosted, header, footer});
+});
+
+app.get('/api_docs', async (req, res) => {
+    res.status(400).render('notfound',{error: 400, message: "Api documentation not avalible for week developer mindset, find it using your coding skill."});
+});
+
 app.get('/ping', (req, res) => {
     console.log('Ping route called at', new Date().toISOString(),'by', (!hex.isHosted(req) && ! req.headers.origin)?'Local Network ::1':req.headers.origin);
     res.status(200).send('OK');
