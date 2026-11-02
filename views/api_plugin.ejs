@@ -144,7 +144,7 @@
                     </div>
                   </div>
                   <a class="flex-shrink-0 inline-flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-primary-container text-on-primary-container font-label-md text-label-md hover:bg-secondary-container transition-all shadow-md"
-                    href="./contact.html">
+                    onclick="route('/api_reg');">
                     <span>Request API Credentials</span>
                     <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
                   </a>
@@ -430,7 +430,7 @@ export function ClinicalTriagePanel({ patientId = "PAT-9081" }) {
                   </div>
                   <div class="lg:col-span-4 flex flex-col gap-space-sm items-start lg:items-end justify-center">
                     <a class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-space-md py-3 rounded-lg bg-surface-container-highest text-optic-disc-gold hover:bg-primary-container hover:text-on-primary-container transition-all font-label-md text-label-md shadow-sm"
-                      href="./download.html">
+                      onclick="route('/app');">
                       <span class="material-symbols-outlined text-[18px]">download</span>
                       <span>Download Bare-Metal Utilities</span>
                     </a>
@@ -771,12 +771,12 @@ export function ClinicalTriagePanel({ patientId = "PAT-9081" }) {
                 </div>
                 <div class="flex flex-wrap items-center gap-space-sm flex-shrink-0">
                   <a class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-surface-container-high hover:bg-surface-container-highest text-text-primary font-label-md text-label-md transition-all shadow-sm"
-                    href="./about.html">
+                    onclick="route('/about');">
                     <span class="material-symbols-outlined text-[16px]">menu_book</span>
-                    <span>Read Science Whitepaper</span>
+                    <span>Read Research Paper</span>
                   </a>
                   <a class="inline-flex items-center gap-2 px-space-md py-2.5 rounded-lg bg-primary-container text-on-primary-container hover:bg-secondary-container transition-all font-label-md text-label-md shadow-md"
-                    href="./workspace.html">
+                    onclick="route('/route');">
                     <span class="material-symbols-outlined text-[16px]">play_arrow</span>
                     <span>Launch Live Workspace</span>
                   </a>
@@ -791,5 +791,9 @@ export function ClinicalTriagePanel({ patientId = "PAT-9081" }) {
       
 </body>
 <script src="../public/App.js" nonce="<%= nonce %>" ></script>
-<script src="../assets/scripts/api_plugin.js"></script>
+<% if (isHosted) { %>
+  <script src="https://kidkrishkode.github.io/fundusguardai/assets/scripts/api_plugin.js" nonce="<%= nonce %>"></script>
+<% } else { %>
+  <script src="../assets/scripts/api_plugin.js" nonce="<%= nonce %>"></script>
+<% } %>
 </html>

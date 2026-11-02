@@ -824,5 +824,9 @@
   <%- footer %>
 </body>
 <script src="../public/App.js" nonce="<%= nonce %>" ></script>
-<script src="../assets/scripts/about.js" ></script>
+<% if (isHosted) { %>
+  <script src="https://kidkrishkode.github.io/fundusguardai/assets/scripts/about.js" nonce="<%= nonce %>"></script>
+<% } else { %>
+  <script src="../assets/scripts/about.js" nonce="<%= nonce %>"></script>
+<% } %>
 </html>
