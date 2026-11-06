@@ -1,0 +1,1041 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title version="1.0">FundusGuard AI — Developer Console & Analytics Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <% if (isHosted) { %>
+    <link rel="stylesheet" href="https://kidkrishkode.github.io/fundusguardai/assets/styles/dashboard.css"/>
+  <% } else { %>
+    <link rel="stylesheet" href="../assets/styles/dashboard.css" />
+  <% } %>
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- LEFT SIDEBAR NAVIGATION -->
+    <aside class="sidebar" id="sidebar">
+      <div>
+        <!-- Brand Header -->
+        <div class="brand-header">
+          <div class="brand-logo-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="9"></circle>
+              <circle cx="12" cy="12" r="3.5" fill="currentColor"></circle>
+              <path d="M12 3v2"></path>
+              <path d="M12 19v2"></path>
+              <path d="M3 12h2"></path>
+              <path d="M19 12h2"></path>
+            </svg>
+          </div>
+          <div class="brand-meta">
+            <div class="brand-title">FundusGuard <span>AI</span></div>
+            <div class="brand-badge">SPI-OWL v1.0 Console</div>
+          </div>
+        </div>
+
+        <!-- Main Navigation Links -->
+        <div class="nav-group-label">Core Dashboard</div>
+        <ul class="nav-list">
+          <li>
+            <button class="nav-item-btn active" data-tab="overview">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="7" height="9"></rect>
+                <rect x="14" y="3" width="7" height="5"></rect>
+                <rect x="14" y="12" width="7" height="9"></rect>
+                <rect x="3" y="16" width="7" height="5"></rect>
+              </svg>
+              <span>Overview</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item-btn" data-tab="keys">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="8" cy="15" r="4"></circle>
+                <path d="m10.85 12.15 7.65-7.65"></path>
+                <path d="m15.5 7.5 2.5 2.5"></path>
+                <path d="m14 9 2 2"></path>
+              </svg>
+              <span>Key Management</span>
+              <span class="nav-badge-pill">1 Active</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item-btn" data-tab="analytics">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"></path>
+                <path d="m19 9-5 5-4-4-5 5"></path>
+              </svg>
+              <span>Usage & Analytics</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item-btn" data-tab="audit">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                <polyline points="14 2 14 8 20 8"></polyline>
+                <line x1="16" y1="13" x2="8" y2="13"></line>
+                <line x1="16" y1="17" x2="8" y2="17"></line>
+                <polyline points="10 9 9 9 8 9"></polyline>
+              </svg>
+              <span>Audit Trail</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item-btn" data-tab="billing">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="5" width="20" height="14" rx="2"></rect>
+                <line x1="2" y1="10" x2="22" y2="10"></line>
+              </svg>
+              <span>Billings & Quota</span>
+            </button>
+          </li>
+        </ul>
+      </div>
+
+      <!-- Bottom Pinned Section -->
+      <div class="sidebar-footer">
+        <!-- Theme Toggle -->
+        <div class="theme-toggle-row">
+          <div class="theme-label">
+            <svg id="theme-icon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+            </svg>
+            <span id="theme-text">Dark Mode</span>
+          </div>
+          <button class="theme-switch-btn" id="theme-toggle-btn" aria-label="Toggle dark/light mode"></button>
+        </div>
+
+        <ul class="nav-list">
+          <li>
+            <button class="nav-item-btn" data-tab="settings">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"></path>
+                <circle cx="12" cy="12" r="3"></circle>
+              </svg>
+              <span>Settings</span>
+            </button>
+          </li>
+          <li>
+            <button class="nav-item-btn" data-tab="account">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+                <circle cx="12" cy="7" r="4"></circle>
+              </svg>
+              <span>Account Profile</span>
+            </button>
+          </li>
+        </ul>
+
+        <!-- Account Profile Strip -->
+        <a href="javascript:void(0)" class="user-profile-strip" onclick="switchTab('account')">
+          <div class="avatar-circle">KM</div>
+          <div class="user-info-text">
+            <span class="user-name">Krishnendu Mitra</span>
+            <span class="user-role">Lead Developer</span>
+          </div>
+        </a>
+
+        <!-- Log Out Link -->
+        <a href="./index.html" class="nav-item-btn" style="color: var(--danger); margin-top: 4px;">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Log Out</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- RIGHT MAIN CONTENT VIEW -->
+    <main class="main-viewport">
+      <!-- Top Sticky Bar -->
+      <header class="topbar">
+        <div class="topbar-left">
+          <button class="mobile-menu-btn" id="mobile-menu-toggle" aria-label="Open sidebar menu">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <line x1="3" y1="12" x2="21" y2="12"></line>
+              <line x1="3" y1="6" x2="21" y2="6"></line>
+              <line x1="3" y1="18" x2="21" y2="18"></line>
+            </svg>
+          </button>
+          <div class="breadcrumb-trail">
+            <span>FundusGuard AI</span>
+            <span>/</span>
+            <span class="current-tab-crumb" id="breadcrumb-current">Overview</span>
+          </div>
+        </div>
+
+        <div class="topbar-right">
+          <div class="status-pill">
+            <span class="status-dot-pulse"></span>
+            <span>API Cluster Operational</span>
+          </div>
+          <a href="./api.html" class="nav-doc-link" target="_blank" rel="noopener">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+            </svg>
+            <span>API Docs</span>
+          </a>
+        </div>
+      </header>
+
+      <!-- Content Area with Active Views -->
+      <div class="content-area">
+        
+        <!-- 1. OVERVIEW VIEW (DEFAULT ACTIVE) -->
+        <section class="tab-panel active" id="view-overview">
+          <div class="view-header">
+            <div class="view-title-wrap">
+              <h1>Welcome back, Developer 👋</h1>
+              <p>Real-time telemetry, API usage quota, and SPI-OWL neural inference health metrics.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-secondary" onclick="switchTab('keys')">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="8" cy="15" r="4"></circle>
+                  <path d="m10.85 12.15 7.65-7.65"></path>
+                </svg>
+                <span>Manage Keys</span>
+              </button>
+              <button class="btn btn-primary" onclick="openKeyModal()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                <span>Generate Key</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Quick Stats 4 Cards Grid -->
+          <div class="stats-grid">
+            <div class="stat-card">
+              <div class="stat-top">
+                <span class="stat-label">Total Monthly Requests</span>
+                <div class="stat-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+                </div>
+              </div>
+              <div class="stat-value">420 <span style="font-size: 0.95rem; color: var(--text-muted); font-weight: 500;">/ 1,000</span></div>
+              <div class="stat-sub positive">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/></svg>
+                <span>42% Quota Consumed</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-top">
+                <span class="stat-label">Avg Inference Latency</span>
+                <div class="stat-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+              </div>
+              <div class="stat-value">1.85s</div>
+              <div class="stat-sub positive">
+                <span>⚡ Sub-2.5s SLA Maintained</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-top">
+                <span class="stat-label">Inference Success Rate</span>
+                <div class="stat-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                </div>
+              </div>
+              <div class="stat-value">99.4%</div>
+              <div class="stat-sub positive">
+                <span>0.6% Client Validation Faults</span>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-top">
+                <span class="stat-label">Active API Keys</span>
+                <div class="stat-icon">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="15" r="4"/><path d="m10.85 12.15 7.65-7.65"/></svg>
+                </div>
+              </div>
+              <div class="stat-value">1 Active</div>
+              <div class="stat-sub">
+                <span>Primary Production Token</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Active Key Summary Strip -->
+          <div class="card" style="margin-bottom: 24px;">
+            <div class="card-header-line" style="margin-bottom: 12px;">
+              <div>
+                <div class="card-title">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="8" cy="15" r="4"/><path d="m10.85 12.15 7.65-7.65"/></svg>
+                  <span>Active Production API Key</span>
+                </div>
+                <div class="card-subtitle">Use this key in the <code>X-Fundus-API-Key</code> request header for edge fundus diagnostics.</div>
+              </div>
+              <button class="btn btn-secondary" onclick="switchTab('keys')" style="padding: 6px 14px; font-size: 0.8rem;">
+                <span>View All Keys →</span>
+              </button>
+            </div>
+            <div class="key-highlight-strip">
+              <div style="display: flex; align-items: center; gap: 12px;">
+                <span class="badge-status active">Live & Authenticated</span>
+                <span class="key-token-code" id="overview-masked-key">fg_live_••••••••19d</span>
+              </div>
+              <div style="display: flex; gap: 8px;">
+                <button class="copy-btn" onclick="copyApiKey('fg_live_99f3a817b204e19d')">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                  <span>Copy Key</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Graphical Grid: Traffic Chart & Calendar -->
+          <div class="grid-2col">
+            <!-- Monthly Traffic Bar Chart -->
+            <div class="card">
+              <div class="card-header-line">
+                <div>
+                  <div class="card-title">Monthly Inference Request Volume</div>
+                  <div class="card-subtitle">Aggregated daily requests processed across SPI-OWL v1.0</div>
+                </div>
+                <span class="badge-status active">March 2025</span>
+              </div>
+              <div class="chart-box">
+                <!-- SVG Vector Bar Graphic -->
+                <svg viewBox="0 0 600 200" preserveAspectRatio="none">
+                  <defs>
+                    <linearGradient id="barGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#ea580c" />
+                      <stop offset="100%" stop-color="#f59e0b" stop-opacity="0.2" />
+                    </linearGradient>
+                    <linearGradient id="activeBarGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                      <stop offset="0%" stop-color="#f59e0b" />
+                      <stop offset="100%" stop-color="#ea580c" />
+                    </linearGradient>
+                  </defs>
+                  <!-- Grid horizontal lines -->
+                  <line x1="0" y1="40" x2="600" y2="40" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4" />
+                  <line x1="0" y1="90" x2="600" y2="90" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4" />
+                  <line x1="0" y1="140" x2="600" y2="140" stroke="rgba(255,255,255,0.06)" stroke-dasharray="4" />
+                  <line x1="0" y1="180" x2="600" y2="180" stroke="rgba(255,255,255,0.15)" />
+
+                  <!-- Daily Bars -->
+                  <rect x="25" y="130" width="16" height="50" rx="3" fill="url(#barGrad)" />
+                  <rect x="65" y="110" width="16" height="70" rx="3" fill="url(#barGrad)" />
+                  <rect x="105" y="80" width="16" height="100" rx="3" fill="url(#barGrad)" />
+                  <rect x="145" y="95" width="16" height="85" rx="3" fill="url(#barGrad)" />
+                  <rect x="185" y="60" width="16" height="120" rx="3" fill="url(#barGrad)" />
+                  <rect x="225" y="70" width="16" height="110" rx="3" fill="url(#barGrad)" />
+                  <rect x="265" y="50" width="16" height="130" rx="3" fill="url(#barGrad)" />
+                  <rect x="305" y="90" width="16" height="90" rx="3" fill="url(#barGrad)" />
+                  <rect x="345" y="45" width="16" height="135" rx="3" fill="url(#barGrad)" />
+                  <rect x="385" y="40" width="16" height="140" rx="3" fill="url(#barGrad)" />
+                  <rect x="425" y="30" width="16" height="150" rx="3" fill="url(#activeBarGrad)" filter="drop-shadow(0 0 8px rgba(234, 88, 12, 0.4))" />
+                  <rect x="465" y="65" width="16" height="115" rx="3" fill="url(#barGrad)" />
+                  <rect x="505" y="85" width="16" height="95" rx="3" fill="url(#barGrad)" />
+                  <rect x="545" y="120" width="16" height="60" rx="3" fill="url(#barGrad)" />
+                </svg>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 8px;">
+                <span>Mar 1</span>
+                <span>Mar 5</span>
+                <span>Mar 10</span>
+                <span>Mar 15 (Peak)</span>
+                <span>Mar 20</span>
+                <span>Mar 25</span>
+                <span>Today</span>
+              </div>
+            </div>
+
+            <!-- Calendar & Billing Cycle -->
+            <div class="card calendar-container">
+              <div class="calendar-header">
+                <div>
+                  <div class="cal-month-title">Billing Calendar</div>
+                  <div class="card-subtitle">Next Cycle: April 1, 2025</div>
+                </div>
+                <span class="badge-status success">Current Month: Paid ($0.00)</span>
+              </div>
+              <div class="cal-grid">
+                <div class="cal-day-label">S</div>
+                <div class="cal-day-label">M</div>
+                <div class="cal-day-label">T</div>
+                <div class="cal-day-label">W</div>
+                <div class="cal-day-label">T</div>
+                <div class="cal-day-label">F</div>
+                <div class="cal-day-label">S</div>
+
+                <!-- March 2025 sample days -->
+                <div class="cal-day-cell muted-day">23</div>
+                <div class="cal-day-cell muted-day">24</div>
+                <div class="cal-day-cell muted-day">25</div>
+                <div class="cal-day-cell muted-day">26</div>
+                <div class="cal-day-cell muted-day">27</div>
+                <div class="cal-day-cell muted-day">28</div>
+                <div class="cal-day-cell">1</div>
+
+                <div class="cal-day-cell">2</div>
+                <div class="cal-day-cell">3</div>
+                <div class="cal-day-cell">4</div>
+                <div class="cal-day-cell">5</div>
+                <div class="cal-day-cell">6</div>
+                <div class="cal-day-cell">7</div>
+                <div class="cal-day-cell">8</div>
+
+                <div class="cal-day-cell">9</div>
+                <div class="cal-day-cell">10</div>
+                <div class="cal-day-cell">11</div>
+                <div class="cal-day-cell">12</div>
+                <div class="cal-day-cell">13</div>
+                <div class="cal-day-cell">14</div>
+                <div class="cal-day-cell">15</div>
+
+                <div class="cal-day-cell">16</div>
+                <div class="cal-day-cell">17</div>
+                <div class="cal-day-cell">18</div>
+                <div class="cal-day-cell active-day" title="Today">19</div>
+                <div class="cal-day-cell">20</div>
+                <div class="cal-day-cell">21</div>
+                <div class="cal-day-cell">22</div>
+
+                <div class="cal-day-cell">23</div>
+                <div class="cal-day-cell">24</div>
+                <div class="cal-day-cell">25</div>
+                <div class="cal-day-cell">26</div>
+                <div class="cal-day-cell">27</div>
+                <div class="cal-day-cell">28</div>
+                <div class="cal-day-cell">29</div>
+
+                <div class="cal-day-cell">30</div>
+                <div class="cal-day-cell">31</div>
+                <div class="cal-day-cell bill-day" title="Next Bill Date: Quota Reset">1</div>
+              </div>
+
+              <div class="bill-reminder-badge">
+                <div class="bill-reminder-text">
+                  📅 Next Quota Reset in <strong>12 days</strong>
+                </div>
+                <span class="bill-status-pill">Active Plan</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Uptime Grant / Timeline Chart -->
+          <div class="card" style="margin-bottom: 24px;">
+            <div class="card-header-line">
+              <div>
+                <div class="card-title">System & API Key SLA Uptime (Last 30 Days)</div>
+                <div class="card-subtitle">99.98% overall availability across inference worker nodes</div>
+              </div>
+              <span class="badge-status success">100% Operational Today</span>
+            </div>
+
+            <div class="uptime-gantt-strip">
+              <div class="gantt-bars-row">
+                <!-- 30 Gantt bar segments -->
+                <div class="gantt-bar-slice" title="Day 1: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 2: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 3: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 4: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 5: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 6: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 7: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 8: 100% uptime"></div>
+                <div class="gantt-bar-slice warn" title="Day 9: 99.2% uptime (Routine maintenance)"></div>
+                <div class="gantt-bar-slice" title="Day 10: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 11: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 12: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 13: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 14: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 15: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 16: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 17: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 18: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 19: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 20: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 21: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 22: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 23: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 24: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 25: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 26: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 27: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 28: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Day 29: 100% uptime"></div>
+                <div class="gantt-bar-slice" title="Today: 100% uptime"></div>
+              </div>
+              <div class="gantt-labels">
+                <span>30 Days Ago (99.98% avg)</span>
+                <span>Scheduled Rolling Checkpoints</span>
+                <span>Today (Operational)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Request Snapshot Table (Last 5 calls) -->
+          <div class="card">
+            <div class="card-header-line">
+              <div>
+                <div class="card-title">Recent Request Telemetry (Last 5 Calls)</div>
+                <div class="card-subtitle">Live endpoint hits authenticated via your key</div>
+              </div>
+              <button class="btn btn-secondary" onclick="switchTab('audit')" style="padding: 6px 14px; font-size: 0.8rem;">
+                <span>View Full Audit Log →</span>
+              </button>
+            </div>
+            
+            <div class="table-container">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Endpoint</th>
+                    <th>Input Type</th>
+                    <th>Latency</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="mono-cell">Today, 14:32:18</td>
+                    <td class="mono-cell" style="color: var(--text-primary); font-weight: 600;">/api/v1/detect</td>
+                    <td>Fundus Image + CDR Biometrics</td>
+                    <td class="mono-cell">1.42s</td>
+                    <td><span class="badge-status success">200 OK</span></td>
+                  </tr>
+                  <tr>
+                    <td class="mono-cell">Today, 14:18:02</td>
+                    <td class="mono-cell" style="color: var(--text-primary); font-weight: 600;">/api/v1/segment</td>
+                    <td>Optic Disc & Cup Mask</td>
+                    <td class="mono-cell">1.88s</td>
+                    <td><span class="badge-status success">200 OK</span></td>
+                  </tr>
+                  <tr>
+                    <td class="mono-cell">Today, 13:45:51</td>
+                    <td class="mono-cell" style="color: var(--text-primary); font-weight: 600;">/api/v1/detect</td>
+                    <td>DICOM Retinal Batch</td>
+                    <td class="mono-cell">2.14s</td>
+                    <td><span class="badge-status success">200 OK</span></td>
+                  </tr>
+                  <tr>
+                    <td class="mono-cell">Today, 11:12:30</td>
+                    <td class="mono-cell" style="color: var(--text-primary); font-weight: 600;">/api/v1/detect</td>
+                    <td>Corrupt PNG Header</td>
+                    <td class="mono-cell">0.12s</td>
+                    <td><span class="badge-status error">400 Error</span></td>
+                  </tr>
+                  <tr>
+                    <td class="mono-cell">Today, 09:24:11</td>
+                    <td class="mono-cell" style="color: var(--text-primary); font-weight: 600;">/api/v1/verify</td>
+                    <td>Token Handshake</td>
+                    <td class="mono-cell">0.08s</td>
+                    <td><span class="badge-status success">200 OK</span></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- API Plugin Referral Promo (Refers to API Docs page) -->
+          <div class="api-referral-banner">
+            <div class="referral-content">
+              <h3>Looking for the API & SDK Integration Code?</h3>
+              <p>Explore full code examples for Python, Node.js, React, and embedded microcontroller packages in the official documentation.</p>
+            </div>
+            <a href="./api.html" class="btn btn-primary">
+              <span>View API Documentation & SDKs →</span>
+            </a>
+          </div>
+        </section>
+
+        <!-- 2. KEY MANAGEMENT VIEW -->
+        <section class="tab-panel" id="view-keys">
+          <div class="view-header">
+            <div class="view-title-wrap">
+              <h1>API Key Management 🔑</h1>
+              <p>Create, manage, inspect, and revoke your cryptographic authorization tokens.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-primary" onclick="openKeyModal()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                <span>Generate New API Key</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Keys Table -->
+          <div class="card" style="margin-bottom: 24px;">
+            <div class="card-header-line">
+              <div class="card-title">Registered Cryptographic Keys</div>
+              <span class="badge-status active">1 of 3 Keys Used</span>
+            </div>
+
+            <div class="table-container">
+              <table id="keys-table">
+                <thead>
+                  <tr>
+                    <th>Key Name</th>
+                    <th>API Key Token</th>
+                    <th>Created Date</th>
+                    <th>Last Used</th>
+                    <th>Status</th>
+                    <th style="text-align: right;">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr id="row-key-1">
+                    <td>
+                      <div style="font-weight: 700; color: var(--text-primary);">Production Clinical App</div>
+                      <div style="font-size: 0.72rem; color: var(--text-muted);">EHR integration node</div>
+                    </td>
+                    <td>
+                      <div style="display: flex; align-items: center; gap: 8px;">
+                        <span class="mono-cell" id="token-val-1" style="color: var(--accent-amber); font-weight: 600;">fg_live_••••••••••••••••b204e19d</span>
+                        <button class="icon-btn" onclick="toggleTokenMask('token-val-1', 'fg_live_99f3a817b204e19d')" title="Reveal/Mask Key">
+                          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                        </button>
+                      </div>
+                    </td>
+                    <td class="mono-cell">March 04, 2025</td>
+                    <td class="mono-cell">Today, 14:32</td>
+                    <td><span class="badge-status active" id="badge-key-1">Active</span></td>
+                    <td style="text-align: right;">
+                      <div class="table-actions" style="justify-content: flex-end;">
+                        <button class="btn btn-secondary" onclick="copyApiKey('fg_live_99f3a817b204e19d')" style="padding: 5px 10px; font-size: 0.78rem;">
+                          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+                          <span>Copy</span>
+                        </button>
+                        <button class="btn btn-outline-danger" onclick="revokeKey('row-key-1', 'badge-key-1')" style="padding: 5px 10px; font-size: 0.78rem;">
+                          <span>Revoke</span>
+                        </button>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Security Notice Callout -->
+          <div class="callout-box">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div class="callout-text">
+              <h4>Security Best Practices & Request Authentication</h4>
+              <p>Your API key carries full inference permissions for your account. Always transmit it via HTTPS headers using <code>X-Fundus-API-Key: fg_live_...</code> or <code>Authorization: Bearer fg_live_...</code>. Never commit your secrets into public GitHub repositories or client-facing frontend bundles.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- 3. USAGE & ANALYTICS VIEW -->
+        <section class="tab-panel" id="view-analytics">
+          <div class="view-header">
+            <div class="view-title-wrap">
+              <h1>Usage & Analytics 📈</h1>
+              <p>Deep-dive telemetry into request consumption, response status distributions, and model performance.</p>
+            </div>
+            <div class="view-actions">
+              <span class="badge-status active">Billing Period: Mar 1 - Mar 31</span>
+            </div>
+          </div>
+
+          <!-- Quota Progress Container -->
+          <div class="card" style="margin-bottom: 24px;">
+            <div class="card-header-line">
+              <div>
+                <div class="card-title">Monthly Quota Consumption</div>
+                <div class="card-subtitle">420 of 1,000 monthly requests consumed on Developer Free Tier</div>
+              </div>
+              <div style="font-size: 1.25rem; font-weight: 800; color: var(--accent-orange);">42.0%</div>
+            </div>
+
+            <div class="progress-track">
+              <div class="progress-fill" style="width: 42%;"></div>
+            </div>
+
+            <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: var(--text-muted);">
+              <span>0 req (Month Start)</span>
+              <span>580 requests remaining</span>
+              <span>1,000 req (Quota Limit)</span>
+            </div>
+          </div>
+
+          <!-- Charts Grid: Daily Volume & Status Breakdown -->
+          <div class="grid-2col">
+            <!-- Daily Volume Chart Container -->
+            <div class="card">
+              <div class="card-header-line">
+                <div class="card-title">Daily Request Traffic (Last 14 Days)</div>
+                <span class="badge-status success">Avg 30 req/day</span>
+              </div>
+              <div class="chart-box">
+                <svg viewBox="0 0 500 180" preserveAspectRatio="none">
+                  <path d="M 0 140 Q 40 120, 80 135 T 160 90 T 240 100 T 320 60 T 400 40 T 480 80 L 480 180 L 0 180 Z" fill="rgba(234, 88, 12, 0.12)" />
+                  <path d="M 0 140 Q 40 120, 80 135 T 160 90 T 240 100 T 320 60 T 400 40 T 480 80" fill="none" stroke="#ea580c" stroke-width="3" />
+                  <circle cx="400" cy="40" r="5" fill="#f59e0b" stroke="#090a0f" stroke-width="2" />
+                </svg>
+              </div>
+              <div style="display: flex; justify-content: space-between; font-size: 0.75rem; color: var(--text-muted); margin-top: 6px;">
+                <span>Mar 6</span>
+                <span>Mar 9</span>
+                <span>Mar 12</span>
+                <span>Mar 15 (Peak: 48 req)</span>
+                <span>Today</span>
+              </div>
+            </div>
+
+            <!-- Response Status Breakdown -->
+            <div class="card">
+              <div class="card-header-line">
+                <div class="card-title">Response Status Breakdown</div>
+                <span class="badge-status active">Health: 99.4%</span>
+              </div>
+
+              <div style="display: flex; flex-direction: column; gap: 16px; margin-top: 8px;">
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 6px;">
+                    <span style="font-weight: 600; color: var(--success);">200 OK (Successful Inferences)</span>
+                    <span class="mono-cell">418 req (99.5%)</span>
+                  </div>
+                  <div class="progress-track" style="height: 8px; margin: 0;">
+                    <div class="progress-fill" style="width: 99.5%; background: var(--success);"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 6px;">
+                    <span style="font-weight: 600; color: var(--danger);">400 Bad Request (Invalid Image Format)</span>
+                    <span class="mono-cell">2 req (0.5%)</span>
+                  </div>
+                  <div class="progress-track" style="height: 8px; margin: 0;">
+                    <div class="progress-fill" style="width: 2%; background: var(--danger);"></div>
+                  </div>
+                </div>
+
+                <div>
+                  <div style="display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 6px;">
+                    <span style="font-weight: 600; color: var(--warning);">429 Rate Limited (Burst Throttles)</span>
+                    <span class="mono-cell">0 req (0.0%)</span>
+                  </div>
+                  <div class="progress-track" style="height: 8px; margin: 0;">
+                    <div class="progress-fill" style="width: 0%; background: var(--warning);"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 4. AUDIT TRAIL VIEW -->
+        <section class="tab-panel" id="view-audit">
+          <div class="view-header">
+            <div class="view-title-wrap">
+              <h1>Audit Trail & Request Logs 📜</h1>
+              <p>Cryptographic, immutable ledger of every incoming API request with client IP and latency.</p>
+            </div>
+            <div class="view-actions">
+              <input type="text" id="audit-search" class="form-input" placeholder="Search by Endpoint or Status..." style="width: 260px;" oninput="filterAuditLogs()">
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="table-container">
+              <table id="audit-table">
+                <thead>
+                  <tr>
+                    <th>Timestamp</th>
+                    <th>Endpoint</th>
+                    <th>Input Type</th>
+                    <th>Status Code</th>
+                    <th>Execution Latency</th>
+                    <th>Client IP</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="mono-cell">2025-03-19 14:32:18</td>
+                    <td class="mono-cell" style="color: var(--accent-amber); font-weight: 600;">/api/v1/detect</td>
+                    <td>Image + Form</td>
+                    <td><span class="badge-status success">200 OK</span></td>
+                    <td class="mono-cell">1.42s</td>
+                    <td class="mono-cell">192.168.1.104</td>
+                  </tr>
+                  <tr>
+                    <td class="mono-cell">2025-03-19 14:18:02</td>
+                    <td class="mono-cell" style="color: var(--accent-amber); font-weight: 600;">/api/v1/segment</td>
+                    <td>Image Only</td>
+                    <td><span class="badge-status success">200 OK</span></td>
+                    <td class="mono-cell">1.88s</td>
+                    <td class="mono-cell">192.168.1.104</td>
+                  </tr>
+                  <tr>
+                    <td class="mono-cell">2025-03-19 13:45:51</td>
+                    <td class="mono-cell" style="color: var(--accent-amber); font-weight: 600;">/api/v1/detect</td>
+                    <td>Image + Form</td>
+                    <td><span class="badge-status success">200 OK</span></td>
+                    <td class="mono-cell">2.14s</td>
+                    <td class="mono-cell">10.0.4.18</td>
+                  </tr>
+                  <tr>
+                    <td class="mono-cell">2025-03-19 11:12:30</td>
+                    <td class="mono-cell" style="color: var(--accent-amber); font-weight: 600;">/api/v1/detect</td>
+                    <td>Form Only</td>
+                    <td><span class="badge-status error">400 Bad Request</span></td>
+                    <td class="mono-cell">0.12s</td>
+                    <td class="mono-cell">192.168.1.104</td>
+                  </tr>
+                  <tr>
+                    <td class="mono-cell">2025-03-19 09:24:11</td>
+                    <td class="mono-cell" style="color: var(--accent-amber); font-weight: 600;">/api/v1/verify</td>
+                    <td>Header Only</td>
+                    <td><span class="badge-status success">200 OK</span></td>
+                    <td class="mono-cell">0.08s</td>
+                    <td class="mono-cell">127.0.0.1</td>
+                  </tr>
+                  <tr>
+                    <td class="mono-cell">2025-03-18 22:15:00</td>
+                    <td class="mono-cell" style="color: var(--accent-amber); font-weight: 600;">/api/v1/detect</td>
+                    <td>Image + Form</td>
+                    <td><span class="badge-status success">200 OK</span></td>
+                    <td class="mono-cell">1.65s</td>
+                    <td class="mono-cell">10.0.4.18</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Pagination controls -->
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 18px;">
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Showing 1 to 6 of 420 logs</span>
+              <div style="display: flex; gap: 8px;">
+                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">Previous</button>
+                <button class="btn btn-secondary" style="padding: 6px 12px; font-size: 0.8rem;">Next</button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 5. BILLINGS & QUOTA VIEW -->
+        <section class="tab-panel" id="view-billing">
+          <div class="view-header">
+            <div class="view-title-wrap">
+              <h1>Billings & Quota Allocation 💳</h1>
+              <p>Transparent subscription tier details and high-throughput enterprise scale options.</p>
+            </div>
+          </div>
+
+          <!-- Tier Comparison Grid -->
+          <div class="tier-comparison-grid">
+            <!-- Active Developer Free Tier -->
+            <div class="tier-card">
+              <span class="tier-badge">Currently Active</span>
+              <div class="tier-title">Developer Free Tier</div>
+              <div class="card-subtitle">Ideal for independent researchers, sandbox evaluations & clinics.</div>
+              <div class="tier-price">$0 <span>/ month</span></div>
+
+              <ul class="tier-limits-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>1,000</strong> requests / month</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>60 req/min</strong> burst rate limit</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Standard inference speed (&lt;2.5s SLA)</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>SPI-OWL v1.0 core segmentation</span>
+                </li>
+              </ul>
+
+              <button class="btn btn-secondary" disabled style="opacity: 0.7; cursor: default;">
+                <span>Active Plan</span>
+              </button>
+            </div>
+
+            <!-- Institutional Enterprise Tier -->
+            <div class="tier-card featured">
+              <span class="tier-badge" style="background: var(--accent-orange); color: #fff;">Recommended for Hospitals</span>
+              <div class="tier-title">Institutional Enterprise Tier</div>
+              <div class="card-subtitle">Dedicated GPU cluster, high-throughput DICOM PACS queues & HIPAA BAA.</div>
+              <div class="tier-price">Custom <span>/ SLA Tier</span></div>
+
+              <ul class="tier-limits-list">
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span><strong>Unlimited</strong> inference requests / month</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Dedicated multi-node TensorRT GPU queue</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>Signed HIPAA / GDPR Business Associate Agreement</span>
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                  <span>99.99% Uptime SLA & 24/7 clinical engineering support</span>
+                </li>
+              </ul>
+
+              <a href="./contact.html" class="btn btn-primary">
+                <span>Request Quota Increase & Enterprise Access →</span>
+              </a>
+            </div>
+          </div>
+        </section>
+
+        <!-- 6. SETTINGS VIEW -->
+        <section class="tab-panel" id="view-settings">
+          <div class="view-header">
+            <div class="view-title-wrap">
+              <h1>Developer Settings ⚙️</h1>
+              <p>Configure webhook endpoints and automated diagnostic event alerts.</p>
+            </div>
+            <div class="view-actions">
+              <button class="btn btn-primary" onclick="showToast('Settings saved successfully!')">
+                <span>Save Changes</span>
+              </button>
+            </div>
+          </div>
+
+          <div class="card" style="max-width: 800px;">
+            <div class="card-title" style="margin-bottom: 16px;">Webhook Dispatch Configuration</div>
+            
+            <div class="form-group">
+              <label class="form-label">Real-Time Webhook Target URL</label>
+              <input type="url" class="form-input mono-cell" value="https://your-domain.com/api/webhook" placeholder="https://">
+              <div class="form-hint">FundusGuard will dispatch asynchronous inference completion payloads to this HTTPS endpoint.</div>
+            </div>
+
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 20px; margin-top: 20px;">
+              <div class="card-title" style="margin-bottom: 16px;">Event Notification Preferences</div>
+              
+              <div style="display: flex; flex-direction: column; gap: 14px;">
+                <label style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem; cursor: pointer;">
+                  <input type="checkbox" checked style="accent-color: var(--accent-orange);">
+                  <span>Email alert when monthly quota consumption reaches 80%</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem; cursor: pointer;">
+                  <input type="checkbox" checked style="accent-color: var(--accent-orange);">
+                  <span>Notify upon SPI-OWL neural model minor version updates (v1.0 → v1.4)</span>
+                </label>
+                <label style="display: flex; align-items: center; gap: 10px; font-size: 0.88rem; cursor: pointer;">
+                  <input type="checkbox" style="accent-color: var(--accent-orange);">
+                  <span>Send weekly aggregated diagnostic latency summaries</span>
+                </label>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- 7. ACCOUNT PROFILE VIEW -->
+        <section class="tab-panel" id="view-account">
+          <div class="view-header">
+            <div class="view-title-wrap">
+              <h1>Account Profile 👤</h1>
+              <p>Manage your developer credentials, organization metadata, and password.</p>
+            </div>
+          </div>
+
+          <div class="card" style="max-width: 800px;">
+            <div class="card-title" style="margin-bottom: 20px;">Personal & Clinical Details</div>
+            
+            <div class="grid-2col-equal" style="margin-bottom: 0;">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input type="text" class="form-input" value="Krishnendu Mitra">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Official Work Email</label>
+                <input type="email" class="form-input" value="krishnendu@fundusguard.ai" disabled style="opacity: 0.7;">
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Organization / Research Laboratory</label>
+              <input type="text" class="form-input" value="FundusGuard AI Medical Research Lab (Mentored by Prof. Soumen Mukherjee)">
+            </div>
+
+            <div style="border-top: 1px solid var(--border-subtle); padding-top: 20px; margin-top: 20px;">
+              <div class="card-title" style="margin-bottom: 16px;">Security & Password Update</div>
+              <div class="grid-2col-equal" style="margin-bottom: 16px;">
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">New Password</label>
+                  <input type="password" class="form-input" placeholder="••••••••••••">
+                </div>
+                <div class="form-group" style="margin-bottom: 0;">
+                  <label class="form-label">Confirm New Password</label>
+                  <input type="password" class="form-input" placeholder="••••••••••••">
+                </div>
+              </div>
+              <button class="btn btn-primary" onclick="showToast('Account details updated!')">
+                <span>Update Credentials</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- KEY GENERATION MODAL -->
+  <div class="modal-overlay" id="key-modal">
+    <div class="modal-window">
+      <div class="modal-header">
+        <div class="modal-title">Generate New API Key</div>
+        <button class="close-modal-btn" onclick="closeKeyModal()">&times;</button>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Key Descriptive Name</label>
+        <input type="text" id="modal-key-name" class="form-input" placeholder="e.g. Staging Test Environment" value="Staging Test Environment">
+        <div class="form-hint">A friendly identifier to help you track where this token is integrated.</div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Scope & Permissions</label>
+        <select class="form-input" style="cursor: pointer;">
+          <option>Full Inference & Segmentation (/api/v1/*)</option>
+          <option>Read-Only Telemetry (/api/v1/health)</option>
+        </select>
+      </div>
+
+      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px;">
+        <button class="btn btn-secondary" onclick="closeKeyModal()">Cancel</button>
+        <button class="btn btn-primary" onclick="generateNewKeyAction()">
+          <span>Create 256-Bit Token</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST CONTAINER -->
+  <div class="toast-container">
+    <div class="toast" id="app-toast">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+      <span id="toast-message">Notification</span>
+    </div>
+  </div>
+
+</body>
+<% if (isHosted) { %>
+  <script src="https://kidkrishkode.github.io/fundusguardai/assets/scripts/dashboard.js" nonce="<%= nonce %>"></script>
+<% } else { %>
+  <script src="../assets/scripts/dashboard.js" nonce="<%= nonce %>"></script>
+<% } %>
+</html>

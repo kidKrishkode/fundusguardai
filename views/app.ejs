@@ -1,776 +1,887 @@
 <!DOCTYPE html>
+<html class="dark" lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="web_standard" name="shell-type" />
+  <title version="1.0">FundusGuard Ai</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
+  
+  <link rel="stylesheet" href="../public/App.css"/>
+  <script src="https://cdn.tailwindcss.com"></script>
 
-<html class="dark" lang="en" style="overflow-y: auto !important; overflow-x: hidden; height: auto !important; min-height: 100vh; position: static !important; scroll-behavior: smooth;"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@600;700;800&amp;display=swap" rel="stylesheet"/>
-<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>
-  html {
-    overflow-y: auto !important;
-    overflow-x: hidden;
-    height: auto !important;
-    min-height: 100vh;
-    position: static !important;
-    scroll-behavior: smooth;
-  }
-  body {
-    overflow-y: auto !important;
-    overflow-x: hidden;
-    height: auto !important;
-    min-height: 100vh;
-    position: static !important;
-    margin: 0;
-    padding: 0;
-  }
-  main > :first-child {
-    margin-top: 0 !important;
-  }
-  main > :last-child {
-    margin-bottom: 0 !important;
-  }
-  ::-webkit-scrollbar {
-    width: 8px;
-  }
-  ::-webkit-scrollbar-track {
-    background: #121318;
-  }
-  ::-webkit-scrollbar-thumb {
-    background: #292a2f;
-    border-radius: 4px;
-    border: 1px solid rgba(245, 158, 11, 0.15);
-  }
-  ::-webkit-scrollbar-thumb:hover {
-    background: #34343a;
-  }
-</style><script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script><script id="tailwind-config">tailwind.config={darkMode:"class",theme:{extend:{"colors":{"error-container":"#93000a","on-surface":"#e3e1e9","on-tertiary-fixed":"#410002","primary-container":"#f66018","on-primary-container":"#4f1700","on-error":"#690005","on-secondary-fixed-variant":"#653e00","secondary":"#ffb95f","text-secondary":"#94A3B8","optic-disc-gold":"#FCD34D","border-amber-glow":"rgba(245, 158, 11, 0.15)","outline":"#a98a7e","on-primary-fixed":"#370e00","surface":"#121318","on-primary-fixed-variant":"#7f2b00","primary-fixed-dim":"#ffb599","on-tertiary-fixed-variant":"#93000b","surface-container-lowest":"#0d0e13","on-background":"#e3e1e9","tertiary-fixed-dim":"#ffb4ab","secondary-container":"#ee9800","primary":"#ffb599","tertiary-fixed":"#ffdad6","border-subtle":"rgba(148, 163, 184, 0.12)","secondary-fixed":"#ffddb8","surface-container-low":"#1a1b21","background":"#121318","inverse-surface":"#e3e1e9","on-surface-variant":"#e2bfb2","tertiary-container":"#ff544a","glaucoma-critical":"#EF4444","on-secondary":"#472a00","surface-container":"#1e1f25","surface-tint":"#ffb599","on-secondary-container":"#5b3800","outline-variant":"#5a4138","surface-bright":"#38393f","secondary-fixed-dim":"#ffb95f","surface-overlay":"rgba(26, 30, 44, 0.65)","status-healthy":"#10B981","primary-fixed":"#ffdbce","surface-dim":"#121318","on-tertiary-container":"#5c0004","on-primary":"#5a1c00","inverse-on-surface":"#2f3036","surface-variant":"#34343a","error":"#ffb4ab","tertiary":"#ffb4ab","surface-container-high":"#292a2f","on-error-container":"#ffdad6","inverse-primary":"#a73a00","surface-glass":"rgba(18, 20, 29, 0.75)","text-primary":"#FAFAFA","surface-container-highest":"#34343a","on-tertiary":"#690005","on-secondary-fixed":"#2a1700"},"borderRadius":{"DEFAULT":"0.125rem","lg":"0.25rem","xl":"0.5rem","full":"0.75rem"},"spacing":{"space-xl":"2rem","gutter":"1rem","space-sm":"0.5rem","space-md":"0.75rem","space-lg":"1.25rem","space-xs":"0.25rem","gutter-desktop":"1.5rem","margin":"1rem","margin-desktop":"2rem"},"fontFamily":{"metric-display":["Plus Jakarta Sans"],"body-lg":["Inter"],"headline-md":["Plus Jakarta Sans"],"headline-lg-mobile":["Plus Jakarta Sans"],"label-md":["Inter"],"label-sm":["Inter"],"body-sm":["Inter"],"body-md":["Inter"],"headline-lg":["Plus Jakarta Sans"],"headline-xl":["Plus Jakarta Sans"],"headline-xl-mobile":["Plus Jakarta Sans"],"title-md":["Inter"]},"fontSize":{"metric-display":["24px",{"lineHeight":"30px","letterSpacing":"-0.02em","fontWeight":"700"}],"body-lg":["15px",{"lineHeight":"22px","letterSpacing":"-0.005em","fontWeight":"400"}],"headline-md":["20px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-lg-mobile":["22px",{"lineHeight":"28px","letterSpacing":"-0.015em","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.02em","fontWeight":"500"}],"label-sm":["11px",{"lineHeight":"14px","letterSpacing":"0.04em","fontWeight":"600"}],"body-sm":["12px",{"lineHeight":"16px","fontWeight":"400"}],"body-md":["13px",{"lineHeight":"18px","fontWeight":"400"}],"headline-lg":["28px",{"lineHeight":"36px","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-xl":["40px",{"lineHeight":"48px","letterSpacing":"-0.025em","fontWeight":"700"}],"headline-xl-mobile":["30px",{"lineHeight":"38px","letterSpacing":"-0.02em","fontWeight":"700"}],"title-md":["16px",{"lineHeight":"24px","letterSpacing":"-0.01em","fontWeight":"600"}]}}}};</script></head><body class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary" style="overflow-y: auto !important; overflow-x: hidden; height: auto !important; min-height: 100vh; position: static !important;"><header class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.4)] border-b border-border-amber-glow"><div class="h-16 w-full px-margin md:px-margin-desktop flex items-center justify-between"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm" data-path="home" href="./home.html"><img alt="FundusGuard SPI-OWL Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XuGG_CunjYbLlqWWCOvcsvp1rkvaS5jI_FvhQgC_lrRq997rNLHHfsfE2FHli3N9ymN5GtJStF-K-SM-h7YrpGnBPESNnKaz0770VT4tWzQuknVHHTW0OFne_T6xvSCgbxpLwaBMkMianinPJryJc7tj_6Sa49HqZoiSWbe8wEeKsiGEtLA0VVC0mOkVhan_zkTwTw73ZGn_76e7ixQfvj0tWpd-GOtV46FUp7XeCKgp88r1qvM_DoZEQ"/><div class="flex flex-col"><div class="flex items-center gap-space-xs"><span class="font-headline-md text-headline-md tracking-tight text-text-primary">FundusGuard</span><span class="font-headline-md text-headline-md tracking-tight text-optic-disc-gold">AI</span></div><span class="font-label-sm text-label-sm text-text-secondary tracking-widest uppercase">Retinal Diagnostics</span></div></a><span class="hidden lg:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm border border-border-amber-glow"><span class="w-1.5 h-1.5 rounded-full bg-status-healthy"></span>v2.4 SPI-OWL</span></div><nav class="hidden xl:flex items-center gap-space-md"><a class="px-3 py-1.5 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="home" href="./home.html">Home</a><a class="px-3 py-1.5 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="workspace" href="./workspace.html">Workspace (Detection)</a><a class="px-3 py-1.5 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="about" href="./about.html">About</a><a class="px-3 py-1.5 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="api-docs" href="./api.html">API Docs</a><a class="px-3 py-1.5 rounded-xl font-label-md text-label-md text-on-primary-container bg-primary-container font-semibold" data-path="app-download" href="./download.html">App Download</a><a class="px-3 py-1.5 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="contact" href="./contact.html">Contact</a></nav><div class="flex items-center gap-space-sm"><a class="hidden sm:inline-flex items-center gap-space-xs px-4 py-2 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-[0_0_16px_rgba(234,88,12,0.35)] hover:shadow-[0_0_24px_rgba(234,88,12,0.55)] transition-all" data-path="workspace" href="./workspace.html"><span>Launch Workspace</span><span class="material-symbols-outlined text-[16px]">arrow_forward</span></a><div class="flex items-center gap-space-xs pl-space-xs border-l border-border-subtle"><div class="relative group"><img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-border-amber-glow" src="https://lh3.googleusercontent.com/aida/AEtjO1Xbvq4CZNfJe1HTT5za3u9NPpuuRHt57Fktyq16eqfEODEEXUED5tS_SWB0_4SYteSpFJeoXRKU9Xor4S6drQXrXAExCCORnB_Mut2vOMRm0YiI_-eEjCUeZMsWf1pAnZlKhKOKZ5eYmyOaaOoHsN-QndtK_49Xr6hZ2qa3FnoWDNmeZAUlJo3EdSdg-OOCNTkqYQxW-vBvnqMU6CQcDax904Zyc0tEltYmCpHNGGVhSvSof__s0E1RfoM"/><span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-status-healthy ring-2 ring-surface"></span></div><button aria-label="Toggle mobile menu" class="xl:hidden p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" id="mobile-nav-toggle"><span class="material-symbols-outlined">menu</span></button></div></div></div><div class="hidden xl:hidden bg-surface-container-low border-b border-border-amber-glow px-margin py-space-md" id="mobile-drawer"><div class="flex flex-col gap-space-sm"><div class="flex items-center justify-between pb-space-sm border-b border-border-subtle"><span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-status-healthy animate-pulse"></span>Neural Telemetry: Live (42ms)</span><span class="font-label-sm text-label-sm text-optic-disc-gold">SPI-OWL v2.4</span></div><a class="px-3 py-2 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="home" href="./home.html">Home</a><a class="px-3 py-2 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="workspace" href="./workspace.html">Workspace (Detection)</a><a class="px-3 py-2 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="about" href="./about.html">About</a><a class="px-3 py-2 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="api-docs" href="./api.html">API Docs</a><a class="px-3 py-2 rounded-xl font-label-md text-label-md text-on-primary-container bg-primary-container font-semibold" data-path="app-download" href="./download.html">App Download</a><a class="px-3 py-2 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors" data-path="contact" href="./contact.html">Contact</a><div class="pt-space-xs"><a class="w-full flex items-center justify-center gap-space-xs px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-[0_0_16px_rgba(234,88,12,0.35)]" data-path="workspace" href="./workspace.html"><span>Launch Diagnostic Studio</span><span class="material-symbols-outlined text-[16px]">biotech</span></a></div></div></div></header><main class="w-full pt-16 bg-surface" style="position: static !important; overflow: visible;"><div class="flex flex-col w-full">
-<!-- Toast Notification Container -->
-<div class="fixed bottom-6 right-6 z-50 flex items-center gap-space-sm px-4 py-2.5 rounded-xl bg-surface-container-highest/95 backdrop-blur-md shadow-xl text-on-surface transition-all duration-300 opacity-0 pointer-events-none translate-y-3" id="toast">
-<span class="material-symbols-outlined text-status-healthy text-title-md">check_circle</span>
-<span class="font-label-md text-label-md" id="toast-message">Notification</span>
-</div>
-<!-- Hero Section & System Direct Download Hub -->
-<section class="relative w-full px-margin md:px-margin-desktop py-space-xl overflow-hidden">
-<!-- Ambient Radiance Backgrounds -->
-<div class="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-primary-container/10 blur-[100px] pointer-events-none"></div>
-<div class="absolute top-1/3 -right-20 w-80 h-80 rounded-full bg-secondary-container/10 blur-[90px] pointer-events-none"></div>
-<div class="max-w-7xl mx-auto flex flex-col gap-space-lg relative z-10">
-<!-- Breadcrumb & Release Status Banner -->
-<div class="flex flex-wrap items-center justify-between gap-space-sm">
-<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm border border-border-amber-glow">
-<span class="w-2 h-2 rounded-full bg-status-healthy animate-pulse"></span>
-<span class="tracking-wider uppercase font-semibold text-text-primary">OFFICIAL RELEASES</span>
-<span class="text-text-secondary">•</span>
-<span class="text-optic-disc-gold font-bold">v2.4.1 PRODUCTION STABLE</span>
-</div>
-<div class="flex items-center gap-space-xs px-3.5 py-1.5 rounded-xl bg-surface-container-low border border-border-subtle text-on-surface shadow-sm">
-<span class="material-symbols-outlined text-title-md text-primary">verified_user</span>
-<span class="font-label-md text-label-md text-text-secondary">Release Integrity:</span>
-<span class="font-label-md text-label-md font-bold text-text-primary">Clinically Validated &amp; Air-Gapped</span>
-</div>
-</div>
-<!-- Hero Copy -->
-<div class="flex flex-col gap-space-sm max-w-4xl">
-<h1 class="font-headline-xl text-headline-xl tracking-tight text-text-primary">
-          Download FundusGuard AI for <span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Every Clinical Platform</span>
-</h1>
-<p class="font-body-lg text-body-lg text-text-secondary leading-relaxed">
-          Deploy autonomous retinal cup-to-disc ratio (CDR) quantification and glaucoma screening natively across desktop workstations, clinical tablets, mobile devices, and dedicated embedded diagnostic hardware.
-        </p>
-</div>
-<!-- Platform Anchor Pill Bar -->
-<div class="flex flex-wrap items-center gap-space-xs p-1.5 rounded-xl bg-surface-container-lowest border border-border-subtle w-fit">
-<a class="px-3 py-1.5 rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors flex items-center gap-1.5" href="#os-matrix">
-<span class="material-symbols-outlined text-[16px] text-primary">apps</span> Operating Systems
-        </a>
-<a class="px-3 py-1.5 rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors flex items-center gap-1.5" href="#embedded-hub">
-<span class="material-symbols-outlined text-[16px] text-optic-disc-gold">memory</span> Embedded Firmware
-        </a>
-<a class="px-3 py-1.5 rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors flex items-center gap-1.5" href="#release-archive">
-<span class="material-symbols-outlined text-[16px] text-text-secondary">history</span> Version Archive
-        </a>
-</div>
-</div>
-</section>
-<!-- Section 1: Unified OS App Download Grid (Windows, macOS, Linux, Android, iOS) -->
-<section class="w-full px-margin md:px-margin-desktop py-space-lg" id="os-matrix">
-<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
-<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-space-sm">
-<div>
-<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase font-semibold">Native Diagnostic Apps</span>
-<h2 class="font-headline-lg text-headline-lg text-text-primary tracking-tight">Operating System Downloads</h2>
-</div>
-<div class="text-right">
-<span class="font-label-md text-label-md text-text-secondary">All packages preloaded with SPI-OWL v2.4.1 neural model</span>
-</div>
-</div>
-<!-- 5-Column Unified OS Grid (Symmetrical, Equal Styling & Heights) -->
-<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
-<!-- 1. Windows Card -->
-<div class="group relative flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-xl transition-all duration-300 hover:shadow-2xl">
-<div class="flex flex-col gap-space-md">
-<!-- Card Header with Authentic Windows SVG -->
-<div class="flex items-center gap-space-sm">
-<div class="w-11 h-11 rounded-xl bg-surface-container-high flex items-center justify-center p-2 text-text-primary border border-border-subtle group-hover:border-primary/40 transition-colors">
-<svg class="w-6 h-6 fill-current text-[#00adef]" viewbox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
-<path d="M0 12.402l35.689-4.86.016 34.423-35.67.203zm35.67 33.529l.029 34.453-35.699-4.908-.002-29.748zm4.327-39.047L87.98 0v41.524l-47.98.275zm47.987 38.647L88 88l-47.994-6.753-.024-34.721z"></path>
-</svg>
-</div>
-<div>
-<h3 class="font-title-md text-title-md font-bold text-text-primary">Windows</h3>
-<span class="font-label-sm text-label-sm text-text-secondary">Desktop Client</span>
-</div>
-</div>
-<!-- Standardized Specification Lines -->
-<div class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-2 font-label-md text-label-md">
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Package Size</span>
-<span class="text-text-primary font-medium">68.4 MB</span>
-</div>
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Compatibility</span>
-<span class="text-text-primary font-medium truncate" title="Windows 10, 11 (64-bit / ARM64)">Windows 10, 11 (64-bit)</span>
-</div>
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Signature / Verification</span>
-<span class="text-status-healthy font-medium flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">verified</span> Microsoft Authenticode
-</span>
-</div>
-</div>
-</div>
-<!-- Identically Styled Primary Action Button -->
-<div class="pt-space-md">
-<a class="w-full flex items-center justify-center gap-space-xs px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-md hover:brightness-110 transition-all text-center" href="./workspace.html">
-<span class="material-symbols-outlined text-[18px]">download</span>
-<span class="truncate">Download x64 (.exe)</span>
-</a>
-</div>
-</div>
-<!-- 2. macOS Card -->
-<div class="group relative flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-xl transition-all duration-300 hover:shadow-2xl">
-<div class="flex flex-col gap-space-md">
-<!-- Card Header with Authentic Apple SVG -->
-<div class="flex items-center gap-space-sm">
-<div class="w-11 h-11 rounded-xl bg-surface-container-high flex items-center justify-center p-2 text-text-primary border border-border-subtle group-hover:border-primary/40 transition-colors">
-<svg class="w-6 h-6 fill-current text-on-surface" viewbox="0 0 170 170" xmlns="http://www.w3.org/2000/svg">
-<path d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.08-7.7-7.93-12.04-14.54-6.08-9.27-10.84-20.37-14.28-33.31-3.44-12.93-5.16-25.26-5.16-36.98 0-14.12 3.48-26.04 10.45-35.75 6.97-9.71 15.82-14.67 26.54-14.88 4.7 0 9.87 1.25 15.52 3.75 5.64 2.5 9.77 3.82 12.38 3.96 2.18-.2 6.43-1.57 12.74-4.11 6.32-2.54 11.75-3.69 16.3-3.45 12.73.66 22.84 5.41 30.34 14.26-11.12 6.74-16.57 16.14-16.36 28.18.22 9.5 3.86 17.47 10.93 23.9 7.07 6.44 15.42 10.22 25.05 11.34-2.18 6.54-4.8 13.06-7.88 19.57zM119.22 31.86c0-7.44 2.66-14.39 7.98-20.85 5.32-6.46 11.96-10.46 19.92-12.01.21 1.28.32 2.45.32 3.51 0 7.33-2.77 14.37-8.31 21.12-5.54 6.75-12.18 10.74-19.91 11.97v-3.74z"></path>
-</svg>
-</div>
-<div>
-<h3 class="font-title-md text-title-md font-bold text-text-primary">macOS</h3>
-<span class="font-label-sm text-label-sm text-text-secondary">Universal App</span>
-</div>
-</div>
-<!-- Standardized Specification Lines -->
-<div class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-2 font-label-md text-label-md">
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Package Size</span>
-<span class="text-text-primary font-medium">64.2 MB</span>
-</div>
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Compatibility</span>
-<span class="text-text-primary font-medium truncate" title="macOS 12.0+ (Apple Silicon &amp; Intel)">macOS 12.0+ (M &amp; Intel)</span>
-</div>
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Signature / Verification</span>
-<span class="text-status-healthy font-medium flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">verified</span> Apple Notarized
-</span>
-</div>
-</div>
-</div>
-<!-- Identically Styled Primary Action Button -->
-<div class="pt-space-md">
-<a class="w-full flex items-center justify-center gap-space-xs px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-md hover:brightness-110 transition-all text-center" href="./workspace.html">
-<span class="material-symbols-outlined text-[18px]">download</span>
-<span class="truncate">Download (.dmg)</span>
-</a>
-</div>
-</div>
-<!-- 3. Linux Card -->
-<div class="group relative flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-xl transition-all duration-300 hover:shadow-2xl">
-<div class="flex flex-col gap-space-md">
-<!-- Card Header with Authentic Linux Tux SVG -->
-<div class="flex items-center gap-space-sm">
-<div class="w-11 h-11 rounded-xl bg-surface-container-high flex items-center justify-center p-2 text-text-primary border border-border-subtle group-hover:border-primary/40 transition-colors">
-<svg class="w-6 h-6 fill-current text-[#fcc624]" viewbox="0 0 32 32" xmlns="http://www.w3.org/2000/svg">
-<path d="M16 2.5c-4.4 0-6.7 3.9-6.7 8.3 0 2.2.4 4.5.9 6.2-.9.8-2.2 2.3-2.2 4.5 0 2.5 1.5 5 4.8 5.5-1.1.9-1.8 2.2-1.8 3.5 0 .5.4 1 1 1 2.2 0 4.1-1.3 5.4-2.5 1.3 1.2 3.2 2.5 5.4 2.5.6 0 1-.5 1-1 0-1.3-.7-2.6-1.8-3.5 3.3-.5 4.8-3 4.8-5.5 0-2.2-1.3-3.7-2.2-4.5.5-1.7.9-4 .9-6.2 0-4.4-2.3-8.3-6.7-8.3zm-1.8 4.2c.7 0 1.2.6 1.2 1.3s-.5 1.3-1.2 1.3-1.2-.6-1.2-1.3.5-1.3 1.2-1.3zm3.6 0c.7 0 1.2.6 1.2 1.3s-.5 1.3-1.2 1.3-1.2-.6-1.2-1.3.5-1.3 1.2-1.3zm-1.8 3.3c1.5 0 2.7.4 2.7 1.5 0 1-.9 1.8-2.7 1.8-1.8 0-2.7-.8-2.7-1.8 0-1.1 1.2-1.5 2.7-1.5z"></path>
-</svg>
-</div>
-<div>
-<h3 class="font-title-md text-title-md font-bold text-text-primary">Linux</h3>
-<span class="font-label-sm text-label-sm text-text-secondary">Distro Binaries</span>
-</div>
-</div>
-<!-- Standardized Specification Lines -->
-<div class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-2 font-label-md text-label-md">
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Package Size</span>
-<span class="text-text-primary font-medium">62.8 MB</span>
-</div>
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Compatibility</span>
-<span class="text-text-primary font-medium truncate" title="Debian, Ubuntu, Fedora, Arch">Debian, Ubuntu, Fedora</span>
-</div>
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Signature / Verification</span>
-<span class="text-status-healthy font-medium flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">verified</span> GPG Signed Release
-</span>
-</div>
-</div>
-</div>
-<!-- Identically Styled Primary Action Button -->
-<div class="pt-space-md">
-<a class="w-full flex items-center justify-center gap-space-xs px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-md hover:brightness-110 transition-all text-center" href="./workspace.html">
-<span class="material-symbols-outlined text-[18px]">download</span>
-<span class="truncate">Download (.tar.gz / .deb)</span>
-</a>
-</div>
-</div>
-<!-- 4. Android Card -->
-<div class="group relative flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-xl transition-all duration-300 hover:shadow-2xl">
-<div class="flex flex-col gap-space-md">
-<!-- Card Header with Authentic Android Robot SVG -->
-<div class="flex items-center gap-space-sm">
-<div class="w-11 h-11 rounded-xl bg-surface-container-high flex items-center justify-center p-2 text-text-primary border border-border-subtle group-hover:border-primary/40 transition-colors">
-<svg class="w-6 h-6 fill-current text-[#3ddc84]" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0002 0-.5511.4482-.9993.9993-.9993.5516 0 .9998.4482.9998.9993 0 .5516-.4482 1.0002-.9998 1.0002m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0002 0-.5511.4482-.9993.9993-.9993.5516 0 .9998.4482.9998.9993 0 .5516-.4482 1.0002-.9998 1.0002m11.4045-6.02l1.997-3.4582c.1086-.1882.0441-.4296-.1441-.5382-.1887-.1087-.43-.0441-.5387.1441l-2.0232 3.5042c-1.4725-.6687-3.1384-1.0427-4.9125-1.0427-1.774 0-3.4399.374-4.9124 1.0427l-2.0232-3.5042c-.1087-.1882-.35-.2528-.5387-.1441-.1882.1086-.2527.35-.1441.5382l1.997 3.4582c-3.1812 1.7247-5.3524 4.981-5.6385 8.8028h22.0209c-.2861-3.8218-2.4573-7.0781-5.6385-8.8028"></path>
-</svg>
-</div>
-<div>
-<h3 class="font-title-md text-title-md font-bold text-text-primary">Android</h3>
-<span class="font-label-sm text-label-sm text-text-secondary">Mobile &amp; Tablet</span>
-</div>
-</div>
-<!-- Standardized Specification Lines -->
-<div class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-2 font-label-md text-label-md">
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Package Size</span>
-<span class="text-text-primary font-medium">38.5 MB</span>
-</div>
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Compatibility</span>
-<span class="text-text-primary font-medium truncate" title="Android 9.0+ (API 28+)">Android 9.0+ (API 28+)</span>
-</div>
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Signature / Verification</span>
-<span class="text-status-healthy font-medium flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">verified</span> Google Play / APK Verified
-</span>
-</div>
-</div>
-</div>
-<!-- Identically Styled Primary Action Button -->
-<div class="pt-space-md">
-<a class="w-full flex items-center justify-center gap-space-xs px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-md hover:brightness-110 transition-all text-center" href="./workspace.html">
-<span class="material-symbols-outlined text-[18px]">download</span>
-<span class="truncate">Download (.apk)</span>
-</a>
-</div>
-</div>
-<!-- 5. iOS / iPadOS Card -->
-<div class="group relative flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-xl transition-all duration-300 hover:shadow-2xl">
-<div class="flex flex-col gap-space-md">
-<!-- Card Header with Authentic Apple Mobile SVG -->
-<div class="flex items-center gap-space-sm">
-<div class="w-11 h-11 rounded-xl bg-surface-container-high flex items-center justify-center p-2 text-text-primary border border-border-subtle group-hover:border-primary/40 transition-colors">
-<svg class="w-6 h-6 fill-current text-secondary" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-<path d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14zm-5 1c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z"></path>
-</svg>
-</div>
-<div>
-<h3 class="font-title-md text-title-md font-bold text-text-primary">iOS / iPadOS</h3>
-<span class="font-label-sm text-label-sm text-text-secondary">Handheld Client</span>
-</div>
-</div>
-<!-- Standardized Specification Lines -->
-<div class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-2 font-label-md text-label-md">
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Package Size</span>
-<span class="text-text-primary font-medium">41.2 MB</span>
-</div>
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Compatibility</span>
-<span class="text-text-primary font-medium truncate" title="iOS 16.0+ (iPhone &amp; iPad)">iOS 16.0+ (iPhone &amp; iPad)</span>
-</div>
-<div class="flex flex-col">
-<span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Signature / Verification</span>
-<span class="text-status-healthy font-medium flex items-center gap-1">
-<span class="material-symbols-outlined text-[14px]">verified</span> App Store / TestFlight Signed
-</span>
-</div>
-</div>
-</div>
-<!-- Identically Styled Primary Action Button -->
-<div class="pt-space-md">
-<a class="w-full flex items-center justify-center gap-space-xs px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-md hover:brightness-110 transition-all text-center" href="./workspace.html">
-<span class="material-symbols-outlined text-[18px]">download</span>
-<span class="truncate">Download (.ipa / TestFlight)</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Section 2: Redesigned Embedded Firmware & Hardware Modules -->
-<section class="w-full px-margin md:px-margin-desktop py-space-xl" id="embedded-hub">
-<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
-<div class="flex flex-col gap-space-xs">
-<div class="flex items-center gap-space-xs">
-<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
-<span class="font-label-sm text-label-sm text-secondary tracking-widest uppercase font-semibold">Micro-Controllers &amp; Edge Diagnostic Devices</span>
-</div>
-<h2 class="font-headline-lg text-headline-lg text-text-primary tracking-tight">Embedded Firmware &amp; Tonometer Bridges</h2>
-<p class="font-body-md text-body-md text-text-secondary max-w-3xl">
-          Clean standalone firmware packages engineered for microcontrollers, embedded single-board computers, and serial diagnostic tonometer bridges.
-        </p>
-</div>
-<!-- 3-Column Embedded Hardware Grid matching OS card language -->
-<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
-<!-- Hardware 1: ESP32-S3 -->
-<div class="flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-lg transition-all">
-<div class="flex flex-col gap-space-sm">
-<div class="flex items-center justify-between pb-1">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-primary text-[22px]">developer_board</span>
-<h3 class="font-title-md text-title-md font-bold text-text-primary">ESP32 / ESP32-S3 Bridge</h3>
-</div>
-<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-text-secondary">ESP-IDF v5.1</span>
-</div>
-<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
-          FreeRTOS standalone dual-core firmware. Captures real-time Intraocular Pressure (IOP) from tonometer serial ports, encodes Bluetooth LE 5.0 GATT streams, and dispatches data to workstation nodes.
-        </p>
-<div class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-1.5 font-label-sm text-label-sm">
-<div class="flex items-center justify-between">
-<span class="text-text-secondary">Binary Image:</span>
-<span class="text-text-primary font-medium font-mono text-[11px]">firmware_v2.4.1.bin</span>
-</div>
-<div class="flex items-center justify-between">
-<span class="text-text-secondary">Package Size:</span>
-<span class="text-text-primary font-medium">4.8 MB</span>
-</div>
-<div class="flex items-center justify-between">
-<span class="text-text-secondary">Architecture:</span>
-<span class="text-text-primary font-medium">Xtensa LX7 / RISC-V</span>
-</div>
-</div>
-<!-- Direct Reference Link to Developer Docs -->
-<div class="pt-1">
-<a class="font-label-md text-label-md text-primary hover:text-optic-disc-gold inline-flex items-center gap-1 font-semibold transition-colors" href="./api.html">
-<span>View Integration Guide in API Docs</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</div>
-<div class="pt-space-md">
-<a class="w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-bright border border-border-subtle text-on-surface font-label-md text-label-md font-bold transition-colors" href="./workspace.html">
-<span class="material-symbols-outlined text-[18px]">sim_card_download</span>
-<span>Download Firmware (.bin)</span>
-</a>
-</div>
-</div>
-<!-- Hardware 2: Raspberry Pi Appliance -->
-<div class="flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-lg transition-all">
-<div class="flex flex-col gap-space-sm">
-<div class="flex items-center justify-between pb-1">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary text-[22px]">memory</span>
-<h3 class="font-title-md text-title-md font-bold text-text-primary">Raspberry Pi CM4 / Pi 5</h3>
-</div>
-<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-text-secondary">64-Bit OS</span>
-</div>
-<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
-          Customized Debian diagnostic OS image configured for fundus optics, HQ camera modules, and acceleration runtime for Google Coral USB TPU and Hailo-8 M.2 micro-accelerators.
-        </p>
-<div class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-1.5 font-label-sm text-label-sm">
-<div class="flex items-center justify-between">
-<span class="text-text-secondary">Image Package:</span>
-<span class="text-text-primary font-medium font-mono text-[11px]">fundusguard-pi-v2.4.1.img.xz</span>
-</div>
-<div class="flex items-center justify-between">
-<span class="text-text-secondary">Package Size:</span>
-<span class="text-text-primary font-medium">1.2 GB</span>
-</div>
-<div class="flex items-center justify-between">
-<span class="text-text-secondary">Format:</span>
-<span class="text-text-primary font-medium">BalenaEtcher Ready</span>
-</div>
-</div>
-<!-- Direct Reference Link to Developer Docs -->
-<div class="pt-1">
-<a class="font-label-md text-label-md text-secondary hover:text-optic-disc-gold inline-flex items-center gap-1 font-semibold transition-colors" href="./api.html">
-<span>View Hardware Specs in API Docs</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</div>
-<div class="pt-space-md">
-<a class="w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-bright border border-border-subtle text-on-surface font-label-md text-label-md font-bold transition-colors" href="./workspace.html">
-<span class="material-symbols-outlined text-[18px]">download</span>
-<span>Download OS Image (.img.xz)</span>
-</a>
-</div>
-</div>
-<!-- Hardware 3: Arduino Bridge Library -->
-<div class="flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-lg transition-all">
-<div class="flex flex-col gap-space-sm">
-<div class="flex items-center justify-between pb-1">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-status-healthy text-[22px]">settings_input_composite</span>
-<h3 class="font-title-md text-title-md font-bold text-text-primary">Arduino / PlatformIO Library</h3>
-</div>
-<span class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-text-secondary">v1.2.0 Official</span>
-</div>
-<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
-          Drop-in C++ library for parsing Haag-Streit, Reichert 7CR, and Canon TX-20 ophthalmic serial outputs. Includes circular telemetry buffer and CRC16 clinical data validator.
-        </p>
-<div class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-1.5 font-label-sm text-label-sm">
-<div class="flex items-center justify-between">
-<span class="text-text-secondary">Library Pack:</span>
-<span class="text-text-primary font-medium font-mono text-[11px]">FundusGuard-Bridge.zip</span>
-</div>
-<div class="flex items-center justify-between">
-<span class="text-text-secondary">Compatibility:</span>
-<span class="text-text-primary font-medium">Arduino IDE / PlatformIO</span>
-</div>
-<div class="flex items-center justify-between">
-<span class="text-text-secondary">Licensing:</span>
-<span class="text-text-primary font-medium">MIT Open Clinical</span>
-</div>
-</div>
-<!-- Direct Reference Link to Developer Docs -->
-<div class="pt-1">
-<a class="font-label-md text-label-md text-status-healthy hover:text-optic-disc-gold inline-flex items-center gap-1 font-semibold transition-colors" href="./api.html">
-<span>View Library Setup in API Docs</span>
-<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
-</a>
-</div>
-</div>
-<div class="pt-space-md">
-<a class="w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-bright border border-border-subtle text-on-surface font-label-md text-label-md font-bold transition-colors" href="./workspace.html">
-<span class="material-symbols-outlined text-[18px]">folder_zip</span>
-<span>Download Arduino Library (.zip)</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Section 3: Cleaned Release Archive Table (Clutter Removed) -->
-<section class="w-full px-margin md:px-margin-desktop py-space-xl" id="release-archive">
-<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
-<div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
-<div>
-<span class="font-label-sm text-label-sm text-primary tracking-widest uppercase font-semibold">Release Ledger</span>
-<h2 class="font-headline-lg text-headline-lg text-text-primary tracking-tight">Version Control &amp; Release History</h2>
-<p class="font-body-md text-body-md text-text-secondary">Track official production, LTS maintenance, and testing releases.</p>
-</div>
-<!-- Search / Filter Box -->
-<div class="flex items-center gap-space-xs">
-<div class="relative w-full sm:w-64">
-<span class="material-symbols-outlined absolute left-3 top-2.5 text-text-secondary text-[18px]">search</span>
-<input class="w-full pl-9 pr-3 py-2 rounded-xl bg-surface-container-lowest border border-border-subtle text-text-primary placeholder:text-text-secondary font-label-md text-label-md focus:outline-none focus:border-primary" id="release-search" placeholder="Filter version (e.g. v2.4, LTS)..." type="text"/>
-</div>
-</div>
-</div>
-<!-- Release Tier Filter Tabs -->
-<div class="flex items-center gap-space-xs pb-1 overflow-x-auto">
-<button class="release-tab-btn px-4 py-2 rounded-xl font-label-md text-label-md transition-colors bg-primary-container text-on-primary font-bold shadow-sm" data-tab="all" onclick="filterReleases('all')">
-          All Releases (5)
-        </button>
-<button class="release-tab-btn px-4 py-2 rounded-xl font-label-md text-label-md transition-colors bg-surface-container border border-border-subtle text-text-secondary hover:text-on-surface hover:bg-surface-container-high" data-tab="stable" onclick="filterReleases('stable')">
-          Stable (Production)
-        </button>
-<button class="release-tab-btn px-4 py-2 rounded-xl font-label-md text-label-md transition-colors bg-surface-container border border-border-subtle text-text-secondary hover:text-on-surface hover:bg-surface-container-high" data-tab="lts" onclick="filterReleases('lts')">
-          LTS (Audit Certified)
-        </button>
-<button class="release-tab-btn px-4 py-2 rounded-xl font-label-md text-label-md transition-colors bg-surface-container border border-border-subtle text-text-secondary hover:text-on-surface hover:bg-surface-container-high" data-tab="prerelease" onclick="filterReleases('prerelease')">
-          Pre-Release (Beta)
-        </button>
-</div>
-<!-- Table Container -->
-<div class="w-full overflow-x-auto rounded-xl bg-surface-container-low border border-border-subtle shadow-xl">
-<table class="w-full text-left font-body-md text-body-md" id="release-table">
-<thead>
-<tr class="bg-surface-container-high font-label-sm text-label-sm text-text-secondary uppercase tracking-wider border-b border-border-subtle">
-<th class="py-3 px-4">Release Version</th>
-<th class="py-3 px-4">Channel</th>
-<th class="py-3 px-4">Release Date</th>
-<th class="py-3 px-4">Key Improvements &amp; Notes</th>
-<th class="py-3 px-4 text-right">Download Action</th>
-</tr>
-</thead>
-<tbody class="divide-y divide-surface-container-high font-body-sm text-body-sm">
-<!-- Row: v2.4.1 -->
-<tr class="release-row hover:bg-surface-container transition-colors" data-text="v2.4.1 stable directml dicom" data-type="stable">
-<td class="py-4 px-4">
-<div class="flex items-center gap-space-xs">
-<span class="font-title-md text-title-md font-bold text-text-primary">v2.4.1</span>
-<span class="px-2 py-0.5 rounded-full bg-status-healthy/15 text-status-healthy font-label-sm text-label-sm font-semibold">Latest</span>
-</div>
-<span class="text-text-secondary font-label-sm text-label-sm">SPI-OWL v2.4 Core</span>
-</td>
-<td class="py-4 px-4">
-<span class="px-2 py-1 rounded-md bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">Production</span>
-</td>
-<td class="py-4 px-4 text-text-secondary whitespace-nowrap">March 04, 2025</td>
-<td class="py-4 px-4 max-w-md">
-<p class="text-text-primary font-medium">DICOM SR auto-tagging and refined optic cup segmentation boundaries.</p>
-<span class="text-text-secondary font-label-sm text-label-sm">Added cross-platform native pipeline acceleration updates.</span>
-</td>
-<td class="py-4 px-4 text-right whitespace-nowrap">
-<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm font-bold shadow-sm hover:brightness-110 transition-all" href="./workspace.html">
-<span class="material-symbols-outlined text-[14px]">download</span>
-<span>Download v2.4.1</span>
-</a>
-</td>
-</tr>
-<!-- Row: v2.4.0 -->
-<tr class="release-row hover:bg-surface-container transition-colors" data-text="v2.4.0 stable esp32 multimodal iop" data-type="stable">
-<td class="py-4 px-4">
-<div class="flex items-center gap-space-xs">
-<span class="font-title-md text-title-md font-bold text-text-primary">v2.4.0</span>
-</div>
-<span class="text-text-secondary font-label-sm text-label-sm">Major Architectural Release</span>
-</td>
-<td class="py-4 px-4">
-<span class="px-2 py-1 rounded-md bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">Production</span>
-</td>
-<td class="py-4 px-4 text-text-secondary whitespace-nowrap">February 11, 2025</td>
-<td class="py-4 px-4 max-w-md">
-<p class="text-text-primary font-medium">Multimodal IOP &amp; pachymetry regression engine; ESP32-S3 zero-copy buffer architecture.</p>
-<span class="text-text-secondary font-label-sm text-label-sm">Automated cup-to-disc boundary smoothing via active contours.</span>
-</td>
-<td class="py-4 px-4 text-right whitespace-nowrap">
-<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-sm text-label-sm font-medium transition-colors" href="./workspace.html">
-<span class="material-symbols-outlined text-[14px]">download</span>
-<span>Download v2.4.0</span>
-</a>
-</td>
-</tr>
-<!-- Row: v2.3.2 (LTS) -->
-<tr class="release-row hover:bg-surface-container transition-colors" data-text="v2.3.2 lts audit clinical certification baseline" data-type="lts">
-<td class="py-4 px-4">
-<div class="flex items-center gap-space-xs">
-<span class="font-title-md text-title-md font-bold text-text-primary">v2.3.2</span>
-<span class="px-2 py-0.5 rounded-full bg-secondary-container/20 text-secondary font-label-sm text-label-sm font-semibold">LTS</span>
-</div>
-<span class="text-text-secondary font-label-sm text-label-sm">Supported until June 2026</span>
-</td>
-<td class="py-4 px-4">
-<span class="px-2 py-1 rounded-md bg-secondary/15 text-secondary font-label-sm text-label-sm font-bold">Long Term Support</span>
-</td>
-<td class="py-4 px-4 text-text-secondary whitespace-nowrap">December 18, 2024</td>
-<td class="py-4 px-4 max-w-md">
-<p class="text-text-primary font-medium">Certified baseline for retrospective hospital audit trials and offline PACS ingestion.</p>
-<span class="text-text-secondary font-label-sm text-label-sm">Validated high-reliability offline segmentation profiles.</span>
-</td>
-<td class="py-4 px-4 text-right whitespace-nowrap">
-<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-secondary font-label-sm text-label-sm font-medium transition-colors" href="./workspace.html">
-<span class="material-symbols-outlined text-[14px]">download</span>
-<span>Download LTS</span>
-</a>
-</td>
-</tr>
-<!-- Row: v2.5.0-beta1 (Pre-Release) -->
-<tr class="release-row hover:bg-surface-container transition-colors" data-text="v2.5.0-beta1 beta prerelease experimental 3d oct" data-type="prerelease">
-<td class="py-4 px-4">
-<div class="flex items-center gap-space-xs">
-<span class="font-title-md text-title-md font-bold text-text-primary">v2.5.0-beta1</span>
-<span class="px-2 py-0.5 rounded-full bg-error-container/30 text-error font-label-sm text-label-sm font-semibold">Beta</span>
-</div>
-<span class="text-text-secondary font-label-sm text-label-sm">Experimental Pre-Release</span>
-</td>
-<td class="py-4 px-4">
-<span class="px-2 py-1 rounded-md bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">Testing</span>
-</td>
-<td class="py-4 px-4 text-text-secondary whitespace-nowrap">February 28, 2025</td>
-<td class="py-4 px-4 max-w-md">
-<p class="text-text-primary font-medium">Volumetric RNFL (Retinal Nerve Fiber Layer) thickness mapping preview.</p>
-<span class="text-text-secondary font-label-sm text-label-sm">For clinical lab benchmarks and research testing only.</span>
-</td>
-<td class="py-4 px-4 text-right whitespace-nowrap">
-<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-error font-label-sm text-label-sm font-medium transition-colors" href="./workspace.html">
-<span class="material-symbols-outlined text-[14px]">science</span>
-<span>Download Beta</span>
-</a>
-</td>
-</tr>
-<!-- Row: v2.2.0 (Stable Legacy) -->
-<tr class="release-row hover:bg-surface-container transition-colors" data-text="v2.2.0 stable initial desktop offline" data-type="stable">
-<td class="py-4 px-4">
-<div class="flex items-center gap-space-xs">
-<span class="font-title-md text-title-md font-bold text-text-primary">v2.2.0</span>
-</div>
-<span class="text-text-secondary font-label-sm text-label-sm">Legacy Desktop Base</span>
-</td>
-<td class="py-4 px-4">
-<span class="px-2 py-1 rounded-md bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">Production</span>
-</td>
-<td class="py-4 px-4 text-text-secondary whitespace-nowrap">October 14, 2024</td>
-<td class="py-4 px-4 max-w-md">
-<p class="text-text-primary font-medium">First offline standalone release with optic disc and cup contour CSV exporter.</p>
-<span class="text-text-secondary font-label-sm text-label-sm">Standard desktop distribution packages.</span>
-</td>
-<td class="py-4 px-4 text-right whitespace-nowrap">
-<a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-sm text-label-sm font-medium transition-colors" href="./workspace.html">
-<span class="material-symbols-outlined text-[14px]">download</span>
-<span>Download v2.2.0</span>
-</a>
-</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-<!-- Section 4: Air-Gapped Trust & Governance Cards -->
-<section class="w-full px-margin md:px-margin-desktop py-space-xl">
-<div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
-<div class="flex flex-col gap-space-xs">
-<span class="font-label-sm text-label-sm text-optic-disc-gold tracking-widest uppercase font-semibold">Governance &amp; Clinical Security</span>
-<h2 class="font-headline-lg text-headline-lg text-text-primary tracking-tight">Security Standards &amp; Air-Gapped Trust</h2>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
-<!-- Card 1: Diagnostic Accuracy Profile -->
-<div class="p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle shadow-lg flex flex-col justify-between">
-<div class="flex flex-col gap-space-sm">
-<div class="flex items-center gap-space-xs text-primary">
-<span class="material-symbols-outlined text-[24px]">verified</span>
-<h3 class="font-title-md text-title-md text-text-primary">Clinical Verification</h3>
-</div>
-<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
-          Every desktop and mobile binary is cryptographically signed and tested across multi-center retinal datasets.
-        </p>
-<div class="flex flex-col gap-space-xs pt-space-xs font-label-md text-label-md">
-<div class="p-2 rounded bg-surface-container-lowest border border-border-subtle flex flex-col gap-0.5">
-<span class="text-text-secondary">Validation Score</span>
-<span class="text-text-primary font-medium">Dice 0.94 Cup / Disc Overlap</span>
-</div>
-<div class="p-2 rounded bg-surface-container-lowest border border-border-subtle flex flex-col gap-0.5">
-<span class="text-text-secondary">Release Integrity</span>
-<span class="text-status-healthy font-medium">Authenticode &amp; Notarized Binaries</span>
-</div>
-</div>
-</div>
-<div class="pt-space-md">
-<a class="font-label-md text-label-md text-primary hover:text-optic-disc-gold flex items-center gap-1 font-semibold transition-colors" href="./about.html">
-<span>Read Clinical Validation Report</span>
-<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-</a>
-</div>
-</div>
-<!-- Card 2: Developer Documentation -->
-<div class="p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle shadow-lg flex flex-col justify-between">
-<div class="flex flex-col gap-space-sm">
-<div class="flex items-center gap-space-xs text-secondary">
-<span class="material-symbols-outlined text-[24px]">terminal</span>
-<h3 class="font-title-md text-title-md text-text-primary">Developer &amp; Hardware Guides</h3>
-</div>
-<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
-          Access full architectural specifications, REST API schemas, DICOM PACS integration rules, and firmware flashing guides in our Developer Docs.
-        </p>
-<div class="flex flex-col gap-2 pt-space-xs font-label-md text-label-md text-text-secondary">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary text-[16px]">menu_book</span>
-<span>Comprehensive API &amp; SDK Documentation</span>
-</div>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-secondary text-[16px]">cable</span>
-<span>Hardware Serial Protocol Handbooks</span>
-</div>
-</div>
-</div>
-<div class="pt-space-md">
-<a class="font-label-md text-label-md text-secondary hover:text-optic-disc-gold flex items-center gap-1 font-semibold transition-colors" href="./api.html">
-<span>Explore API Documentation</span>
-<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-</a>
-</div>
-</div>
-<!-- Card 3: Air-Gapped HIPAA Compliance -->
-<div class="p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle shadow-lg flex flex-col justify-between">
-<div class="flex flex-col gap-space-sm">
-<div class="flex items-center gap-space-xs text-optic-disc-gold">
-<span class="material-symbols-outlined text-[24px]">security</span>
-<h3 class="font-title-md text-title-md text-text-primary">Air-Gapped &amp; HIPAA Safe</h3>
-</div>
-<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
-          FundusGuard desktop and firmware binaries require zero external telemetry, cloud analytics beacons, or remote license ping servers.
-        </p>
-<div class="flex flex-col gap-1.5 pt-space-xs font-label-md text-label-md text-text-secondary">
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-status-healthy text-[16px]">lock</span>
-<span>Protected Health Information (PHI) stays strictly local</span>
-</div>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-status-healthy text-[16px]">router</span>
-<span>Fully operational on segregated hospital intranets</span>
-</div>
-<div class="flex items-center gap-2">
-<span class="material-symbols-outlined text-status-healthy text-[16px]">file_download_off</span>
-<span>Zero background model re-downloads required</span>
-</div>
-</div>
-</div>
-<div class="pt-space-md">
-<a class="font-label-md text-label-md text-optic-disc-gold hover:text-text-primary flex items-center gap-1 font-semibold transition-colors" href="./contact.html">
-<span>Request Air-Gapped Licensing Token</span>
-<span class="material-symbols-outlined text-[14px]">arrow_forward</span>
-</a>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- Filter Script -->
-<script>
-    // Release Tab Filtering
-    function filterReleases(type) {
-      const rows = document.querySelectorAll(".release-row");
-      const buttons = document.querySelectorAll(".release-tab-btn");
+  <% if (isHosted) { %>
+    <link rel="stylesheet" href="https://kidkrishkode.github.io/fundusguardai/assets/styles/app.css"/>
+    <script src="https://kidkrishkode.github.io/fundusguardai/assets/scripts/tailwind.js"></script>
+  <% } else { %>
+    <link rel="stylesheet" href="../assets/styles/app.css" />
+    <script src="../assets/scripts/tailwind.js"></script>
+  <% } %>
 
-      buttons.forEach(btn => {
-        if (btn.getAttribute("data-tab") === type) {
-          btn.className = "release-tab-btn px-4 py-2 rounded-xl font-label-md text-label-md transition-colors bg-primary-container text-on-primary font-bold shadow-sm";
-        } else {
-          btn.className = "release-tab-btn px-4 py-2 rounded-xl font-label-md text-label-md transition-colors bg-surface-container border border-border-subtle text-text-secondary hover:text-on-surface hover:bg-surface-container-high";
-        }
-      });
+</head>
 
-      rows.forEach(row => {
-        const rowType = row.getAttribute("data-type");
-        if (type === "all" || rowType === type) {
-          row.style.display = "";
-        } else {
-          row.style.display = "none";
-        }
-      });
-    }
 
-    // Search Input Filtering
-    const searchInput = document.getElementById("release-search");
-    if (searchInput) {
-      searchInput.addEventListener("input", function(e) {
-        const term = e.target.value.toLowerCase().trim();
-        const rows = document.querySelectorAll(".release-row");
-
-        rows.forEach(row => {
-          const text = row.getAttribute("data-text") || "";
-          if (text.includes(term) || row.textContent.toLowerCase().includes(term)) {
-            row.style.display = "";
-          } else {
-            row.style.display = "none";
-          }
-        });
-      });
-    }
-
-    // Mobile nav toggle
-    const mobileNavToggle = document.getElementById("mobile-nav-toggle");
-    const mobileDrawer = document.getElementById("mobile-drawer");
-    if (mobileNavToggle && mobileDrawer) {
-      mobileNavToggle.addEventListener("click", () => {
-        mobileDrawer.classList.toggle("hidden");
-      });
-    }
-</script>
-</div></main><footer class="w-full bg-surface-container-lowest border-t border-border-amber-glow pt-space-xl pb-16"><div class="w-full px-margin md:px-margin-desktop"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg mb-space-xl"><div class="flex flex-col gap-space-sm"><div class="flex items-center gap-space-xs"><img alt="FundusGuard SPI-OWL Logo" class="h-7 w-auto object-contain" src="https://lh3.googleusercontent.com/aida/AEtjO1XuGG_CunjYbLlqWWCOvcsvp1rkvaS5jI_FvhQgC_lrRq997rNLHHfsfE2FHli3N9ymN5GtJStF-K-SM-h7YrpGnBPESNnKaz0770VT4tWzQuknVHHTW0OFne_T6xvSCgbxpLwaBMkMianinPJryJc7tj_6Sa49HqZoiSWbe8wEeKsiGEtLA0VVC0mOkVhan_zkTwTw73ZGn_76e7ixQfvj0tWpd-GOtV46FUp7XeCKgp88r1qvM_DoZEQ"/><span class="font-headline-md text-headline-md tracking-tight text-text-primary">FundusGuard</span><span class="font-headline-md text-headline-md tracking-tight text-optic-disc-gold">AI</span></div><p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">Diagnostic-grade deep learning platform engineered for precision cup-to-disc ratio (CDR) quantification, retinal biomicroscopy segmentation, and rapid glaucoma triage.</p><div class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-surface-container-low border border-border-subtle w-fit"><span class="w-2 h-2 rounded-full bg-status-healthy animate-ping"></span><span class="font-label-sm text-label-sm text-status-healthy font-semibold">API v2.4 Operational</span><span class="font-label-sm text-label-sm text-on-surface-variant">• 42ms Inference</span></div></div><div class="flex flex-col gap-space-xs"><span class="font-title-md text-title-md text-on-surface mb-space-xs">Quick Navigation</span><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="home" href="./home.html">Platform Home</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="workspace" href="./workspace.html">AI Workspace &amp; Viewer</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="about" href="./about.html">About &amp; Clinical Validation</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="api-docs" href="./api.html">Documentation &amp; Specs</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="app-download" href="./download.html">App &amp; Firmware Downloads</a></div><div class="flex flex-col gap-space-xs"><span class="font-title-md text-title-md text-on-surface mb-space-xs">Developer &amp; API</span><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="api-docs" href="./api.html">RESTful Inference API</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="api-docs" href="./api.html">Python Client SDK</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="api-docs" href="./api.html">DICOM PACS Ingestion</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="api-docs" href="./api.html">PyTorch &amp; ONNX Models</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="about" href="./about.html">Model Card &amp; Benchmarks</a></div><div class="flex flex-col gap-space-xs"><span class="font-title-md text-title-md text-on-surface mb-space-xs">Clinical &amp; Governance</span><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="about" href="./about.html">Multi-Center Clinical Trials</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="about" href="./about.html">IRB Protocol Standards</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="contact" href="./contact.html">HIPAA / GDPR Compliance</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="about" href="./about.html">Peer-Reviewed Papers</a><a class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1" data-path="contact" href="./contact.html">Institutional Ethics Advisory</a></div></div><div class="p-space-md rounded-xl bg-surface-container-low border border-border-amber-glow flex flex-col md:flex-row items-center justify-between gap-space-sm mb-space-lg"><div class="flex items-center gap-space-sm"><span class="material-symbols-outlined text-optic-disc-gold">verified</span><p class="font-body-sm text-body-sm text-on-surface">Developed with precision by <strong class="text-optic-disc-gold font-semibold">Krishnendu Mitra</strong> (Student Developer) under the guidance of <strong class="text-text-primary font-semibold">Prof. Soumen Mukherjee</strong>.</p></div><div class="flex items-center gap-space-xs"><span class="font-label-sm text-label-sm text-text-secondary">SPI-OWL Architecture v2.4</span><span class="px-2 py-0.5 rounded-full bg-surface-container-high text-optic-disc-gold font-label-sm text-label-sm border border-border-amber-glow">Research Edition</span></div></div><div class="pt-space-md border-t border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-space-md"><p class="font-body-sm text-body-sm text-text-secondary">© 2024 FundusGuard AI. All rights reserved. For clinical research and preliminary screening.</p><div class="flex items-center gap-space-md"><a aria-label="GitHub Repo" class="font-body-sm text-body-sm text-text-secondary hover:text-optic-disc-gold transition-colors" href="#">GitHub</a><a aria-label="arXiv Pre-print" class="font-body-sm text-body-sm text-text-secondary hover:text-optic-disc-gold transition-colors" href="#">arXiv</a><a aria-label="HuggingFace Models" class="font-body-sm text-body-sm text-text-secondary hover:text-optic-disc-gold transition-colors" href="#">HuggingFace</a><a aria-label="LinkedIn Developer Profile" class="font-body-sm text-body-sm text-text-secondary hover:text-optic-disc-gold transition-colors" href="#">LinkedIn</a></div></div></div></footer><div class="sm:hidden fixed bottom-3 left-3 right-3 z-40 bg-surface-container-high/90 backdrop-blur-lg border border-border-amber-glow rounded-xl p-2 flex items-center justify-between shadow-[0_8px_32px_rgba(0,0,0,0.7)]"><div class="flex items-center gap-2 pl-2"><span class="w-2 h-2 rounded-full bg-status-healthy animate-pulse"></span><span class="font-label-sm text-label-sm text-on-surface">SPI-OWL Engine Ready</span></div><a class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-sm text-label-sm text-on-primary font-bold shadow-[0_0_12px_rgba(234,88,12,0.4)] flex items-center gap-1" data-path="workspace" href="./workspace.html"><span>Launch</span><span class="material-symbols-outlined text-[14px]">arrow_forward</span></a></div></body></html>
+<body
+  class="bg-surface font-body-md text-on-surface antialiased selection:bg-primary-container selection:text-on-primary"
+  style="overflow-y: auto !important; overflow-x: hidden; height: auto !important; min-height: 100vh; position: static !important;">
+  <%- header %>
+  <main class="w-full pt-16 bg-surface" style="position: static !important; overflow: visible;">
+    <div class="flex flex-col w-full">
+      <!-- Toast Notification Container -->
+      <div
+        class="fixed bottom-6 right-6 z-50 flex items-center gap-space-sm px-4 py-2.5 rounded-xl bg-surface-container-highest/95 backdrop-blur-md shadow-xl text-on-surface transition-all duration-300 opacity-0 pointer-events-none translate-y-3"
+        id="toast">
+        <span class="material-symbols-outlined text-status-healthy text-title-md">check_circle</span>
+        <span class="font-label-md text-label-md" id="toast-message">Notification</span>
+      </div>
+      <!-- Hero Section & System Direct Download Hub -->
+      <section class="relative w-full px-margin md:px-margin-desktop py-space-xl overflow-hidden">
+        <!-- Ambient Radiance Backgrounds -->
+        <div
+          class="absolute -top-32 -left-20 w-96 h-96 rounded-full bg-primary-container/10 blur-[100px] pointer-events-none">
+        </div>
+        <div
+          class="absolute top-1/3 -right-20 w-80 h-80 rounded-full bg-secondary-container/10 blur-[90px] pointer-events-none">
+        </div>
+        <div class="max-w-7xl mx-auto flex flex-col gap-space-lg relative z-10">
+          <!-- Breadcrumb & Release Status Banner -->
+          <div class="flex flex-wrap items-center justify-between gap-space-sm">
+            <div
+              class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm border border-border-amber-glow">
+              <span class="w-2 h-2 rounded-full bg-status-healthy animate-pulse"></span>
+              <span class="tracking-wider uppercase font-semibold text-text-primary">OFFICIAL RELEASES</span>
+              <span class="text-text-secondary">•</span>
+              <span class="text-optic-disc-gold font-bold">v1.0 PRODUCTION STABLE</span>
+            </div>
+            <div
+              class="flex items-center gap-space-xs px-3.5 py-1.5 rounded-xl bg-surface-container-low border border-border-subtle text-on-surface shadow-sm">
+              <span class="material-symbols-outlined text-title-md text-primary">verified_user</span>
+              <span class="font-label-md text-label-md text-text-secondary">Release Integrity:</span>
+              <span class="font-label-md text-label-md font-bold text-text-primary">Clinically Validated &amp;
+                Air-Gapped</span>
+            </div>
+          </div>
+          <!-- Hero Copy -->
+          <div class="flex flex-col gap-space-sm max-w-4xl">
+            <h1 class="font-headline-xl text-headline-xl tracking-tight text-text-primary">
+              Download FundusGuard AI for <span
+                class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">Every Clinical
+                Platform</span>
+            </h1>
+            <p class="font-body-lg text-body-lg text-text-secondary leading-relaxed">
+              Deploy autonomous retinal cup-to-disc ratio (CDR) quantification and glaucoma screening natively across
+              desktop workstations, clinical tablets, mobile devices, and dedicated embedded diagnostic hardware.
+            </p>
+          </div>
+          <!-- Platform Anchor Pill Bar -->
+          <div
+            class="flex flex-wrap items-center gap-space-xs p-1.5 rounded-xl bg-surface-container-lowest border border-border-subtle w-fit">
+            <a class="px-3 py-1.5 rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors flex items-center gap-1.5"
+              href="#app-matrix">
+              <span class="material-symbols-outlined text-[16px] text-primary">apps</span> Application
+            </a>
+            <a class="px-3 py-1.5 rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors flex items-center gap-1.5"
+              href="#embedded-hub">
+              <span class="material-symbols-outlined text-[16px] text-optic-disc-gold">memory</span> Embedded Firmware
+            </a>
+            <a class="px-3 py-1.5 rounded-lg font-label-md text-label-md text-on-surface hover:bg-surface-container-high transition-colors flex items-center gap-1.5"
+              href="#release-archive">
+              <span class="material-symbols-outlined text-[16px] text-text-secondary">history</span> Version Archive
+            </a>
+          </div>
+        </div>
+      </section>
+      <!-- Section 1: Unified OS App Download Grid (Windows, macOS, Linux, Android, iOS) -->
+      <section class="w-full px-margin md:px-margin-desktop py-space-lg" id="app-matrix">
+        <div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+          <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-space-sm">
+            <div>
+              <span class="font-label-sm text-label-sm text-primary tracking-widest uppercase font-semibold">Native
+                Diagnostic Apps</span>
+              <h2 class="font-headline-lg text-headline-lg text-text-primary tracking-tight">Application Downloads
+              </h2>
+            </div>
+            <div class="text-right">
+              <span class="font-label-md text-label-md text-text-secondary">All packages preloaded with SPI-OWL v1.0
+                neural model</span>
+            </div>
+          </div>
+          <!-- 5-Column Unified OS Grid (Symmetrical, Equal Styling & Heights) -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-md">
+            <!-- 1. Windows Card -->
+            <div
+              class="group relative flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-xl transition-all duration-300 hover:shadow-2xl">
+              <div class="flex flex-col gap-space-md">
+                <!-- Card Header with Authentic Windows SVG -->
+                <div class="flex items-center gap-space-sm">
+                  <div
+                    class="w-11 h-11 rounded-xl bg-surface-container-high flex items-center justify-center p-2 text-text-primary border border-border-subtle group-hover:border-primary/40 transition-colors">
+                    <svg class="w-6 h-6 fill-current text-[#00adef]" viewbox="0 0 88 88"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M0 12.402l35.689-4.86.016 34.423-35.67.203zm35.67 33.529l.029 34.453-35.699-4.908-.002-29.748zm4.327-39.047L87.98 0v41.524l-47.98.275zm47.987 38.647L88 88l-47.994-6.753-.024-34.721z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-title-md text-title-md font-bold text-text-primary">Windows</h3>
+                    <span class="font-label-sm text-label-sm text-text-secondary">Desktop Client</span>
+                  </div>
+                </div>
+                <!-- Standardized Specification Lines -->
+                <div
+                  class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-2 font-label-md text-label-md">
+                  <div class="flex flex-col">
+                    <span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Package
+                      Size</span>
+                    <span class="text-text-primary font-medium">68.4 MB</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span
+                      class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Compatibility</span>
+                    <span class="text-text-primary font-medium truncate" title="Windows 10, 11 (64-bit / ARM64)">Windows
+                      10, 11 (64-bit)</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Signature /
+                      Verification</span>
+                    <span class="text-status-healthy font-medium flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[14px]">verified</span> Microsoft Authenticode
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <!-- Identically Styled Primary Action Button -->
+              <div class="pt-space-md">
+                <a class="w-full flex items-center justify-center gap-space-xs px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-md hover:brightness-110 transition-all text-center"
+                  href="./workspace.html">
+                  <span class="material-symbols-outlined text-[18px]">download</span>
+                  <span class="truncate">Download x64 (.exe)</span>
+                </a>
+              </div>
+            </div>
+            <!-- 2. macOS Card -->
+            <div
+              class="group relative flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-xl transition-all duration-300 hover:shadow-2xl">
+              <div class="flex flex-col gap-space-md">
+                <!-- Card Header with Authentic Apple SVG -->
+                <div class="flex items-center gap-space-sm">
+                  <div
+                    class="w-11 h-11 rounded-xl bg-surface-container-high flex items-center justify-center p-2 text-text-primary border border-border-subtle group-hover:border-primary/40 transition-colors">
+                    <svg class="w-6 h-6 fill-current text-on-surface" viewbox="0 0 170 170"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M150.37 130.25c-2.45 5.66-5.35 10.87-8.71 15.66-4.58 6.53-8.33 11.05-11.22 13.56-4.48 4.12-9.28 6.23-14.42 6.35-3.69 0-8.14-1.05-13.32-3.18-5.19-2.12-9.97-3.17-14.34-3.17-4.58 0-9.49 1.05-14.75 3.17-5.26 2.13-9.5 3.24-12.74 3.35-4.35.13-9.16-1.9-14.42-6.08-3.69-3.08-7.7-7.93-12.04-14.54-6.08-9.27-10.84-20.37-14.28-33.31-3.44-12.93-5.16-25.26-5.16-36.98 0-14.12 3.48-26.04 10.45-35.75 6.97-9.71 15.82-14.67 26.54-14.88 4.7 0 9.87 1.25 15.52 3.75 5.64 2.5 9.77 3.82 12.38 3.96 2.18-.2 6.43-1.57 12.74-4.11 6.32-2.54 11.75-3.69 16.3-3.45 12.73.66 22.84 5.41 30.34 14.26-11.12 6.74-16.57 16.14-16.36 28.18.22 9.5 3.86 17.47 10.93 23.9 7.07 6.44 15.42 10.22 25.05 11.34-2.18 6.54-4.8 13.06-7.88 19.57zM119.22 31.86c0-7.44 2.66-14.39 7.98-20.85 5.32-6.46 11.96-10.46 19.92-12.01.21 1.28.32 2.45.32 3.51 0 7.33-2.77 14.37-8.31 21.12-5.54 6.75-12.18 10.74-19.91 11.97v-3.74z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-title-md text-title-md font-bold text-text-primary">macOS</h3>
+                    <span class="font-label-sm text-label-sm text-text-secondary">Universal App</span>
+                  </div>
+                </div>
+                <!-- Standardized Specification Lines -->
+                <div
+                  class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-2 font-label-md text-label-md">
+                  <div class="flex flex-col">
+                    <span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Package
+                      Size</span>
+                    <span class="text-text-primary font-medium">64.2 MB</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span
+                      class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Compatibility</span>
+                    <span class="text-text-primary font-medium truncate"
+                      title="macOS 12.0+ (Apple Silicon &amp; Intel)">macOS 12.0+ (M &amp; Intel)</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Signature /
+                      Verification</span>
+                    <span class="text-status-healthy font-medium flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[14px]">verified</span> Apple Notarized
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <!-- Identically Styled Primary Action Button -->
+              <div class="pt-space-md">
+                <a class="w-full flex items-center justify-center gap-space-xs px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-md hover:brightness-110 transition-all text-center"
+                  href="./workspace.html">
+                  <span class="material-symbols-outlined text-[18px]">download</span>
+                  <span class="truncate">Download (.dmg)</span>
+                </a>
+              </div>
+            </div>
+            <!-- 3. Linux Card -->
+            <div
+              class="group relative flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-xl transition-all duration-300 hover:shadow-2xl">
+              <div class="flex flex-col gap-space-md">
+                <!-- Card Header with Authentic Linux Tux SVG -->
+                <div class="flex items-center gap-space-sm">
+                  <div
+                    class="w-11 h-11 rounded-xl bg-surface-container-high flex items-center justify-center p-2 text-text-primary border border-border-subtle group-hover:border-primary/40 transition-colors">
+                    <svg class="w-6 h-6 fill-current text-[#fcc624]" viewbox="0 0 32 32"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M16 2.5c-4.4 0-6.7 3.9-6.7 8.3 0 2.2.4 4.5.9 6.2-.9.8-2.2 2.3-2.2 4.5 0 2.5 1.5 5 4.8 5.5-1.1.9-1.8 2.2-1.8 3.5 0 .5.4 1 1 1 2.2 0 4.1-1.3 5.4-2.5 1.3 1.2 3.2 2.5 5.4 2.5.6 0 1-.5 1-1 0-1.3-.7-2.6-1.8-3.5 3.3-.5 4.8-3 4.8-5.5 0-2.2-1.3-3.7-2.2-4.5.5-1.7.9-4 .9-6.2 0-4.4-2.3-8.3-6.7-8.3zm-1.8 4.2c.7 0 1.2.6 1.2 1.3s-.5 1.3-1.2 1.3-1.2-.6-1.2-1.3.5-1.3 1.2-1.3zm3.6 0c.7 0 1.2.6 1.2 1.3s-.5 1.3-1.2 1.3-1.2-.6-1.2-1.3.5-1.3 1.2-1.3zm-1.8 3.3c1.5 0 2.7.4 2.7 1.5 0 1-.9 1.8-2.7 1.8-1.8 0-2.7-.8-2.7-1.8 0-1.1 1.2-1.5 2.7-1.5z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-title-md text-title-md font-bold text-text-primary">Linux</h3>
+                    <span class="font-label-sm text-label-sm text-text-secondary">Distro Binaries</span>
+                  </div>
+                </div>
+                <!-- Standardized Specification Lines -->
+                <div
+                  class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-2 font-label-md text-label-md">
+                  <div class="flex flex-col">
+                    <span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Package
+                      Size</span>
+                    <span class="text-text-primary font-medium">62.8 MB</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span
+                      class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Compatibility</span>
+                    <span class="text-text-primary font-medium truncate" title="Debian, Ubuntu, Fedora, Arch">Debian,
+                      Ubuntu, Fedora</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Signature /
+                      Verification</span>
+                    <span class="text-status-healthy font-medium flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[14px]">verified</span> GPG Signed Release
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <!-- Identically Styled Primary Action Button -->
+              <div class="pt-space-md">
+                <a class="w-full flex items-center justify-center gap-space-xs px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-md hover:brightness-110 transition-all text-center"
+                  href="./workspace.html">
+                  <span class="material-symbols-outlined text-[18px]">download</span>
+                  <span class="truncate">Download (.tar.gz / .deb)</span>
+                </a>
+              </div>
+            </div>
+            <!-- 4. Android Card -->
+            <div
+              class="group relative flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-xl transition-all duration-300 hover:shadow-2xl">
+              <div class="flex flex-col gap-space-md">
+                <!-- Card Header with Authentic Android Robot SVG -->
+                <div class="flex items-center gap-space-sm">
+                  <div
+                    class="w-11 h-11 rounded-xl bg-surface-container-high flex items-center justify-center p-2 text-text-primary border border-border-subtle group-hover:border-primary/40 transition-colors">
+                    <svg class="w-6 h-6 fill-current text-[#3ddc84]" viewbox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0002 0-.5511.4482-.9993.9993-.9993.5516 0 .9998.4482.9998.9993 0 .5516-.4482 1.0002-.9998 1.0002m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0002 0-.5511.4482-.9993.9993-.9993.5516 0 .9998.4482.9998.9993 0 .5516-.4482 1.0002-.9998 1.0002m11.4045-6.02l1.997-3.4582c.1086-.1882.0441-.4296-.1441-.5382-.1887-.1087-.43-.0441-.5387.1441l-2.0232 3.5042c-1.4725-.6687-3.1384-1.0427-4.9125-1.0427-1.774 0-3.4399.374-4.9124 1.0427l-2.0232-3.5042c-.1087-.1882-.35-.2528-.5387-.1441-.1882.1086-.2527.35-.1441.5382l1.997 3.4582c-3.1812 1.7247-5.3524 4.981-5.6385 8.8028h22.0209c-.2861-3.8218-2.4573-7.0781-5.6385-8.8028">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-title-md text-title-md font-bold text-text-primary">Android</h3>
+                    <span class="font-label-sm text-label-sm text-text-secondary">Mobile &amp; Tablet</span>
+                  </div>
+                </div>
+                <!-- Standardized Specification Lines -->
+                <div
+                  class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-2 font-label-md text-label-md">
+                  <div class="flex flex-col">
+                    <span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Package
+                      Size</span>
+                    <span class="text-text-primary font-medium">38.5 MB</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span
+                      class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Compatibility</span>
+                    <span class="text-text-primary font-medium truncate" title="Android 9.0+ (API 28+)">Android 9.0+
+                      (API 28+)</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Signature /
+                      Verification</span>
+                    <span class="text-status-healthy font-medium flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[14px]">verified</span> Google Play / APK Verified
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <!-- Identically Styled Primary Action Button -->
+              <div class="pt-space-md">
+                <a class="w-full flex items-center justify-center gap-space-xs px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-md hover:brightness-110 transition-all text-center"
+                  href="./workspace.html">
+                  <span class="material-symbols-outlined text-[18px]">download</span>
+                  <span class="truncate">Download (.apk)</span>
+                </a>
+              </div>
+            </div>
+            <!-- 5. iOS / iPadOS Card -->
+            <div
+              class="group relative flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-xl transition-all duration-300 hover:shadow-2xl">
+              <div class="flex flex-col gap-space-md">
+                <!-- Card Header with Authentic Apple Mobile SVG -->
+                <div class="flex items-center gap-space-sm">
+                  <div
+                    class="w-11 h-11 rounded-xl bg-surface-container-high flex items-center justify-center p-2 text-text-primary border border-border-subtle group-hover:border-primary/40 transition-colors">
+                    <svg class="w-6 h-6 fill-current text-secondary" viewbox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M17 1H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-2-2-2zm0 18H7V5h10v14zm-5 1c-.55 0-1-.45-1-1s.45-1 1-1 1 .45 1 1-.45 1-1 1z">
+                      </path>
+                    </svg>
+                  </div>
+                  <div>
+                    <h3 class="font-title-md text-title-md font-bold text-text-primary">iOS / iPadOS</h3>
+                    <span class="font-label-sm text-label-sm text-text-secondary">Handheld Client</span>
+                  </div>
+                </div>
+                <!-- Standardized Specification Lines -->
+                <div
+                  class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-2 font-label-md text-label-md">
+                  <div class="flex flex-col">
+                    <span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Package
+                      Size</span>
+                    <span class="text-text-primary font-medium">41.2 MB</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span
+                      class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Compatibility</span>
+                    <span class="text-text-primary font-medium truncate" title="iOS 16.0+ (iPhone &amp; iPad)">iOS 16.0+
+                      (iPhone &amp; iPad)</span>
+                  </div>
+                  <div class="flex flex-col">
+                    <span class="text-text-secondary text-[11px] uppercase tracking-wider font-semibold">Signature /
+                      Verification</span>
+                    <span class="text-status-healthy font-medium flex items-center gap-1">
+                      <span class="material-symbols-outlined text-[14px]">verified</span> App Store / TestFlight Signed
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <!-- Identically Styled Primary Action Button -->
+              <div class="pt-space-md">
+                <a class="w-full flex items-center justify-center gap-space-xs px-3 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-md hover:brightness-110 transition-all text-center"
+                  href="./workspace.html">
+                  <span class="material-symbols-outlined text-[18px]">download</span>
+                  <span class="truncate">Download (.ipa / TestFlight)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Section 2: Redesigned Embedded Firmware & Hardware Modules -->
+      <section class="w-full px-margin md:px-margin-desktop py-space-xl" id="embedded-hub">
+        <div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+          <div class="flex flex-col gap-space-xs">
+            <div class="flex items-center gap-space-xs">
+              <span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+              <span
+                class="font-label-sm text-label-sm text-secondary tracking-widest uppercase font-semibold">Micro-Controllers
+                &amp; Edge Diagnostic Devices</span>
+            </div>
+            <h2 class="font-headline-lg text-headline-lg text-text-primary tracking-tight">Embedded Firmware &amp;
+              Tonometer Bridges</h2>
+            <p class="font-body-md text-body-md text-text-secondary max-w-3xl">
+              Clean standalone firmware packages engineered for microcontrollers, embedded single-board computers, and
+              serial diagnostic tonometer bridges.
+            </p>
+          </div>
+          <!-- 3-Column Embedded Hardware Grid matching OS card language -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+            <!-- Hardware 1: ESP32-S3 -->
+            <div
+              class="flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-lg transition-all">
+              <div class="flex flex-col gap-space-sm">
+                <div class="flex items-center justify-between pb-1">
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-primary text-[22px]">developer_board</span>
+                    <h3 class="font-title-md text-title-md font-bold text-text-primary">ESP32 / ESP32-S3 Bridge</h3>
+                  </div>
+                  <span
+                    class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-text-secondary">ESP-IDF
+                    v5.1</span>
+                </div>
+                <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                  FreeRTOS standalone dual-core firmware. Captures real-time Intraocular Pressure (IOP) from tonometer
+                  serial ports, encodes Bluetooth LE 5.0 GATT streams, and dispatches data to workstation nodes.
+                </p>
+                <div
+                  class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-1.5 font-label-sm text-label-sm">
+                  <div class="flex items-center justify-between">
+                    <span class="text-text-secondary">Binary Image:</span>
+                    <span class="text-text-primary font-medium font-mono text-[11px]">firmware_v1.0.bin</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-text-secondary">Package Size:</span>
+                    <span class="text-text-primary font-medium">4.8 MB</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-text-secondary">Architecture:</span>
+                    <span class="text-text-primary font-medium">Xtensa LX7 / RISC-V</span>
+                  </div>
+                </div>
+                <!-- Direct Reference Link to Developer Docs -->
+                <div class="pt-1">
+                  <a class="font-label-md text-label-md text-primary hover:text-optic-disc-gold inline-flex items-center gap-1 font-semibold transition-colors"
+                    href="./api.html">
+                    <span>View Integration Guide in API Docs</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </a>
+                </div>
+              </div>
+              <div class="pt-space-md">
+                <a class="w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-bright border border-border-subtle text-on-surface font-label-md text-label-md font-bold transition-colors"
+                  href="./workspace.html">
+                  <span class="material-symbols-outlined text-[18px]">sim_card_download</span>
+                  <span>Download Firmware (.bin)</span>
+                </a>
+              </div>
+            </div>
+            <!-- Hardware 2: Raspberry Pi Appliance -->
+            <div
+              class="flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-lg transition-all">
+              <div class="flex flex-col gap-space-sm">
+                <div class="flex items-center justify-between pb-1">
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-secondary text-[22px]">memory</span>
+                    <h3 class="font-title-md text-title-md font-bold text-text-primary">Raspberry Pi CM4 / Pi 5</h3>
+                  </div>
+                  <span
+                    class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-text-secondary">64-Bit
+                    OS</span>
+                </div>
+                <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                  Customized Debian diagnostic OS image configured for fundus optics, HQ camera modules, and
+                  acceleration runtime for Google Coral USB TPU and Hailo-8 M.2 micro-accelerators.
+                </p>
+                <div
+                  class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-1.5 font-label-sm text-label-sm">
+                  <div class="flex items-center justify-between">
+                    <span class="text-text-secondary">Image Package:</span>
+                    <span
+                      class="text-text-primary font-medium font-mono text-[11px]">fundusguard-pi-v1.0.img.xz</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-text-secondary">Package Size:</span>
+                    <span class="text-text-primary font-medium">1.2 GB</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-text-secondary">Format:</span>
+                    <span class="text-text-primary font-medium">BalenaEtcher Ready</span>
+                  </div>
+                </div>
+                <!-- Direct Reference Link to Developer Docs -->
+                <div class="pt-1">
+                  <a class="font-label-md text-label-md text-secondary hover:text-optic-disc-gold inline-flex items-center gap-1 font-semibold transition-colors"
+                    href="./api.html">
+                    <span>View Hardware Specs in API Docs</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </a>
+                </div>
+              </div>
+              <div class="pt-space-md">
+                <a class="w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-bright border border-border-subtle text-on-surface font-label-md text-label-md font-bold transition-colors"
+                  href="./workspace.html">
+                  <span class="material-symbols-outlined text-[18px]">download</span>
+                  <span>Download OS Image (.img.xz)</span>
+                </a>
+              </div>
+            </div>
+            <!-- Hardware 3: Arduino Bridge Library -->
+            <div
+              class="flex flex-col justify-between p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle hover:border-border-amber-glow shadow-lg transition-all">
+              <div class="flex flex-col gap-space-sm">
+                <div class="flex items-center justify-between pb-1">
+                  <div class="flex items-center gap-2">
+                    <span
+                      class="material-symbols-outlined text-status-healthy text-[22px]">settings_input_composite</span>
+                    <h3 class="font-title-md text-title-md font-bold text-text-primary">Arduino / PlatformIO Library
+                    </h3>
+                  </div>
+                  <span
+                    class="px-2 py-0.5 rounded bg-surface-container font-label-sm text-label-sm text-text-secondary">v1.2.0
+                    Official</span>
+                </div>
+                <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                  Drop-in C++ library for parsing Haag-Streit, Reichert 7CR, and Canon TX-20 ophthalmic serial outputs.
+                  Includes circular telemetry buffer and CRC16 clinical data validator.
+                </p>
+                <div
+                  class="p-space-sm rounded-xl bg-surface-container-lowest border border-border-subtle flex flex-col gap-1.5 font-label-sm text-label-sm">
+                  <div class="flex items-center justify-between">
+                    <span class="text-text-secondary">Library Pack:</span>
+                    <span class="text-text-primary font-medium font-mono text-[11px]">FundusGuard-Bridge.zip</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-text-secondary">Compatibility:</span>
+                    <span class="text-text-primary font-medium">Arduino IDE / PlatformIO</span>
+                  </div>
+                  <div class="flex items-center justify-between">
+                    <span class="text-text-secondary">Licensing:</span>
+                    <span class="text-text-primary font-medium">MIT Open Clinical</span>
+                  </div>
+                </div>
+                <!-- Direct Reference Link to Developer Docs -->
+                <div class="pt-1">
+                  <a class="font-label-md text-label-md text-status-healthy hover:text-optic-disc-gold inline-flex items-center gap-1 font-semibold transition-colors"
+                    href="./api.html">
+                    <span>View Library Setup in API Docs</span>
+                    <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                  </a>
+                </div>
+              </div>
+              <div class="pt-space-md">
+                <a class="w-full flex items-center justify-center gap-1.5 px-3 py-2.5 rounded-xl bg-surface-container-high hover:bg-surface-bright border border-border-subtle text-on-surface font-label-md text-label-md font-bold transition-colors"
+                  href="./workspace.html">
+                  <span class="material-symbols-outlined text-[18px]">folder_zip</span>
+                  <span>Download Arduino Library (.zip)</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Section 3: Cleaned Release Archive Table (Clutter Removed) -->
+      <section class="w-full px-margin md:px-margin-desktop py-space-xl" id="release-archive">
+        <div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-space-md">
+            <div>
+              <span class="font-label-sm text-label-sm text-primary tracking-widest uppercase font-semibold">Release
+                Ledger</span>
+              <h2 class="font-headline-lg text-headline-lg text-text-primary tracking-tight">Version Control &amp;
+                Release History</h2>
+              <p class="font-body-md text-body-md text-text-secondary">Track official production, LTS maintenance, and
+                testing releases.</p>
+            </div>
+            <!-- Search / Filter Box -->
+            <div class="flex items-center gap-space-xs">
+              <div class="relative w-full sm:w-64">
+                <span
+                  class="material-symbols-outlined absolute left-3 top-2.5 text-text-secondary text-[18px]">search</span>
+                <input
+                  class="w-full pl-9 pr-3 py-2 rounded-xl bg-surface-container-lowest border border-border-subtle text-text-primary placeholder:text-text-secondary font-label-md text-label-md focus:outline-none focus:border-primary"
+                  id="release-search" placeholder="Filter version (e.g. v2.4, LTS)..." type="text" />
+              </div>
+            </div>
+          </div>
+          <!-- Release Tier Filter Tabs -->
+          <div class="flex items-center gap-space-xs pb-1 overflow-x-auto">
+            <button
+              class="release-tab-btn px-4 py-2 rounded-xl font-label-md text-label-md transition-colors bg-primary-container text-on-primary font-bold shadow-sm"
+              data-tab="all" onclick="filterReleases('all')">
+              All Releases (5)
+            </button>
+            <button
+              class="release-tab-btn px-4 py-2 rounded-xl font-label-md text-label-md transition-colors bg-surface-container border border-border-subtle text-text-secondary hover:text-on-surface hover:bg-surface-container-high"
+              data-tab="stable" onclick="filterReleases('stable')">
+              Stable (Production)
+            </button>
+            <button
+              class="release-tab-btn px-4 py-2 rounded-xl font-label-md text-label-md transition-colors bg-surface-container border border-border-subtle text-text-secondary hover:text-on-surface hover:bg-surface-container-high"
+              data-tab="lts" onclick="filterReleases('lts')">
+              LTS (Audit Certified)
+            </button>
+            <button
+              class="release-tab-btn px-4 py-2 rounded-xl font-label-md text-label-md transition-colors bg-surface-container border border-border-subtle text-text-secondary hover:text-on-surface hover:bg-surface-container-high"
+              data-tab="prerelease" onclick="filterReleases('prerelease')">
+              Pre-Release (Beta)
+            </button>
+          </div>
+          <!-- Table Container -->
+          <div class="w-full overflow-x-auto rounded-xl bg-surface-container-low border border-border-subtle shadow-xl">
+            <table class="w-full text-left font-body-md text-body-md" id="release-table">
+              <thead>
+                <tr
+                  class="bg-surface-container-high font-label-sm text-label-sm text-text-secondary uppercase tracking-wider border-b border-border-subtle">
+                  <th class="py-3 px-4">Release Version</th>
+                  <th class="py-3 px-4">Channel</th>
+                  <th class="py-3 px-4">Release Date</th>
+                  <th class="py-3 px-4">Key Improvements &amp; Notes</th>
+                  <th class="py-3 px-4 text-right">Download Action</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-surface-container-high font-body-sm text-body-sm">
+                <!-- Row: v1.0 -->
+                <tr class="release-row hover:bg-surface-container transition-colors"
+                  data-text="v1.0 stable directml dicom" data-type="stable">
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="font-title-md text-title-md font-bold text-text-primary">v1.0</span>
+                      <span
+                        class="px-2 py-0.5 rounded-full bg-status-healthy/15 text-status-healthy font-label-sm text-label-sm font-semibold">Latest</span>
+                    </div>
+                    <span class="text-text-secondary font-label-sm text-label-sm">SPI-OWL v2.4 Core</span>
+                  </td>
+                  <td class="py-4 px-4">
+                    <span
+                      class="px-2 py-1 rounded-md bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">Production</span>
+                  </td>
+                  <td class="py-4 px-4 text-text-secondary whitespace-nowrap">March 04, 2025</td>
+                  <td class="py-4 px-4 max-w-md">
+                    <p class="text-text-primary font-medium">DICOM SR auto-tagging and refined optic cup segmentation
+                      boundaries.</p>
+                    <span class="text-text-secondary font-label-sm text-label-sm">Added cross-platform native pipeline
+                      acceleration updates.</span>
+                  </td>
+                  <td class="py-4 px-4 text-right whitespace-nowrap">
+                    <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-primary-container text-on-primary font-label-sm text-label-sm font-bold shadow-sm hover:brightness-110 transition-all"
+                      href="./workspace.html">
+                      <span class="material-symbols-outlined text-[14px]">download</span>
+                      <span>Download v1.0</span>
+                    </a>
+                  </td>
+                </tr>
+                <!-- Row: v2.4.0 -->
+                <tr class="release-row hover:bg-surface-container transition-colors"
+                  data-text="v2.4.0 stable esp32 multimodal iop" data-type="stable">
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="font-title-md text-title-md font-bold text-text-primary">v2.4.0</span>
+                    </div>
+                    <span class="text-text-secondary font-label-sm text-label-sm">Major Architectural Release</span>
+                  </td>
+                  <td class="py-4 px-4">
+                    <span
+                      class="px-2 py-1 rounded-md bg-surface-container-high text-primary font-label-sm text-label-sm font-semibold">Production</span>
+                  </td>
+                  <td class="py-4 px-4 text-text-secondary whitespace-nowrap">February 11, 2025</td>
+                  <td class="py-4 px-4 max-w-md">
+                    <p class="text-text-primary font-medium">Multimodal IOP &amp; pachymetry regression engine; ESP32-S3
+                      zero-copy buffer architecture.</p>
+                    <span class="text-text-secondary font-label-sm text-label-sm">Automated cup-to-disc boundary
+                      smoothing via active contours.</span>
+                  </td>
+                  <td class="py-4 px-4 text-right whitespace-nowrap">
+                    <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-sm text-label-sm font-medium transition-colors"
+                      href="./workspace.html">
+                      <span class="material-symbols-outlined text-[14px]">download</span>
+                      <span>Download v2.4.0</span>
+                    </a>
+                  </td>
+                </tr>
+                <!-- Row: v2.3.2 (LTS) -->
+                <tr class="release-row hover:bg-surface-container transition-colors"
+                  data-text="v2.3.2 lts audit clinical certification baseline" data-type="lts">
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="font-title-md text-title-md font-bold text-text-primary">v2.3.2</span>
+                      <span
+                        class="px-2 py-0.5 rounded-full bg-secondary-container/20 text-secondary font-label-sm text-label-sm font-semibold">LTS</span>
+                    </div>
+                    <span class="text-text-secondary font-label-sm text-label-sm">Supported until June 2026</span>
+                  </td>
+                  <td class="py-4 px-4">
+                    <span
+                      class="px-2 py-1 rounded-md bg-secondary/15 text-secondary font-label-sm text-label-sm font-bold">Long
+                      Term Support</span>
+                  </td>
+                  <td class="py-4 px-4 text-text-secondary whitespace-nowrap">December 18, 2024</td>
+                  <td class="py-4 px-4 max-w-md">
+                    <p class="text-text-primary font-medium">Certified baseline for retrospective hospital audit trials
+                      and offline PACS ingestion.</p>
+                    <span class="text-text-secondary font-label-sm text-label-sm">Validated high-reliability offline
+                      segmentation profiles.</span>
+                  </td>
+                  <td class="py-4 px-4 text-right whitespace-nowrap">
+                    <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-secondary font-label-sm text-label-sm font-medium transition-colors"
+                      href="./workspace.html">
+                      <span class="material-symbols-outlined text-[14px]">download</span>
+                      <span>Download LTS</span>
+                    </a>
+                  </td>
+                </tr>
+                <!-- Row: v2.5.0-beta1 (Pre-Release) -->
+                <tr class="release-row hover:bg-surface-container transition-colors"
+                  data-text="v2.5.0-beta1 beta prerelease experimental 3d oct" data-type="prerelease">
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="font-title-md text-title-md font-bold text-text-primary">v2.5.0-beta1</span>
+                      <span
+                        class="px-2 py-0.5 rounded-full bg-error-container/30 text-error font-label-sm text-label-sm font-semibold">Beta</span>
+                    </div>
+                    <span class="text-text-secondary font-label-sm text-label-sm">Experimental Pre-Release</span>
+                  </td>
+                  <td class="py-4 px-4">
+                    <span
+                      class="px-2 py-1 rounded-md bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">Testing</span>
+                  </td>
+                  <td class="py-4 px-4 text-text-secondary whitespace-nowrap">February 28, 2025</td>
+                  <td class="py-4 px-4 max-w-md">
+                    <p class="text-text-primary font-medium">Volumetric RNFL (Retinal Nerve Fiber Layer) thickness
+                      mapping preview.</p>
+                    <span class="text-text-secondary font-label-sm text-label-sm">For clinical lab benchmarks and
+                      research testing only.</span>
+                  </td>
+                  <td class="py-4 px-4 text-right whitespace-nowrap">
+                    <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-error font-label-sm text-label-sm font-medium transition-colors"
+                      href="./workspace.html">
+                      <span class="material-symbols-outlined text-[14px]">science</span>
+                      <span>Download Beta</span>
+                    </a>
+                  </td>
+                </tr>
+                <!-- Row: v2.2.0 (Stable Legacy) -->
+                <tr class="release-row hover:bg-surface-container transition-colors"
+                  data-text="v2.2.0 stable initial desktop offline" data-type="stable">
+                  <td class="py-4 px-4">
+                    <div class="flex items-center gap-space-xs">
+                      <span class="font-title-md text-title-md font-bold text-text-primary">v2.2.0</span>
+                    </div>
+                    <span class="text-text-secondary font-label-sm text-label-sm">Legacy Desktop Base</span>
+                  </td>
+                  <td class="py-4 px-4">
+                    <span
+                      class="px-2 py-1 rounded-md bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm font-semibold">Production</span>
+                  </td>
+                  <td class="py-4 px-4 text-text-secondary whitespace-nowrap">October 14, 2024</td>
+                  <td class="py-4 px-4 max-w-md">
+                    <p class="text-text-primary font-medium">First offline standalone release with optic disc and cup
+                      contour CSV exporter.</p>
+                    <span class="text-text-secondary font-label-sm text-label-sm">Standard desktop distribution
+                      packages.</span>
+                  </td>
+                  <td class="py-4 px-4 text-right whitespace-nowrap">
+                    <a class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-sm text-label-sm font-medium transition-colors"
+                      href="./workspace.html">
+                      <span class="material-symbols-outlined text-[14px]">download</span>
+                      <span>Download v2.2.0</span>
+                    </a>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+      <!-- Section 4: Air-Gapped Trust & Governance Cards -->
+      <section class="w-full px-margin md:px-margin-desktop py-space-xl">
+        <div class="max-w-7xl mx-auto flex flex-col gap-space-lg">
+          <div class="flex flex-col gap-space-xs">
+            <span
+              class="font-label-sm text-label-sm text-optic-disc-gold tracking-widest uppercase font-semibold">Governance
+              &amp; Clinical Security</span>
+            <h2 class="font-headline-lg text-headline-lg text-text-primary tracking-tight">Security Standards &amp;
+              Air-Gapped Trust</h2>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+            <!-- Card 1: Diagnostic Accuracy Profile -->
+            <div
+              class="p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle shadow-lg flex flex-col justify-between">
+              <div class="flex flex-col gap-space-sm">
+                <div class="flex items-center gap-space-xs text-primary">
+                  <span class="material-symbols-outlined text-[24px]">verified</span>
+                  <h3 class="font-title-md text-title-md text-text-primary">Clinical Verification</h3>
+                </div>
+                <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                  Every desktop and mobile binary is cryptographically signed and tested across multi-center retinal
+                  datasets.
+                </p>
+                <div class="flex flex-col gap-space-xs pt-space-xs font-label-md text-label-md">
+                  <div
+                    class="p-2 rounded bg-surface-container-lowest border border-border-subtle flex flex-col gap-0.5">
+                    <span class="text-text-secondary">Validation Score</span>
+                    <span class="text-text-primary font-medium">Dice 0.94 Cup / Disc Overlap</span>
+                  </div>
+                  <div
+                    class="p-2 rounded bg-surface-container-lowest border border-border-subtle flex flex-col gap-0.5">
+                    <span class="text-text-secondary">Release Integrity</span>
+                    <span class="text-status-healthy font-medium">Authenticode &amp; Notarized Binaries</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-space-md">
+                <a class="font-label-md text-label-md text-primary hover:text-optic-disc-gold flex items-center gap-1 font-semibold transition-colors"
+                  href="./about.html">
+                  <span>Read Clinical Validation Report</span>
+                  <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+            <!-- Card 2: Developer Documentation -->
+            <div
+              class="p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle shadow-lg flex flex-col justify-between">
+              <div class="flex flex-col gap-space-sm">
+                <div class="flex items-center gap-space-xs text-secondary">
+                  <span class="material-symbols-outlined text-[24px]">terminal</span>
+                  <h3 class="font-title-md text-title-md text-text-primary">Developer &amp; Hardware Guides</h3>
+                </div>
+                <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                  Access full architectural specifications, REST API schemas, DICOM PACS integration rules, and firmware
+                  flashing guides in our Developer Docs.
+                </p>
+                <div class="flex flex-col gap-2 pt-space-xs font-label-md text-label-md text-text-secondary">
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-secondary text-[16px]">menu_book</span>
+                    <span>Comprehensive API &amp; SDK Documentation</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-secondary text-[16px]">cable</span>
+                    <span>Hardware Serial Protocol Handbooks</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-space-md">
+                <a class="font-label-md text-label-md text-secondary hover:text-optic-disc-gold flex items-center gap-1 font-semibold transition-colors"
+                  href="./api.html">
+                  <span>Explore API Documentation</span>
+                  <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+            <!-- Card 3: Air-Gapped HIPAA Compliance -->
+            <div
+              class="p-space-lg rounded-xl bg-surface-glass backdrop-blur-md border border-border-subtle shadow-lg flex flex-col justify-between">
+              <div class="flex flex-col gap-space-sm">
+                <div class="flex items-center gap-space-xs text-optic-disc-gold">
+                  <span class="material-symbols-outlined text-[24px]">security</span>
+                  <h3 class="font-title-md text-title-md text-text-primary">Air-Gapped &amp; HIPAA Safe</h3>
+                </div>
+                <p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                  FundusGuard desktop and firmware binaries require zero external telemetry, cloud analytics beacons, or
+                  remote license ping servers.
+                </p>
+                <div class="flex flex-col gap-1.5 pt-space-xs font-label-md text-label-md text-text-secondary">
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-status-healthy text-[16px]">lock</span>
+                    <span>Protected Health Information (PHI) stays strictly local</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-status-healthy text-[16px]">router</span>
+                    <span>Fully operational on segregated hospital intranets</span>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="material-symbols-outlined text-status-healthy text-[16px]">file_download_off</span>
+                    <span>Zero background model re-downloads required</span>
+                  </div>
+                </div>
+              </div>
+              <div class="pt-space-md">
+                <a class="font-label-md text-label-md text-optic-disc-gold hover:text-text-primary flex items-center gap-1 font-semibold transition-colors"
+                  href="./contact.html">
+                  <span>Request Air-Gapped Licensing Token</span>
+                  <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <%- faq %>
+    </div>
+  </main>
+  <%- footer %>
+</body>
+<script src="../public/App.js" nonce="<%= nonce %>" ></script>
+<% if (isHosted) { %>
+  <script src="https://kidkrishkode.github.io/fundusguardai/assets/scripts/app.js" nonce="<%= nonce %>"></script>
+<% } else { %>
+  <script src="../assets/scripts/app.js" nonce="<%= nonce %>"></script>
+<% } %>
+</html>

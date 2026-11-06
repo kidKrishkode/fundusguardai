@@ -13,17 +13,15 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"/>
   
   <link rel="stylesheet" href="../public/App.css"/>
+  <!-- so i need to load the public/app js before tailwind to prevent my early dark theme flash out -->
+  <script src="../public/App.js" nonce="<%= nonce %>" ></script>
   <script src="https://cdn.tailwindcss.com"></script>
 
   <% if (isHosted) { %>
-    <link rel="stylesheet" href="https://kidkrishkode.github.io/fundusguardai/assets/styles/App.css"/>
     <link rel="stylesheet" href="https://kidkrishkode.github.io/fundusguardai/assets/styles/index.css"/>
-    <script src="https://kidkrishkode.github.io/fundusguardai/assets/scripts/App.js"></script>
     <script src="https://kidkrishkode.github.io/fundusguardai/assets/scripts/tailwind.js"></script>
   <% } else { %>
-    <link rel="stylesheet" href="../assets/styles/App.css" />
     <link rel="stylesheet" href="../assets/styles/index.css" />
-    <script src="../assets/scripts/App.js"></script>
     <script src="../assets/scripts/tailwind.js"></script>
   <% } %>
 
@@ -650,7 +648,7 @@
 
   <%- footer %>
 </body>
-<script src="../public/App.js" nonce="<%= nonce %>" ></script>
+
 <% if (isHosted) { %>
   <script src="https://kidkrishkode.github.io/fundusguardai/assets/scripts/index.js" nonce="<%= nonce %>"></script>
 <% } else { %>
