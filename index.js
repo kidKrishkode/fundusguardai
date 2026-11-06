@@ -250,7 +250,14 @@ app.get('/varchar', (req, res) => {
 });
 
 app.get('/home', (req, res) => {
-    res.status(200).redirect('/');
+    const nonce = res.locals.nonce;
+    const isHosted = hex.isHosted(req);
+
+    const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
+    const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
+    const faq = hex.renderHBS(fs, handlebars, 'faq', {isHosted, nonce});
+    
+    res.status(200).render('home', {nonce, isHosted, header, footer, faq});
 });
 
 app.get('/index', (req, res) => {
@@ -313,12 +320,24 @@ app.get('/app', async (req, res) => {
 
     const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
     const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
+    const faq = hex.renderHBS(fs, handlebars, 'faq', {isHosted, nonce});
 
-    res.status(200).render('app', {nonce, isHosted, header, footer});
+    res.status(200).render('app', {nonce, isHosted, header, footer, faq});
 });
 
 app.get('/api_docs', async (req, res) => {
     res.status(400).render('notfound',{error: 400, message: "Api documentation not avalible for week developer mindset, find it using your coding skill."});
+});
+
+app.get('/dashboard', async (req, res) => {
+    const nonce = res.locals.nonce;
+    const isHosted = hex.isHosted(req);
+
+    const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
+    const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
+    const faq = hex.renderHBS(fs, handlebars, 'faq', {isHosted, nonce});
+
+    res.status(200).render('dashboard', {nonce, isHosted, header, footer, faq});
 });
 
 app.get('/ping', (req, res) => {
