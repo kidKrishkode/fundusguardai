@@ -275,3 +275,13 @@ function toggle_menu(){
 function invalid(){
     alert("This feature is not present on this version or you are not permitted to access this resource from this site, Please wait until the new version release or contact us for permission");
 }
+
+(function () {
+    const savedTheme = localStorage.getItem("theme") || "light";
+    const systemPrefersDark = window.matchMedia(
+      "(prefers-color-scheme: dark)",
+    ).matches;
+  
+    const theme = savedTheme ? savedTheme : systemPrefersDark ? "dark" : "light";
+    document.documentElement.setAttribute("data-theme", theme);
+})();
