@@ -280,8 +280,9 @@ app.get('/contact', async (req, res) => {
 
     const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
     const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
+    const faq = hex.renderHBS(fs, handlebars, 'faq', {isHosted, nonce});
 
-    res.status(200).render('contact', {nonce, isHosted, header, footer});
+    res.status(200).render('contact', {nonce, isHosted, header, footer, faq});
 });
 
 app.get('/workspace', async (req, res) => {
@@ -332,12 +333,33 @@ app.get('/api_docs', async (req, res) => {
 app.get('/dashboard', async (req, res) => {
     const nonce = res.locals.nonce;
     const isHosted = hex.isHosted(req);
+    const token = req.cookies.auth_token;
 
+    console.log("token: "+token+", Token: "+req.query.token+", isAPP: "+res.locals.isAppRequest);
     const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
     const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
     const faq = hex.renderHBS(fs, handlebars, 'faq', {isHosted, nonce});
 
     res.status(200).render('dashboard', {nonce, isHosted, header, footer, faq});
+    // try{
+    //     if(token){
+    //         const encripted_info = security.substitutionDecoder(String((JSON.parse(token))?.token), 'security');
+    //         let [id, expiry] = encripted_info.split("-");
+    //         if(Date.now() < expiry){
+    //             const header = hex.renderHBS(fs, handlebars, 'header', {key: '404', isHosted});
+    //             const footer = hex.renderHBS(fs, handlebars, 'footer', {isHosted});
+    //             const faq = hex.renderHBS(fs, handlebars, 'faq', {isHosted, nonce});
+
+    //             res.status(200).render('dashboard', {nonce, isHosted, header, footer, faq, id});
+    //         }else{
+    //             res.status(419).send(hex.renderHBS(fs, handlebars, 'session_expire', {nonce: nonce})); //Session Expired
+    //         }
+    //     }else{
+    //         res.status(401).send(hex.renderHBS(fs, handlebars, 'unauthorize_entry', {nonce: nonce, isHosted: isHosted})); //unauthorize user open
+    //     }
+    // }catch(e){
+    //     res.status(400).redirect('/notfound',{error: 500, message: "Some unwanted error occure while setup the dashboard and fetching your information, If you see this error multi-time then please inform us about this faliur, and try some time later..", statement: e});
+    // }
 });
 
 app.get('/ping', (req, res) => {
