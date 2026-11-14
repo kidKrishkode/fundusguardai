@@ -292,6 +292,9 @@ nav a, a:hover, a:active {
         font-family: sans-serif;
     }
 }
+#header{
+    display: none;
+}
 
 /* Mobile view */
 @media only screen and (max-width: 900px), only screen and (min-width: 900px) and (max-width: 1200px) {

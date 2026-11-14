@@ -78,10 +78,12 @@ class PopUp {
         }
     }
 }
-
+let pageSet = [];
+let currentPage = [];
 class System{
     constructor(){
-
+        // this.color_theme = memory.local_memory.length!=0?memory.local_memory[0]?.value:'light';
+        this.color_theme = "light";
     }
     alert(data){
         try{
@@ -161,6 +163,49 @@ class System{
             document.getElementById(search_input_id+'DOD').style.display = "none";
         }
     }
+    VisiblePage(){
+        try{
+            for(let i=0; i<pageSet.length; i++){
+                document.querySelector("#"+pageSet[i]).style.display = "block";
+            }
+            this.setActiveMenu(currentPage[currentPage.length-1]);
+        }catch(e){
+            console.warn("New Problem: ",e);
+        }
+    }
+    setActiveMenu(menuName){
+        const navMenu = document.querySelector('#nav-menu');
+        const navItems = navMenu.querySelectorAll('.nav-item');
+        navItems.forEach(item => {
+            item.querySelector('.nav-link').classList.remove('active');
+        });
+        const activeItem = navMenu.querySelector(`.nav-link[href="/${menuName.toLowerCase().replace(' ', '')}"]`);
+        if(activeItem){
+            activeItem.classList.add('active');
+        }else{
+            return false;
+        }
+    }
+    toggle_theme(choise) {
+        const savedTheme = choise?choise:(memory.local_memory[0]?.value || this.color_theme);
+        const systemPrefersDark = window.matchMedia(
+          "(prefers-color-scheme: dark)",
+        ).matches;
+      
+        const theme = savedTheme ? savedTheme : systemPrefersDark ? "dark" : "light";
+        document.documentElement.setAttribute("data-theme", theme);
+        theme == 'light'?document.documentElement.classList.replace("dark", "light"):document.documentElement.classList.replace("light", "dark");
+        theme == 'light'?this.color_theme = 'dark':this.color_theme = 'light';
+        memory.local_memory[0] = {
+            id: 0,
+            name: "Theme",
+            value: theme
+        };
+        system.pushDataBase();
+    }
+    pushDataBase(){
+        memory.saveArray(memory.local_memory);
+    }
 
     async getLegalContent(viewId = 0){
         try{
@@ -205,13 +250,71 @@ class System{
         });
     }
 }
+let db;
+class MEMORY{
+    constructor(){
+        this.local_memory=[];
+        this.dbName = 'FGAIDB';
+        this.dbVersion = 1;
+    }
+    openDB(){
+        return new Promise((resolve, reject) => {
+            const request = indexedDB.open(this.dbName, this.dbVersion);
+            request.onerror = (event) => {
+                reject('Error to opening database');
+            };
+            request.onsuccess = (event) => {
+                db = event.target.result;
+                resolve('Database opened successfully');
+            };
+            request.onupgradeneeded = (event) => {
+                const db = event.target.result;
+                const store = db.createObjectStore('data', { keyPath: 'id' });
+            };
+        });
+    }
+    async saveArray(array=this.local_memory){
+        this.clearDB();
+        await this.openDB();
+        const transaction = db.transaction(['data'], 'readwrite');
+        const store = transaction.objectStore('data');
+        array.forEach(item => {
+            store.put(item);
+        });
+    }
+    async fetchArray(){
+        await this.openDB();
+        const transaction = db.transaction(['data'], 'readonly');
+        const store = transaction.objectStore('data');
+        const request = store.getAll();
+        return new Promise((resolve, reject) => {
+            request.onsuccess = (event) => {
+                resolve(event.target.result);
+            };
+            request.onerror = (event) => {
+                reject('Error to fetching data');
+            };
+        });
+    }
+    async clearDB(){
+        await this.openDB();
+        const transaction = db.transaction(['data'], 'readwrite');
+        const store = transaction.objectStore('data');
+        store.clear();
+    }
+    async pullDataBase(){
+        this.local_memory = await this.fetchArray();
+    }
+}
 
 let loader;
 let system;
+let memory;
 document.addEventListener("DOMContentLoaded",() => {
     loader = new Loader(true);
     loader.create();
     loader.remove(2000);
+    memory = new MEMORY();
     system = new System();
 
     document.addEventListener('keydown', function (event) {
@@ -233,6 +336,15 @@ document.addEventListener("DOMContentLoaded",() => {
         `;
         document.head.appendChild(style);
         console.log("App container layout styles applied natively by the server.");
+    }
+    if(!memory.local_memory[0]?.value){
+        // system.toggle_theme("light");
+    }
+    memory.pullDataBase();
+    if(memory.local_memory!=[]){
+        setTimeout(()=>{
+            system.toggle_theme();
+        },1000);
     }
 });
 
@@ -276,12 +388,4 @@ function invalid(){
     alert("This feature is not present on this version or you are not permitted to access this resource from this site, Please wait until the new version release or contact us for permission");
 }
 
-(function () {
-    const savedTheme = localStorage.getItem("theme") || "light";
-    const systemPrefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-  
-    const theme = savedTheme ? savedTheme : systemPrefersDark ? "dark" : "light";
-    document.documentElement.setAttribute("data-theme", theme);
-})();
+
