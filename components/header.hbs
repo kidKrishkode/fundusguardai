@@ -1,5 +1,5 @@
 <header
-    class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.4)] border-b border-border-amber-glow">
+    class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.4)] border-b border-border-amber-glow" id="header">
     <div class="h-16 w-full px-margin md:px-margin-desktop flex items-center justify-between">
         <div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm" data-path="home" onclick="#">
 
@@ -40,7 +40,7 @@
                 data-path="workspace" onclick="route('/workspace');"><span>Launch Workspace</span><span
                     class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
             <div class="flex items-center gap-space-xs pl-space-xs border-l border-border-subtle">
-                <div class="relative group">
+                <div class="relative group" onclick="route('/dashboard');" style="cursor: pointer;" title="Open My Personal Workspace">
                     {{#if isHosted}}
                         <img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-border-amber-glow"
                         src="https://kidkrishkode.github.io/fundusguardai/assets/images/dp.jpg" />
