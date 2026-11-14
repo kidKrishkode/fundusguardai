@@ -654,4 +654,8 @@
 <% } else { %>
   <script src="../assets/scripts/index.js" nonce="<%= nonce %>"></script>
 <% } %>
+<script nonce="<%= nonce %>">
+    pageSet.push('header');
+    currentPage.push('Home');
+</script>
 </html>

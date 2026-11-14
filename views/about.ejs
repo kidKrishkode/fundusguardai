@@ -825,4 +825,8 @@
 <% } else { %>
   <script src="../assets/scripts/about.js" nonce="<%= nonce %>"></script>
 <% } %>
+<script nonce="<%= nonce %>">
+  pageSet.push('header');
+  currentPage.push('About');
+</script>
 </html>
