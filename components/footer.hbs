@@ -1,214 +1,103 @@
-<footer
-  class="w-full bg-surface-container-lowest border-t border-border-amber-glow pt-space-xl pb-16"
->
-  <div class="w-full px-margin md:px-margin-desktop">
-    <div
-      class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg mb-space-xl"
-    >
-      <div class="flex flex-col gap-space-sm">
-        <div class="flex items-center gap-space-xs">
-          {{#if isHosted}}
-            <img
-            alt="FundusGuard SPI-OWL Logo"
-            class="h-7 w-auto object-contain"
-            src="https://kidkrishkode.github.io/fundusguardai/public/favicon.ico"/>
-          {{else}}
-            <img src="../public/favicon.ico" class="h-7 w-auto object-contain" alt="FundusGuard SPI-OWL Logo" />
-          {{/if}}
-          <span
-            class="font-headline-md text-headline-md tracking-tight text-text-primary"
-            >FundusGuard</span
-          ><span
-            class="font-headline-md text-headline-md tracking-tight text-optic-disc-gold"
-            >AI</span
-          >
+<footer class="site-footer">
+    <div class="container">
+        <div class="footer-columns-grid">
+            <!-- Col 1: Brand & Status -->
+            <div class="footer-col">
+                <div class="brand-link">
+                    {{#if isHosted}}
+                        <img
+                        alt="FundusGuard SPI-OWL Logo"
+                        class="brand-logo-img"
+                        src="https://kidkrishkode.github.io/fundusguardai/public/favicon.ico"/>
+                    {{else}}
+                        <img src="../public/favicon.ico" class="brand-logo-img" alt="FundusGuard SPI-OWL Logo" />
+                    {{/if}}
+                    <div class="brand-title-row">
+                        <span class="brand-title-primary">FundusGuard</span>
+                        <span class="brand-title-gold">AI</span>
+                    </div>
+                </div>
+                <p style="font-size: 13px; line-height: 1.6; color: var(--text-secondary);">
+                    Diagnostic-grade deep learning platform engineered for precision cup-to-disc ratio (CDR)
+                    quantification,
+                    retinal biomicroscopy segmentation, and rapid glaucoma triage.
+                </p>
+                <div
+                    style="display:flex;align-items:center;gap:8px;padding:6px 12px;border-radius:10px;background:var(--bg-card);border:1px solid var(--border-subtle);width:fit-content;font-size:11px;">
+                    <span class="status-dot pulse"></span>
+                    <span class="text-healthy" style="font-weight:600;">API v2.4 Operational</span>
+                    <span style="color:var(--text-muted);">• 42ms Inference</span>
+                </div>
+            </div>
+            <!-- Col 2: Navigation -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Quick Navigation</h4>
+                <div class="footer-links-list">
+                    <a class="footer-link" onclick="route('/index');">Platform Home</a>
+                    <a class="footer-link" onclick="route('/workspace');">AI Workspace &amp; Viewer</a>
+                    <a class="footer-link" onclick="route('/workspace');">Glaucoma Clinical Atlas</a>
+                    <a class="footer-link" onclick="route('/api');">Documentation &amp; Specs</a>
+                    <a class="footer-link" onclick="route('/app');">Mobile Companion App</a>
+                </div>
+            </div>
+            <!-- Col 3: Developer & API -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Developer &amp; API</h4>
+                <div class="footer-links-list">
+                    <a class="footer-link" onclick="route('/api');">RESTful Inference API</a>
+                    <a class="footer-link" onclick="route('/api');">Python Client SDK</a>
+                    <a class="footer-link" onclick="route('/api');">DICOM PACS Direct Ingestion</a>
+                    <a class="footer-link" onclick="route('/api');">PyTorch Checkpoints &amp; ONNX</a>
+                    <a class="footer-link" onclick="route('/about');">Model Card &amp; Metric Benchmarks</a>
+                </div>
+            </div>
+            <!-- Col 4: Governance -->
+            <div class="footer-col">
+                <h4 class="footer-heading">Clinical &amp; Governance</h4>
+                <div class="footer-links-list">
+                    <a class="footer-link" onclick="route('/about');">Multi-Center Clinical Validation</a>
+                    <a class="footer-link" onclick="route('/about');">IRB Protocol Standards</a>
+                    <a class="footer-link" onclick="route('/contact');">HIPAA / GDPR Compliance</a>
+                    <a class="footer-link" onclick="route('/about');">Peer-Reviewed Publications</a>
+                    <a class="footer-link" onclick="route('/contact');">Institutional Ethics Advisory</a>
+                </div>
+            </div>
         </div>
-        <p
-          class="font-body-sm text-body-sm text-text-secondary leading-relaxed"
-        >
-          Diagnostic-grade deep learning platform engineered for precision
-          cup-to-disc ratio (CDR) quantification, retinal biomicroscopy
-          segmentation, and rapid glaucoma triage.
-        </p>
-        <div
-          class="flex items-center gap-2 px-3 py-1.5 rounded-xl bg-surface-container-low border border-border-subtle w-fit"
-        >
-          <span
-            class="w-2 h-2 rounded-full bg-status-healthy animate-ping"
-          ></span
-          ><span
-            class="font-label-sm text-label-sm text-status-healthy font-semibold"
-            >API v1.0 Operational</span
-          ><span class="font-label-sm text-label-sm text-on-surface-variant"
-            >• 42ms Inference</span
-          >
+        <!-- Developer & Guide Attribution Banner -->
+        <div class="footer-credits-banner">
+            <div style="display:flex;align-items:center;gap:10px;">
+                <span class="material-symbols-outlined text-gold">verified</span>
+                <p style="font-size:13px;color:var(--text-primary);">
+                    Developed with precision by <strong class="text-gold">Krishnendu Mitra</strong> (Student Developer)
+                    under
+                    the guidance of <strong style="color:var(--text-primary);">Prof. Soumen Mukherjee</strong>.
+                </p>
+            </div>
+            <div style="display:flex;align-items:center;gap:8px;">
+                <span style="font-size:11px;color:var(--text-secondary);">SPI-OWL Architecture v2.4</span>
+                <span class="badge-status-ongoing">Research Edition</span>
+            </div>
         </div>
-      </div>
-      <div class="flex flex-col gap-space-xs">
-        <span class="font-title-md text-title-md text-on-surface mb-space-xs"
-          >Quick Navigation</span
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="home"
-          onclick="route('/');"
-          >Platform Home</a
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="workspace"
-          onclick="route('/workspace');"
-          >AI Workspace &amp; Viewer</a
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="glaucoma-atlas"
-          onclick="route('/about');"
-          >Glaucoma Clinical Atlas</a
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="api-docs"
-          onclick="route('/docs');"
-          >Documentation &amp; Specs</a
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="app-download"
-          onclick="route('/app');"
-          >Mobile Companion App</a
-        >
-      </div>
-      <div class="flex flex-col gap-space-xs">
-        <span class="font-title-md text-title-md text-on-surface mb-space-xs"
-          >Developer &amp; API</span
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="api-docs"
-          onclick="route('/api_plugin');"
-          >RESTful Inference API</a
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="api-docs"
-          onclick="route('/api-sdk');"
-          >Python Client SDK</a
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="api-docs"
-          onclick="route('/api-docs');"
-          >DICOM PACS Direct Ingestion</a
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="api-docs"
-          onclick="route('/api-docs');"
-          >PyTorch Checkpoints &amp; ONNX</a
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="about"
-          onclick="route('/about');"
-          >Model Card &amp; Metric Benchmarks</a
-        >
-      </div>
-      <div class="flex flex-col gap-space-xs">
-        <span class="font-title-md text-title-md text-on-surface mb-space-xs"
-          >Clinical &amp; Governance</span
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="about"
-          onclick="route('/about');"
-          >Multi-Center Clinical Validation</a
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="about"
-          onclick="route('/about');"
-          >IRB Protocol Standards</a
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="contact"
-          onclick="route('/contact');"
-          >HIPAA / GDPR Compliance</a
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="about"
-          onclick="route('/about');"
-          >Peer-Reviewed Publications</a
-        ><a
-          class="font-body-sm text-body-sm text-text-secondary hover:text-on-surface transition-colors py-1"
-          data-path="contact"
-          onclick="route('/contact');"
-          >Institutional Ethics Advisory</a
-        >
-      </div>
+        <!-- Bottom Bar -->
+        <div class="footer-bottom-bar">
+            <p>© 2026 FundusGuard AI. All rights reserved. For clinical research and preliminary screening.</p>
+            <div class="footer-socials">
+                <a class="footer-link" href="https://github.com/kidKrishkode">GitHub</a>
+                <a class="footer-link" href="https://arxiv.org">arXiv</a>
+                <a class="footer-link" href="https://www.kaggle.com/labledata">Kaggle</a>
+                <a class="footer-link" href="https://linkedin.com/">LinkedIn</a>
+            </div>
+        </div>
     </div>
-    <div
-      class="p-space-md rounded-xl bg-surface-container-low border border-border-amber-glow flex flex-col md:flex-row items-center justify-between gap-space-sm mb-space-lg"
-    >
-      <div class="flex items-center gap-space-sm">
-        <span class="material-symbols-outlined text-optic-disc-gold"
-          >verified</span
-        >
-        <p class="font-body-sm text-body-sm text-on-surface">
-          Developed with precision by
-          <strong class="text-optic-disc-gold font-semibold"
-            >Krishnendu Mitra</strong
-          >
-          (Student Developer) under the guidance of
-          <strong class="text-text-primary font-semibold"
-            >Prof. Soumen Mukherjee</strong
-          >.
-        </p>
-      </div>
-      <div class="flex items-center gap-space-xs">
-        <span class="font-label-sm text-label-sm text-text-secondary"
-          >SPI-OWL Architecture v1.0</span
-        ><span
-          class="px-2 py-0.5 rounded-full bg-surface-container-high text-optic-disc-gold font-label-sm text-label-sm border border-border-amber-glow"
-          >Research Edition</span
-        >
-      </div>
-    </div>
-    <div
-      class="pt-space-md border-t border-border-subtle flex flex-col sm:flex-row items-center justify-between gap-space-md"
-    >
-      <p class="font-body-sm text-body-sm text-text-secondary">
-        © 2026 FundusGuard AI. All rights reserved. For clinical research and
-        preliminary screening.
-      </p>
-      <div class="flex items-center gap-space-md">
-        <a
-          aria-label="GitHub Repo"
-          class="font-body-sm text-body-sm text-text-secondary hover:text-optic-disc-gold transition-colors"
-          href="https://github.com/kidKrishkode"
-          >GitHub</a
-        ><a
-          aria-label="arXiv Pre-print"
-          class="font-body-sm text-body-sm text-text-secondary hover:text-optic-disc-gold transition-colors"
-          href="https://arxiv.org"
-          >arXiv</a
-        ><a
-          aria-label="Kaggle Models"
-          class="font-body-sm text-body-sm text-text-secondary hover:text-optic-disc-gold transition-colors"
-          href="https://www.kaggle.com/labledata"
-          >Kaggle</a
-        ><a
-          aria-label="LinkedIn Developer Profile"
-          class="font-body-sm text-body-sm text-text-secondary hover:text-optic-disc-gold transition-colors"
-          href="https://linkedin.com/"
-          >LinkedIn</a
-        >
-      </div>
-    </div>
-  </div>
 </footer>
-<div
-  class="sm:hidden fixed bottom-3 left-3 right-3 z-40 bg-surface-container-high/90 backdrop-blur-lg border border-border-amber-glow rounded-xl p-2 flex items-center justify-between shadow-[0_8px_32px_rgba(0,0,0,0.7)]"
->
-  <div class="flex items-center gap-2 pl-2">
-    <span class="w-2 h-2 rounded-full bg-status-healthy animate-pulse"></span
-    ><span class="font-label-sm text-label-sm text-on-surface"
-      >SPI-OWL Engine Ready</span
-    >
-  </div>
-  <a
-    class="px-3 py-1.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-sm text-label-sm text-on-primary font-bold shadow-[0_0_12px_rgba(234,88,12,0.4)] flex items-center gap-1"
-    data-path="workspace"
-    href="#"
-    ><span>Launch</span
-    ><span class="material-symbols-outlined text-[14px]">arrow_forward</span></a
-  >
-</div>
+<!-- Mobile Floating Sticky CTA -->
+<aside class="mobile-float-bar">
+    <div style="display:flex;align-items:center;gap:8px;padding-left:4px;">
+        <span class="status-dot pulse"></span>
+        <span style="font-size:12px;font-weight:600;color:var(--text-primary);">SPI-OWL Engine Ready</span>
+    </div>
+    <a class="mobile-float-btn" onclick="route('/workspace');">
+        <span>Launch</span>
+        <span class="material-symbols-outlined" style="font-size: 14px;">arrow_forward</span>
+    </a>
+</aside>

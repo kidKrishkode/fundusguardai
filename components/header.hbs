@@ -1,83 +1,75 @@
-<header
-    class="fixed top-0 left-0 right-0 z-50 bg-surface/80 backdrop-blur-md shadow-[0_1px_8px_rgba(0,0,0,0.4)] border-b border-border-amber-glow" id="header">
-    <div class="h-16 w-full px-margin md:px-margin-desktop flex items-center justify-between">
-        <div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm" data-path="home" onclick="#">
-
+<header class="site-header" id="header">
+    <div class="header-inner">
+        <div class="brand-group">
+            <a class="brand-link" data-path="home" onclick="route('/index');">
                 {{#if isHosted}}
-                    <img alt="FundusGuard SPI-OWL Logo" class="h-8 w-auto object-contain" src="https://kidkrishkode.github.io/fundusguardai/public/favicon.ico" />
+                    <img alt="favicon" class="brand-logo-img" src="https://kidkrishkode.github.io/fundusguardai/public/favicon.ico" />
                 {{else}}
-                    <img src="../public/favicon.ico" class="h-8 w-auto object-contain" alt="FundusGuard SPI-OWL Logo" />
+                    <img src="../public/favicon.ico" class="brand-logo-img" alt="favicon" />
                 {{/if}}
-
-                <div class="flex flex-col">
-                    <div class="flex items-center gap-space-xs"><span
-                            class="font-headline-md text-headline-md tracking-tight text-text-primary">FundusGuard</span><span
-                            class="font-headline-md text-headline-md tracking-tight text-optic-disc-gold">AI</span>
-                    </div><span
-                        class="font-label-sm text-label-sm text-text-secondary tracking-widest uppercase">Retinal
-                        Diagnostics</span>
+                <div class="brand-meta">
+                    <div class="brand-title-row">
+                        <span class="brand-title-primary">FundusGuard</span>
+                        <span class="brand-title-gold">AI</span>
+                    </div>
+                    <span class="brand-tagline">Retinal Diagnostics</span>
                 </div>
-            </a><span
-                class="hidden lg:inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm border border-border-amber-glow"><span
-                    class="w-1.5 h-1.5 rounded-full bg-status-healthy"></span>v1.0 SPI-OWL</span></div>
-        <nav class="hidden xl:flex items-center gap-space-md"
-            data-active-classes="text-on-primary-container bg-primary-container font-headline-md rounded-xl"><a
-                aria-current="page"
-                class="px-3 py-1.5 transition-colors text-on-primary-container bg-primary-container font-headline-md rounded-xl"
-                data-path="home" onclick="route('/');">Home</a><a
-                class="px-3 py-1.5 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                data-path="workspace" onclick="route('/workspace');">Workspace</a><a
-                class="px-3 py-1.5 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                data-path="about" onclick="route('/about');">About</a><a
-                class="px-3 py-1.5 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                data-path="api-docs" onclick="route('/api_plugin');">API Docs</a><a
-                class="px-3 py-1.5 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                data-path="app-download" onclick="route('/app');">App Download</a><a
-                class="px-3 py-1.5 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                data-path="contact" onclick="route('/contact');">Contact</a></nav>
-        <div class="flex items-center gap-space-sm"><a
-                class="hidden sm:inline-flex items-center gap-space-xs px-4 py-2 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-[0_0_16px_rgba(234,88,12,0.35)] hover:shadow-[0_0_24px_rgba(234,88,12,0.55)] transition-all"
-                data-path="workspace" onclick="route('/workspace');"><span>Launch Workspace</span><span
-                    class="material-symbols-outlined text-[16px]">arrow_forward</span></a>
-            <div class="flex items-center gap-space-xs pl-space-xs border-l border-border-subtle">
-                <div class="relative group" onclick="route('/dashboard');" style="cursor: pointer;" title="Open My Personal Workspace">
+            </a>
+            <span class="version-badge">
+                <span class="status-dot"></span>
+                v1.0 SPI-OWL
+            </span>
+        </div>
+        <nav class="main-nav">
+            <a class="nav-link" data-path="home" onclick="route('/index');">Home</a>
+            <a class="nav-link" data-path="workspace" onclick="route('/workspace');">Workspace</a>
+            <a class="nav-link" data-path="about" onclick="route('/about');">About</a>
+            <a class="nav-link" data-path="api-docs" onclick="route('/api_plugin');">API Docs</a>
+            <a class="nav-link" data-path="app-download" onclick="route('/app');">App Download</a>
+            <a class="nav-link" data-path="contact" onclick="route('/contact');">Contact</a>
+        </nav>
+        <div class="header-actions">
+            <a class="btn-cta-primary" data-path="workspace" onclick="route('/workspace');">
+                <span>Launch Workspace</span>
+                <span class="material-symbols-outlined" style="font-size: 16px;">arrow_forward</span>
+            </a>
+            <div class="header-profile-cluster">
+                <div class="avatar-wrapper">
                     {{#if isHosted}}
-                        <img alt="Profile" class="w-8 h-8 rounded-full object-cover ring-1 ring-border-amber-glow"
+                        <img alt="Profile" class="avatar-img"
                         src="https://kidkrishkode.github.io/fundusguardai/assets/images/dp.jpg" />
                     {{else}}
-                        <img src="../assets/images/dp.jpg" class="w-8 h-8 rounded-full object-cover ring-1 ring-border-amber-glow" alt="User Dp" />
+                        <img src="../assets/images/dp.jpg" class="avatar-img" alt="User Dp" />
                     {{/if}}
-                    <span class="absolute bottom-0 right-0 w-2.5 h-2.5 rounded-full bg-status-healthy ring-2 ring-surface"></span>
-                </div><button aria-label="Toggle mobile menu"
-                    class="xl:hidden p-2 rounded-xl text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                    id="mobile-nav-toggle" onclick="toggle_menu();"><span class="material-symbols-outlined">menu</span></button>
+                    <span class="avatar-badge"></span>
+                </div>
+                <button aria-label="Toggle mobile menu" class="nav-toggle-btn" id="mobile-nav-toggle" type="button">
+                    <span class="material-symbols-outlined">menu</span>
+                </button>
             </div>
         </div>
     </div>
-    <div class="hidden xl:hidden bg-surface-container-low border-b border-border-amber-glow px-margin py-space-md"
-        id="mobile-drawer">
-        <div class="flex flex-col gap-space-sm">
-            <div class="flex items-center justify-between pb-space-sm border-b border-border-subtle"><span
-                    class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-1.5"><span
-                        class="w-2 h-2 rounded-full bg-status-healthy animate-pulse"></span>Neural Telemetry: Live
-                    (42ms)</span><span class="font-label-sm text-label-sm text-optic-disc-gold">SPI-OWL v1.0</span>
-            </div><a
-                class="px-3 py-2 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                data-path="home" onclick="route('/');">Home</a><a
-                class="px-3 py-2 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                data-path="workspace" onclick="route('/workspace');">Workspace</a><a
-                class="px-3 py-2 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                data-path="about" onclick="route('/about');">About</a><a
-                class="px-3 py-2 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                data-path="api-docs" onclick="route('/api_plugin');">API Docs</a><a
-                class="px-3 py-2 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                data-path="app-download" onclick="route('/app');">App Download</a><a
-                class="px-3 py-2 rounded-xl font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-colors"
-                data-path="contact" onclick="route('/contact');">Contact</a>
-            <div class="pt-space-xs"><a
-                    class="w-full flex items-center justify-center gap-space-xs px-4 py-2.5 rounded-xl bg-gradient-to-r from-primary-container to-secondary-container font-label-md text-label-md text-on-primary font-bold shadow-[0_0_16px_rgba(234,88,12,0.35)]"
-                    data-path="workspace" onclick="route('/workspace');"><span>Launch Diagnostic Studio</span><span
-                        class="material-symbols-outlined text-[16px]">biotech</span></a></div>
+    <!-- Mobile Drawer -->
+    <div class="mobile-drawer" id="mobile-drawer">
+        <div class="mobile-telemetry">
+            <span style="display:flex;align-items:center;gap:6px;">
+                <span class="status-dot pulse"></span>
+                Neural Telemetry: Live (42ms)
+            </span>
+            <span class="mobile-telemetry-badge">SPI-OWL v1.0</span>
+        </div>
+        <a class="mobile-link" data-path="home" onclick="route('/index');">Home</a>
+        <a class="mobile-link" data-path="workspace" onclick="route('/workspace');">Workspace</a>
+        <a class="mobile-link" data-path="about" onclick="route('/about');">About</a>
+        <a class="mobile-link" data-path="api-docs" onclick="route('/api_plugin');">API Docs</a>
+        <a class="mobile-link" data-path="app-download" onclick="route('/app');">App Download</a>
+        <a class="mobile-link" data-path="contact" onclick="route('/contact');">Contact</a>
+        <div style="padding-top: 6px;">
+            <a class="btn-cta-primary" data-path="workspace" onclick="route('/workspace');"
+                style="width: 100%; justify-content: center;">
+                <span>Launch Diagnostic Studio</span>
+                <span class="material-symbols-outlined" style="font-size: 16px;">biotech</span>
+            </a>
         </div>
     </div>
 </header>
