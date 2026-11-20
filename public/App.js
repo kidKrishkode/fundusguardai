@@ -85,6 +85,10 @@ class System{
         // this.color_theme = memory.local_memory.length!=0?memory.local_memory[0]?.value:'light';
         this.color_theme = "light";
     }
+    init(){
+        this.toggle_theme();
+        this.VisiblePage();
+    }
     alert(data){
         try{
             const alertId = "custom-alert";
@@ -173,18 +177,22 @@ class System{
             console.warn("New Problem: ",e);
         }
     }
-    setActiveMenu(menuName){
-        const navMenu = document.querySelector('#nav-menu');
-        const navItems = navMenu.querySelectorAll('.nav-item');
-        navItems.forEach(item => {
-            item.querySelector('.nav-link').classList.remove('active');
-        });
-        const activeItem = navMenu.querySelector(`.nav-link[href="/${menuName.toLowerCase().replace(' ', '')}"]`);
-        if(activeItem){
-            activeItem.classList.add('active');
-        }else{
-            return false;
+    setActiveMenu(menuName) {
+        const header = document.querySelector('#header');
+        if (!header) return false;
+
+        const normalizedPath = menuName.trim().toLowerCase().replace(/\s+/g, '-');
+      
+        const allLinks = header.querySelectorAll('.nav-link, .mobile-link');
+        allLinks.forEach(link => link.classList.remove('active'));
+      
+        const activeLinks = header.querySelectorAll(`[data-path="${normalizedPath}"]`);
+        
+        if (activeLinks.length > 0) {
+          activeLinks.forEach(link => link.classList.add('active'));
+          return true;
         }
+        return false;
     }
     toggle_theme(choise) {
         const savedTheme = choise?choise:(memory.local_memory[0]?.value || this.color_theme);
@@ -337,13 +345,11 @@ document.addEventListener("DOMContentLoaded",() => {
         document.head.appendChild(style);
         console.log("App container layout styles applied natively by the server.");
     }
-    if(!memory.local_memory[0]?.value){
-        // system.toggle_theme("light");
-    }
     memory.pullDataBase();
     if(memory.local_memory!=[]){
         setTimeout(()=>{
-            system.toggle_theme();
+            // system.toggle_theme();
+            system.init();
         },1000);
     }
 });
