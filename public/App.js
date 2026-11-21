@@ -1,26 +1,148 @@
-class Loader{
-    constructor(load){
-        this.loaded = load;
+class Loader {
+    constructor(options = {}) {
+        this.active = options.active !== false;
+        this.minDelay = typeof options.minDelay === "number" ? options.minDelay : 3000;
+        this.selector =
+        options.selector ||
+        "header, section > div, main > div, .card, h1, h2, h3, p, span, a, img, input, select, textarea, button, footer";
+        const customExclude = Array.isArray(options.exclude)
+            ? options.exclude.join(", ")
+            : options.exclude;
+        this.exclude = customExclude
+            ? `.no-skeleton, ${customExclude}`
+            : ".no-skeleton";
+        this.styleId = "sk-loader-style";
+        this.layerId = "sk-loader-layer";
+        this.previousOverflow = "";
+        this.removed = false;
+        this.timerId = null;
     }
-    create(){
-        if(this.loaded!=false){
-            const loaderEle = document.createElement('div');
-            loaderEle.classList.add("loader");
-            loaderEle.innerHTML = `<div class="centerDia"><div class="loading"></div></div>`;
-            document.body.appendChild(loaderEle);
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            document.body.style.overflowY = "hidden";
+
+    _injectStyles() {
+        if (document.getElementById(this.styleId)) return;
+
+        const style = document.createElement("style");
+        style.id = this.styleId;
+        style.textContent = `
+        @keyframes sk-shimmer {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
         }
+        #${this.layerId} {
+            position: fixed;
+            inset: 0;
+            background: #ffffff;
+            z-index: 9999;
+            overflow: hidden;
+            opacity: 1;
+            transition: opacity 0.25s ease;
+            pointer-events: auto;
+        }
+        #${this.layerId}.sk-fade-out {
+            opacity: 0;
+            pointer-events: none;
+        }
+        .sk-box {
+            position: absolute;
+            border-radius: 8px;
+            background: linear-gradient(90deg, #e5e7eb 25%, #f3f4f6 50%, #e5e7eb 75%);
+            background: linear-gradient(90deg, #c9ccd1 25%, #9b9b9d 50%, #c9cbcf 75%);
+            background-size: 200% 100%;
+            animation: sk-shimmer 1.2s infinite linear;
+        }
+        `;
+        document.head.appendChild(style);
     }
-    remove(time){
-        if(time<100){
-            return false;
+
+    _buildBoxes(layer) {
+        layer.innerHTML = "";
+
+        const matches = Array.from(document.querySelectorAll(this.selector)).filter(
+            (el) => !el.closest(this.exclude)
+        );
+        const leafMatches = matches.filter(
+            (el) => !matches.some((other) => other !== el && el.contains(other))
+        );
+
+        const viewHeight = window.innerHeight || document.documentElement.clientHeight;
+        const viewWidth = window.innerWidth || document.documentElement.clientWidth;
+        const buffer = 120; // slight margin just outside the screen edge
+
+        leafMatches.forEach((el) => {
+            const rect = el.getBoundingClientRect();
+            if (rect.width < 20 || rect.height < 14) return;
+
+            const inView =
+                rect.bottom >= -buffer &&
+                rect.top <= viewHeight + buffer &&
+                rect.right >= -buffer &&
+                rect.left <= viewWidth + buffer;
+
+            if (!inView) return;
+
+            const box = document.createElement("div");
+            box.className = "sk-box";
+            box.style.left = rect.left + "px";
+            box.style.top = rect.top + "px";
+            box.style.width = rect.width + "px";
+            box.style.height = rect.height + "px";
+
+            const radius = getComputedStyle(el).borderRadius;
+            if (radius && radius !== "0px") {
+                box.style.borderRadius = radius;
+            }
+
+            layer.appendChild(box);
+        });
+    }
+
+    create() {
+        if (!this.active || !document.body) return;
+
+        this.removed = false;
+        this._injectStyles();
+
+        let layer = document.getElementById(this.layerId);
+        if (!layer) {
+            layer = document.createElement("div");
+            layer.id = this.layerId;
+            document.body.appendChild(layer);
         }
-        setTimeout(()=>{
-            document.body.removeChild(document.querySelector('.loader'));
-            this.loaded = false;
-            document.body.style.overflowY = "scroll";
-        },time);
+
+        this.previousOverflow = document.body.style.overflow;
+        document.body.style.overflow = "hidden";
+
+        this._buildBoxes(layer);
+        requestAnimationFrame(() => this._buildBoxes(layer));
+    }
+
+    remove(time = this.minDelay) {
+        if (this.removed) return;
+
+        const delay = Math.max(typeof time === "number" ? time : this.minDelay, this.minDelay);
+
+        if (this.timerId) clearTimeout(this.timerId);
+
+        this.timerId = setTimeout(() => {
+            if (this.removed) return;
+            this.removed = true;
+            this.active = false;
+
+            const layer = document.getElementById(this.layerId);
+            const style = document.getElementById(this.styleId);
+
+            if (layer) {
+                layer.classList.add("sk-fade-out");
+                setTimeout(() => {
+                    layer.remove();
+                    if (style) style.remove();
+                }, 260);
+            } else if (style) {
+                style.remove();
+            }
+
+            document.body.style.overflow = this.previousOverflow || "";
+        }, delay);
     }
 }
 
@@ -315,15 +437,23 @@ class MEMORY{
     }
 }
 
-let loader;
+let loader = new Loader();   
+if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", () => loader.create(), { once: true });
+} else {
+    loader.create();
+}
+
 let system;
 let memory;
 document.addEventListener("DOMContentLoaded",() => {
-    loader = new Loader(true);
-    loader.create();
-    loader.remove(2000);
     memory = new MEMORY();
     system = new System();
+    if (document.readyState === "complete") {
+        loader.remove(2000);
+    } else {
+        window.addEventListener("load", () => loader.remove(2000), { once: true });
+    }
 
     document.addEventListener('keydown', function (event) {
         if(event.ctrlKey && event.key.toLowerCase() === 'k'){
